@@ -21,7 +21,7 @@ namespace VolcQuestingUpdate.lib
             Create1IngRecipe("TinIngot", "TinOre", "TinIngot", "CopperIngotRecipe", 1, 1, "813C576F2689476C930CE875A6920541");
             Create2IngRecipeLooping(Findcategories("ForgeTier1"), "BronzeIngot", "TinIngot", "CopperIngot", "BronzeIngot", "CopperIngotRecipe", 2, 2, 1, "5834A7C544EA44B7B2F499846F65A5F7");
             Create2IngRecipe("SteelIngot", "CoalOre", "IronIngot", "SteelIngot", "AdvancedExplosivesSchematicRecipe", 2, 1, 1, "31285829C32547AFAA7566C70AC01F7B");
-            Create2IngRecipe("TinOre", "CoalOre", "SulfurPowder", "TinOre", "CopperLadderWorktableRecipe", 1, 1, 1, "D00D8B60000F49F9ACE357F6475D5845");
+            Create2IngRecipe("TinOreWorktable", "CoalOre", "SulfurPowder", "TinOre", "CopperLadderWorktableRecipe", 1, 1, 1, "D00D8B60000F49F9ACE357F6475D5845");
             Create2IngRecipe("TinOre", "CoalOre", "SulfurPowder", "TinOre", "CopperLadderRecipe", 1, 1, 1, "F91D87B941924FC4AF9D3DFDA6F0DA30");
 
             // Bolts
@@ -29,21 +29,21 @@ namespace VolcQuestingUpdate.lib
             Create1IngRecipe("CobaltBolts", "CobaltIngot", "CobaltBolts", "TitaniumBoltsRecipe", 1, 1, "BF883E730A0E4571A498BD520CC41A03");
             Create1IngRecipe("SteelBolts", "SteelIngot", "SteelBolts", "IronBoltsRecipe", 1, 1, "92339DD53B59431F8AD4AF33919286E0");
             Create1IngRecipe("TinBolts", "TinIngot", "TinBolts", "CopperBoltsRecipe", 1, 1, "B57DC13501594BBCB8770598CC9E1493");
-            Create1IngRecipe("TinBolts", "TinIngot", "TinBolts", "CopperBoltsWorktableRecipe", 1, 1, "B57DC13501594BBCB8770598CC9E1493");
+            Create1IngRecipe("TinBoltsWorktable", "TinIngot", "TinBolts", "CopperBoltsWorktableRecipe", 1, 1, "429FDCDF78454A9E83C6E7B529F5DE2D");
 
             // Plates
             Create1IngRecipe("BronzePlates", "BronzeIngot", "BronzePlates", "CopperPlatesRecipe", 1, 1, "D418515C6B2E42649D5979E1BD2AF624");
             Create1IngRecipe("CobaltPlates", "CobaltIngot", "CobaltPlates", "TitaniumPlatesRecipe", 1, 1, "233F48A2ABB140729F2A6FAB1FBE8942");
             Create1IngRecipe("SteelPlates", "SteelIngot", "SteelPlates", "IronPlatesRecipe", 1, 1, "F85498173406424D97A23C86575D56EE");
             Create1IngRecipe("TinPlates", "TinIngot", "TinPlates", "CopperPlatesRecipe", 1, 1, "07C7F4B4E6834A8F9BB3D1E2026B46FD");
-            Create1IngRecipe("TinPlates", "TinIngot", "TinPlates", "CopperPlatesWorktableRecipe", 1, 1, "8C544BCE2A2C44CDA9A073278F9A3EF2");
+            Create1IngRecipe("TinPlatesWorktable", "TinIngot", "TinPlates", "CopperPlatesWorktableRecipe", 1, 1, "8C544BCE2A2C44CDA9A073278F9A3EF2");
 
             // Tubes
             Create1IngRecipe("BronzeTubes", "BronzeIngot", "BronzeTubes", "CopperTubesRecipe", 1, 1, "177273172C324BC98A3E280BE760F7CD");
             Create1IngRecipe("CobaltTubes", "CobaltIngot", "CobaltTubes", "TitaniumTubesRecipe", 1, 1, "D92B11B3B83C4FAC81E26D5B2A762284");
             Create1IngRecipe("SteelTubes", "SteelIngot", "SteelTubes", "IronTubesRecipe", 1, 1, "D10ED3794F4C445BB392B7D28EC912A2");
             Create1IngRecipe("TinTubes", "TinIngot", "TinTubes", "CopperTubesRecipe", 1, 1, "8F2793C875104B889C29EF1005271171");
-            Create1IngRecipe("TinTubes", "TinIngot", "TinTubes", "CopperTubesWorktableRecipe", 1, 1, "1C5868D46B4A41EC9F19869633B8D9D6");
+            Create1IngRecipe("TinTubesWorktable", "TinIngot", "TinTubes", "CopperTubesWorktableRecipe", 1, 1, "1C5868D46B4A41EC9F19869633B8D9D6");
 
             // Modules
             Create4IngRecipe("AlloyForgeTier1", "CopperPlates", "CopperBolts", "RefineryT1_Shredder", "IntelRefineryT1", "AlloyForgeTier1", "RefineryModuleSide1Recipe", 3, 3, 1, 1, 1, "1A6B5BFD59D5418A9ADD618B85F812E2");
