@@ -28,21 +28,9 @@ namespace VolcQuestingUpdate.lib
             str.OnAfterDeserialize();
         }
 
-        private FactoryType tempcategory;
         public FactoryType Findcategories(string categoryname)
         {
-            tempcategory = null;
-            foreach (FactoryType type in GameResources.Instance.FactoryTypes)
-            {
-                    if (type != null && categoryname != null)
-                    {
-                        if (type.name == categoryname)
-                        {
-                            tempcategory = type;
-                        }
-                    }
-            }
-            return tempcategory;
+            return GameResources.Instance.FactoryTypes.FirstOrDefault(type => type?.name == categoryname);
         }
 
         private void CreateStation(FactoryType categories, string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring)
