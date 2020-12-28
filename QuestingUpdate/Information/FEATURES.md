@@ -13,6 +13,12 @@
 ### Stations:
 - Alloy Station (WIP)
 
+### Other:
+- Steel Bolts, Plates, Tubes
+- Tin Bolts, Plates, Tubes
+- Bronze Bolts, Plates, Tubes
+- Cobalt Bolts, Plates, Tubes
+
 ## Modules:
 ### Production:
 - Alloy Forge
