@@ -15,7 +15,7 @@ namespace VolcanoidsMod
 {
     public class QuestingMod : GameMod
     {
-        private string version = "0.1.1";
+        private string version = "0.1.2";
         public override void Load()
         {
             var lastWrite = File.GetLastWriteTime(typeof(QuestingMod).Assembly.Location);
@@ -30,7 +30,7 @@ namespace VolcanoidsMod
             {
                 GameObject.Find("EarlyAccess").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + version;
                 GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update";
-                GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Version: 1.25.4 (ClosedTesting)";
+                GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Version: 1.25.33 (ClosedTesting)";
             }
             if (arg0.name == "Island")
             {
