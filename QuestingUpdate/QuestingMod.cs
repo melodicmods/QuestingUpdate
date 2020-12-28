@@ -44,6 +44,8 @@ namespace VolcanoidsMod
                 categories.InitCategories();
                 QuestingModules modules = new QuestingModules();
                 modules.InitModules();
+                QuestingStations stations = new QuestingStations();
+                stations.InitStations();
             }
         }
 

@@ -32,9 +32,12 @@ namespace VolcQuestingUpdate.lib
             {
                 foreach (RecipeCategory category in recipe.Categories)
                 {
-                    if (category.name == categoryname)
+                    if (category != null && categoryname != null)
                     {
-                        tempcategory = category;
+                        if (category.name == categoryname)
+                        {
+                            tempcategory = category;
+                        }
                     }
                 }
             }
