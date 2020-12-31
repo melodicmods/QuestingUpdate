@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace VolcQuestingUpdate.lib
 {
@@ -79,67 +72,50 @@ namespace VolcQuestingUpdate.lib
 
         private void Create1IngRecipe(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId)
         {
-            // Get some items and a copper ingot worktable recipe
             var input = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName);
             var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
             var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
 
-            // Create new recipe
             var recipe = ScriptableObject.CreateInstance<Recipe>();
             recipe.name = recipeName;
             recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input, Amount = inputAmount } };
             recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
             recipe.RequiredUpgrades = baseRecipe.RequiredUpgrades;
 
-            // Copy categories from copper ingot worktable recipe, this will make it craftable in worktable as well
             recipe.Categories = baseRecipe.Categories.ToArray();
 
-            // Recipe needs stable GUID across games to work with saves
-            // This guid was generated through Visual studio, Tools, Generate GUID, dashes were removed
             var guid = GUID.Parse(itemId);
 
-            // Not ideal, will try to make is more simple in next version
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
 
-            // Add recipe among runtime assets so game knows about them
-            // All will try to make it more simple in next update
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
         private void Create2IngRecipe(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId)
         {
-            // Get some items and a copper ingot worktable recipe
             var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
             var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
             var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
             var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
 
-            // Create new recipe
             var recipe = ScriptableObject.CreateInstance<Recipe>();
             recipe.name = recipeName;
             recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 } };
             recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
             recipe.RequiredUpgrades = baseRecipe.RequiredUpgrades;
 
-            // Copy categories from copper ingot worktable recipe, this will make it craftable in worktable as well
             recipe.Categories = baseRecipe.Categories.ToArray();
 
-            // Recipe needs stable GUID across games to work with saves
-            // This guid was generated through Visual studio, Tools, Generate GUID, dashes were removed
             var guid = GUID.Parse(itemId);
 
-            // Not ideal, will try to make is more simple in next version
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
 
-            // Add recipe among runtime assets so game knows about them
-            // All will try to make it more simple in next update
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
 
         private void Create4IngRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string inputName4, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int inputAmount4, int outputAmount, string itemId)
         {
-            // Get some items and a copper ingot worktable recipe
             var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
             var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
             var input3 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName3);
@@ -147,56 +123,41 @@ namespace VolcQuestingUpdate.lib
             var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
             var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
 
-            // Create new recipe
             var recipe = ScriptableObject.CreateInstance<Recipe>();
             recipe.name = recipeName;
             recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 }, new InventoryItemData { Item = input3, Amount = inputAmount3 }, new InventoryItemData { Item = input4, Amount = inputAmount4 } };
             recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
             recipe.RequiredUpgrades = baseRecipe.RequiredUpgrades;
 
-            // Copy categories from copper ingot worktable recipe, this will make it craftable in worktable as well
             recipe.Categories = baseRecipe.Categories.ToArray();
 
-            // Recipe needs stable GUID across games to work with saves
-            // This guid was generated through Visual studio, Tools, Generate GUID, dashes were removed
             var guid = GUID.Parse(itemId);
 
-            // Not ideal, will try to make is more simple in next version
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
 
-            // Add recipe among runtime assets so game knows about them
-            // All will try to make it more simple in next update
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
 
         private void Create2IngRecipeLooping(RecipeCategory recipeCategory, string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId)
         {
-            // Get some items and a copper ingot worktable recipe
             var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
             var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
             var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
             var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
 
-            // Create new recipe
             var recipe = ScriptableObject.CreateInstance<Recipe>();
             recipe.name = recipeName;
             recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 } };
             recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
             recipe.RequiredUpgrades = baseRecipe.RequiredUpgrades;
 
-            // Copy categories from copper ingot worktable recipe, this will make it craftable in worktable as well
             recipe.Categories = new RecipeCategory[] { recipeCategory };
 
-            // Recipe needs stable GUID across games to work with saves
-            // This guid was generated through Visual studio, Tools, Generate GUID, dashes were removed
             var guid = GUID.Parse(itemId);
 
-            // Not ideal, will try to make is more simple in next version
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
 
-            // Add recipe among runtime assets so game knows about them
-            // All will try to make it more simple in next update
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
