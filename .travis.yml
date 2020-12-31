@@ -1,0 +1,29 @@
+language: csharp
+solution: QuestingUpdate.sln
+env:
+  - WEBHOOK_URL=https://discord.com/api/webhooks/768837840896262184/0D1jAtY3cVpIi4atE-BJXtPI3uApRWdvrDH0k9yOGXPYBjEp4PcvxOAhZOX7jpKck9Gg
+stages:
+  - build-linux
+jobs:
+  include:
+    - stage: build-linux
+      os: linux
+      dist: trusty
+    - stage: build-linux
+      os: linux
+      dist: focal
+      
+notifications:
+  email:
+    recipients:
+      - ralexdrum@gmail.com
+    on_success: never
+    on_failure: always
+after_success:
+         - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+         - chmod +x send.sh
+         - ./send.sh success $WEBHOOK_URL
+after_failure:
+         - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+         - chmod +x send.sh
+         - ./send.sh failure $WEBHOOK_URL
