@@ -26,11 +26,11 @@ namespace VolcanoidsMod {
                     break;
                 case "Island":
                     new QuestingItems().InitItems();
-                    new QuestingRecipes().InitRecipes();
                     new QuestingDeposits().InitDeposits();
                     new QuestingCategories().InitCategories();
                     new QuestingModules().InitModules();
                     new QuestingStations().InitStations();
+                    new QuestingRecipes().InitRecipes();
                     break;
             }
         }
