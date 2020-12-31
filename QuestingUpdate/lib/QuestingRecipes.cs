@@ -11,8 +11,8 @@ namespace VolcQuestingUpdate.lib
             ModifyTitanium();
             Create1IngRecipe("CobaltIngot", "CobaltOre", "CobaltIngot", "TitaniumIngotRecipe", 2, 1, "66A6E0D5D3EA4F37A7E8C8B8494EBEAB");
             Create1IngRecipe("TinIngot", "TinOre", "TinIngot", "CopperIngotRecipe", 1, 1, "813C576F2689476C930CE875A6920541");
-            Create2IngRecipeLooping(Findcategories("ForgeTier1"), "BronzeIngot", "TinIngot", "CopperIngot", "BronzeIngot", "CopperIngotRecipe", 2, 2, 1, "5834A7C544EA44B7B2F499846F65A5F7");
-            Create2IngRecipeLooping(Findcategories("ForgeTier2"), "SteelIngot", "CoalOre", "IronIngot", "SteelIngot", "IronIngotRecipe", 2, 1, 1, "31285829C32547AFAA7566C70AC01F7B");
+            Create2IngRecipeLooping(FindCategories("ForgeTier1"), "BronzeIngot", "TinIngot", "CopperIngot", "BronzeIngot", "CopperIngotRecipe", 2, 2, 1, "5834A7C544EA44B7B2F499846F65A5F7");
+            Create2IngRecipeLooping(FindCategories("ForgeTier2"), "SteelIngot", "CoalOre", "IronIngot", "SteelIngot", "IronIngotRecipe", 2, 1, 1, "31285829C32547AFAA7566C70AC01F7B");
             Create2IngRecipe("TinOreWorktable", "CoalOre", "SulfurPowder", "TinOre", "CopperLadderWorktableRecipe", 1, 1, 1, "D00D8B60000F49F9ACE357F6475D5845");
             Create2IngRecipe("TinOre", "CoalOre", "SulfurPowder", "TinOre", "CopperLadderRecipe", 1, 1, 1, "F91D87B941924FC4AF9D3DFDA6F0DA30");
 
@@ -44,25 +44,13 @@ namespace VolcQuestingUpdate.lib
 
             Debug.Log("[Questing Update | Recipes]: Recipes Loaded...");
         }
-        private RecipeCategory tempcategory;
 
-        public RecipeCategory Findcategories(string categoryname)
-        {
-            tempcategory = null;
-            foreach (Recipe recipe in GameResources.Instance.Recipes)
-            {
-                foreach (RecipeCategory category in recipe.Categories)
-                {
-                    if (category != null && categoryname != null)
-                    {
-                        if (category.name == categoryname)
-                        {
-                            tempcategory = category;
-                        }
-                    }
-                }
-            }
-            return tempcategory;
+        public static RecipeCategory FindCategories(string categoryName) {
+            return (from recipe in GameResources.Instance.Recipes
+                    from category in recipe.Categories
+                    where category.name == categoryName
+                    select category)
+                .FirstOrDefault();
         }
 
         private void ModifyTitanium()
