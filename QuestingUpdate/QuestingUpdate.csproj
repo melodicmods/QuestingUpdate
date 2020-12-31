@@ -92,8 +92,11 @@
 copy "$(TargetPath)" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
 
 mkdir "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources"
-robocopy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources" /S
+copy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources"
 
-exit /B 0</PostBuildEvent>
+SET UnityPath=c:\Program Files\Unity\Hub\Editor\2020.1.17f1
+SET MonoPath=%25UnityPath%25\Editor\Data\MonoBleedingEdge
+"%25MonoPath%25\bin\mono.exe" "%25MonoPath%25\lib\mono\4.5\pdb2mdb.exe" "$(TargetPath)"
+copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

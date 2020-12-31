@@ -44,13 +44,24 @@ namespace VolcQuestingUpdate.lib
 
             Debug.Log("[Questing Update | Recipes]: Recipes Loaded...");
         }
-
-        public static RecipeCategory FindCategories(string categoryName) {
-            return (from recipe in GameResources.Instance.Recipes
-                    from category in recipe.Categories
-                    where category.name == categoryName
-                    select category)
-                .FirstOrDefault();
+        private RecipeCategory tempcategory;
+        public RecipeCategory FindCategories(string categoryname)
+        {
+            tempcategory = null;
+            foreach (Recipe recipe in GameResources.Instance.Recipes)
+            {
+                foreach (RecipeCategory category in recipe.Categories)
+                {
+                    if (category != null && categoryname != null)
+                    {
+                        if (category.name == categoryname)
+                        {
+                            tempcategory = category;
+                        }
+                    }
+                }
+            }
+            return tempcategory;
         }
 
         private void ModifyTitanium()
