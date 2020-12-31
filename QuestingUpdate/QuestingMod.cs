@@ -36,14 +36,14 @@ namespace VolcanoidsMod
             {
                 QuestingItems items = new QuestingItems();
                 items.InitItems();
+                QuestingModules modules = new QuestingModules();
+                modules.InitModules();
                 QuestingRecipes recipes = new QuestingRecipes();
                 recipes.InitRecipes();
                 QuestingDeposits deposits = new QuestingDeposits();
                 deposits.InitDeposits();
                 QuestingCategories categories = new QuestingCategories();
                 categories.InitCategories();
-                QuestingModules modules = new QuestingModules();
-                modules.InitModules();
                 //QuestingStations stations = new QuestingStations();
                 //stations.InitStations();
             }
