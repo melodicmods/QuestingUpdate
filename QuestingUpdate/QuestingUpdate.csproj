@@ -89,6 +89,11 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
-copy "$(TargetPath)" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"</PostBuildEvent>
+copy "$(TargetPath)" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
+
+mkdir "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources"
+robocopy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources" /S
+
+exit /B 0</PostBuildEvent>
   </PropertyGroup>
 </Project>
