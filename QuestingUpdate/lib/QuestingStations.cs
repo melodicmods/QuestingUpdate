@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
-namespace VolcQuestingUpdate.lib
-{
+namespace VolcQuestingUpdate.lib {
     class QuestingStations : MonoBehaviour
     {
         private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
@@ -43,10 +34,10 @@ namespace VolcQuestingUpdate.lib
                 Debug.LogError($"No production station item found ({productionStationGUID}).");
             }
 
-            var category       = prodStation.Category;
+            var category = prodStation.Category;
 
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
-            item.name = codename;
+            item.name     = codename;
             item.Category = category;
             item.MaxStack = maxstack;
 
