@@ -92,7 +92,6 @@ namespace VolcQuestingUpdate.lib {
             var factorytype = factoryType;
             prefabParent.SetActive(false);
             var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
-            newmodule.SetActive(false);
             var module = newmodule.GetComponentInChildren<FactoryStation>();
             item.Prefabs = new GameObject[] { newmodule };
 
