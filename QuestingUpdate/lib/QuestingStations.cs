@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
-namespace VolcQuestingUpdate.lib
-{
+namespace VolcQuestingUpdate.lib {
     class QuestingStations : MonoBehaviour
     {
+        private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
+
         public void InitStations()
         {
             FactoryType forging = Findcategories("AlloyForge");
@@ -35,9 +28,16 @@ namespace VolcQuestingUpdate.lib
 
         private void CreateStation(FactoryType categories, string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring)
         {
-            var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == "ProductionStation").Category;
+            var prodStation = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID);
+            if (prodStation == null)
+            {
+                Debug.LogError($"No production station item found ({productionStationGUID}).");
+            }
+
+            var category = prodStation.Category;
+
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
-            item.name = codename;
+            item.name     = codename;
             item.Category = category;
             item.MaxStack = maxstack;
 
@@ -47,9 +47,8 @@ namespace VolcQuestingUpdate.lib
             Initialize(ref descStr);
 
             var prefabParent = new GameObject();
-            var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "ProductionStation");
-            var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
-            var module = newmodule.GetComponentInChildren<FactoryStation>();
+            var newmodule    = Instantiate(prodStation.Prefabs[0], prefabParent.transform);
+            var module       = newmodule.GetComponentInChildren<FactoryStation>();
             typeof(FactoryStation).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, categories);
             typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
             typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);

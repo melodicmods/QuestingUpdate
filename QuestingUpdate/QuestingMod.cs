@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Object = UnityEngine.Object;
 using VolcQuestingUpdate.lib;
 
-namespace VolcanoidsMod
-{
+namespace VolcanoidsMod {
     public class QuestingMod : GameMod
     {
-        private string version = "0.1.3";
+        private const string version = "0.1.3";
+
         public override void Load()
         {
             var lastWrite = File.GetLastWriteTime(typeof(QuestingMod).Assembly.Location);
@@ -24,28 +16,22 @@ namespace VolcanoidsMod
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-        {
-            if (arg0.name == "MainMenu")
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            switch (scene.name)
             {
-                GameObject.Find("EarlyAccess").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + version;
-                GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update";
-                GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Version: 1.25.72 (ClosedTesting)";
-            }
-            if (arg0.name == "Island")
-            {
-                QuestingItems items = new QuestingItems();
-                items.InitItems();
-                QuestingRecipes recipes = new QuestingRecipes();
-                recipes.InitRecipes();
-                QuestingDeposits deposits = new QuestingDeposits();
-                deposits.InitDeposits();
-                QuestingCategories categories = new QuestingCategories();
-                categories.InitCategories();
-                QuestingModules modules = new QuestingModules();
-                modules.InitModules();
-                //QuestingStations stations = new QuestingStations();
-                //stations.InitStations();
+                case "MainMenu":
+                    GameObject.Find("EarlyAccess").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + version;
+                    GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update";
+                    GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
+                    break;
+                case "Island":
+                    new QuestingItems().InitItems();
+                    new QuestingRecipes().InitRecipes();
+                    new QuestingDeposits().InitDeposits();
+                    new QuestingCategories().InitCategories();
+                    new QuestingModules().InitModules();
+                    new QuestingStations().InitStations();
+                    break;
             }
         }
 
