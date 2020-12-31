@@ -9,9 +9,6 @@ jobs:
     - stage: build-linux
       os: linux
       dist: trusty
-    - stage: build-linux
-      os: linux
-      dist: focal
       
 notifications:
   email:
