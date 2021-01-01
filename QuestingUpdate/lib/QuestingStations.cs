@@ -6,10 +6,9 @@ using UnityEngine;
 
 namespace VolcQuestingUpdate.lib {
     class QuestingStations : MonoBehaviour {
-        private static readonly GUID      productionStationGUID            = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
+        private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
         public void InitStations() {
-            var forging = FindCategories("AlloyForge");
-            CreateStation(forging, "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "B1F1B7BD39D34806ACCC4E1A151557F4", Sprite2("Resources/Stations/AlloyForgeControlStation.png"));
+            CreateStation(FindCategories("AlloyForge"), "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "AB14B23AB2E544BFBBEB5EEACB11D944", Sprite2("Resources/Stations/AlloyForgeControlStation.png"));
 
             Debug.Log("[Questing Update | Stations]: Stations Loaded...");
         }
@@ -89,18 +88,25 @@ namespace VolcQuestingUpdate.lib {
 
             var prefabParent = new GameObject();
             var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID);
-            var factorytype = factoryType;
             prefabParent.SetActive(false);
             var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
             var module = newmodule.GetComponentInChildren<FactoryStation>();
             item.Prefabs = new GameObject[] { newmodule };
+            Destroy(newmodule, 5.0f);
+            GameObject[] debuger = item.Prefabs;
+            var i = 1;
+            foreach (GameObject init in debuger)
+            {
+                Debug.Log("[Questing Update | Stations]: Array Num: " + i + " Array Data: " + init);
+                i++;
+            }
 
             LocalizedString nameStr = name;
             LocalizedString descStr = desc;
             Initialize(ref nameStr);
             Initialize(ref descStr);
 
-            typeof(FactoryStation).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factorytype);
+            typeof(FactoryStation).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factoryType);
             typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
             typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
 
@@ -110,6 +116,11 @@ namespace VolcQuestingUpdate.lib {
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            foreach (Producer asset in GameResources.Instance.ControlStations)
+            {
+                Debug.Log(asset);
+            }
         }
     }
 }

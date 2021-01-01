@@ -37,8 +37,8 @@ namespace VolcanoidsMod {
                     new QuestingModules().InitModules();
                     Debug.Log("QuestingMod: Modules Done.");
 
-                    new QuestingStations().InitStations();
-                    Debug.Log("QuestingMod: Stations Done.");
+                    //new QuestingStations().InitStations();
+                    //Debug.Log("QuestingMod: Stations Done.");
 
                     new QuestingRecipes().InitRecipes();
                     Debug.Log("QuestingMod: Recipes Done.");
