@@ -4,11 +4,17 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace VolcQuestingUpdate.lib {
+namespace QuestingUpdate.lib {
     class QuestingStations : MonoBehaviour {
         private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
         public void InitStations() {
             CreateStation(FindCategories("AlloyForge"), "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "AB14B23AB2E544BFBBEB5EEACB11D944", Sprite2("Resources/Stations/AlloyForgeControlStation.png"));
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Stations]: Stations Loaded...");
+                writer.Dispose();
+            }
 
             Debug.Log("[Questing Update | Stations]: Stations Loaded...");
         }
@@ -64,6 +70,11 @@ namespace VolcQuestingUpdate.lib {
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
             if (!File.Exists(path))
             {
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("ERROR: [Questing Update | Stations]: Specified Icon path not found: " + path);
+                    writer.Dispose();
+                }
                 Debug.LogError("[Questing Update | Stations]: Specified Icon path not found: " + path);
                 return null;
             }
@@ -81,23 +92,31 @@ namespace VolcQuestingUpdate.lib {
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
-            item.name = codename;
+            item.SetName(codename);
             item.Category = category;
             item.MaxStack = maxStack;
             item.Icon = icon;
+            Debug.Log(item);
 
             var prefabParent = new GameObject();
             var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID);
             prefabParent.SetActive(false);
             var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
             var module = newmodule.GetComponentInChildren<FactoryStation>();
+            newmodule.SetName("AlloyForgeStation");
             item.Prefabs = new GameObject[] { newmodule };
             Destroy(newmodule, 5.0f);
             GameObject[] debuger = item.Prefabs;
             var i = 1;
             foreach (GameObject init in debuger)
             {
-                Debug.Log("[Questing Update | Stations]: Array Num: " + i + " Array Data: " + init);
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("[Questing Update | Stations]: Array Num: " + i + " Array Data: " + init);
+                    writer.WriteLine("[Questing Update | Stations]: " + GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID).Category);
+                    //writer.WriteLine("[Questing Update | Stations]: " + item);
+                    writer.Dispose();
+                }
                 i++;
             }
 
@@ -111,15 +130,18 @@ namespace VolcQuestingUpdate.lib {
             typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
 
             var guid = GUID.Parse(guidString);
-
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
 
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets, default);
+            //AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
+            //RuntimeAssetStorage.Add(assets, default);
 
             foreach (Producer asset in GameResources.Instance.ControlStations)
             {
-                Debug.Log(asset);
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("[Questing Update | Stations]: " + asset);
+                    writer.Dispose();
+                }
             }
         }
     }

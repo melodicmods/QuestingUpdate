@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace VolcQuestingUpdate.lib
+namespace QuestingUpdate.lib
 {
     class QuestingModules : MonoBehaviour
     {
@@ -16,6 +16,11 @@ namespace VolcQuestingUpdate.lib
             CreateItemModuleProduction("AlloyForgeTier2", "Tier2", 5, "RefineryModuleT2", "Alloy Forge Tier 2", "The Alloy Forge for Steel", "3090980A28994112A197A342945DD1D0", "RefineryModuleT2", "AlloyForge", Sprite2("Resources/Modules/AlloyForge2.png"), tier2Forge);
             CreateItemModuleProduction("AlloyForgeTier3", "Tier3", 5, "RefineryModuleT3", "Alloy Forge Tier 3", "The Alloy Forge for Titanium", "1B2D3ED6CDCC460191183B13BA8D5F5F", "RefineryModuleT3", "AlloyForge", Sprite2("Resources/Modules/AlloyForge3.png"), tier3Forge);
 
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modules]: Modules Loaded...");
+                writer.Dispose();
+            }
             Debug.Log("[Questing Update | Modules]: Modules Loaded...");
         }
         private RecipeCategory tempcategory;
@@ -42,6 +47,12 @@ namespace VolcQuestingUpdate.lib
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
             if (!File.Exists(path))
             {
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("ERROR: [Questing Update | Modules]: Specified Icon path not found: " + path);
+                    writer.Dispose();
+                }
+
                 Debug.LogError("[Questing Update | Modules]: Specified Icon path not found: " + path);
                 return null;
             }
@@ -100,6 +111,12 @@ namespace VolcQuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modules]: Module " + codename + " has been loaded");
+                writer.Dispose();
+            }
         }
 
         public void CreateInitialItemModuleProduction(string codename, string variantname, int maxstack, string basename, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
@@ -142,6 +159,12 @@ namespace VolcQuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modules]: Module " + codename + " has been loaded");
+                writer.Dispose();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
-namespace VolcQuestingUpdate.lib
+namespace QuestingUpdate.lib
 {
     class QuestingCategories : MonoBehaviour
     {
@@ -14,6 +15,12 @@ namespace VolcQuestingUpdate.lib
             CreateFactoryCategory("AlloyForge", ALLOY_FORGE_FACTORY_GUID);
             CreateModuleCategory("AlloyForge", "EAB2EA1154F34FFF8CC74CA0C23ECACD");
 
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Categories]: Categories Loaded...");
+                writer.Dispose();
+            }
+
             Debug.Log("[Questing Update | Categories]: Categories Loaded...");
         }
 
@@ -24,6 +31,12 @@ namespace VolcQuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = ok, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Categories]: Factory Category with name " + name + " has been loaded");
+                writer.Dispose();
+            }
         }
 
         private void CreateModuleCategory(string name, string categoryId)
@@ -33,6 +46,12 @@ namespace VolcQuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = ok, Guid = guid, Labels = new string[4] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Categories]: Module Category with name " + name + " has been loaded");
+                writer.Dispose();
+            }
         }
 
         private void CreateRecipeCategory(string name, string categoryId)
@@ -42,6 +61,12 @@ namespace VolcQuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = Forge, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Categories]: Recipe Category with name " + name + " has been loaded");
+                writer.Dispose();
+            }
         }
     }
 }

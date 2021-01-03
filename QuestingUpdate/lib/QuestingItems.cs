@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace VolcQuestingUpdate.lib
+namespace QuestingUpdate.lib
 {
     class QuestingItems
     {
@@ -67,6 +67,12 @@ namespace VolcQuestingUpdate.lib
                 "This item is to indicate that an item is null",
                 "29B8BE6CAB6E43BB99ED496C06553B0A", "IronIngot", Sprite2("Resources/Icon/QuestingLogo.png"));
 
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Items]: Items Loaded...");
+                writer.Dispose();
+            }
+
             Debug.Log("[Questing Update | Items]: Items Loaded...");
         }
 
@@ -80,6 +86,12 @@ namespace VolcQuestingUpdate.lib
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
             if (!File.Exists(path))
             {
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("ERROR: [Questing Update | Items]: Specified Icon path not found: " + path);
+                    writer.Dispose();
+                }
+
                 Debug.LogError("[Questing Update | Items]: Specified Icon path not found: " + path);
                 return null;
             }
@@ -116,6 +128,12 @@ namespace VolcQuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Items]: Item " + codename + " has been loaded");
+                writer.Dispose();
+            }
         }
     }
 }

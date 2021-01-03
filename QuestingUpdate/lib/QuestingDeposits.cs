@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace VolcQuestingUpdate.lib
+namespace QuestingUpdate.lib
 {
     class QuestingDeposits
     {
@@ -13,6 +14,12 @@ namespace VolcQuestingUpdate.lib
             // CreateDeposit(false, 20, "TinOre", 2, 5, "SulfurOre");
             CreateDeposit(false, 100, "CobaltOre", 2, 5, "TitaniumOre");
             CreateDeposit(true, 100, "CobaltOre", 2, 5, "TitaniumOre");
+
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Deposits]: Deposits Loaded...");
+                writer.Dispose();
+            }
 
             Debug.Log("[Questing Update | Deposits]: Deposits Loaded...");
         }
@@ -47,12 +54,23 @@ namespace VolcQuestingUpdate.lib
                     }
                 }
             }
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Deposits]: Deposit Replacing " + ItemToReplace + " has been replaced with " + outputname);
+                writer.Dispose();
+            }
         }
         private ItemDefinition GetItem(string itemname)
         {
             ItemDefinition item = GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
             if (item == null)
             {
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("ERROR: [Questing Update | Deposits]: Item is null, name: " + itemname + ". Replacing with NullItem");
+                    writer.Dispose();
+                }
+
                 Debug.LogError("[Questing Update | Deposits]: Item is null, name: " + itemname + ". Replacing with NullItem");
                 return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");
             }
@@ -62,5 +80,6 @@ namespace VolcQuestingUpdate.lib
         private DepositLocationSurface[] depositsurface;
         private DepositLocationUnderground[] depositunderground;
         private static readonly FieldInfo OreField = typeof(DepositLocation).GetField("m_ore", BindingFlags.NonPublic | BindingFlags.Instance);
+
     }
 }
