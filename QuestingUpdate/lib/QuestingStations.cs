@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using QuestingUpdate.lib.obj;
 
 namespace QuestingUpdate.lib {
     class QuestingStations : MonoBehaviour {
@@ -90,13 +92,14 @@ namespace QuestingUpdate.lib {
 
         private void CreateStation(FactoryType factoryType, string codename, int maxStack, LocalizedString name, LocalizedString desc, string guidString, Sprite icon)
         {
-            var category = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID).Category;
+            var category = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID)?.Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
-            item.SetName(codename);
+            if (item == null) { Debug.Log("Item is null"); return; }
+            if (category == null) { Debug.Log("Category is null"); return; }
+            item.name = codename;
             item.Category = category;
             item.MaxStack = maxStack;
             item.Icon = icon;
-            Debug.Log(item);
 
             var prefabParent = new GameObject();
             var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID);
@@ -105,7 +108,6 @@ namespace QuestingUpdate.lib {
             var module = newmodule.GetComponentInChildren<FactoryStation>();
             newmodule.SetName("AlloyForgeStation");
             item.Prefabs = new GameObject[] { newmodule };
-            Destroy(newmodule, 5.0f);
             GameObject[] debuger = item.Prefabs;
             var i = 1;
             foreach (GameObject init in debuger)
@@ -113,8 +115,9 @@ namespace QuestingUpdate.lib {
                 using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
                 {
                     writer.WriteLine("[Questing Update | Stations]: Array Num: " + i + " Array Data: " + init);
+                    var writeThis = JsonConvert.SerializeObject(init);
+                    writer.WriteLine("[Questing Update | Stations]: " + writeThis);
                     writer.WriteLine("[Questing Update | Stations]: " + GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID).Category);
-                    //writer.WriteLine("[Questing Update | Stations]: " + item);
                     writer.Dispose();
                 }
                 i++;
@@ -125,15 +128,15 @@ namespace QuestingUpdate.lib {
             Initialize(ref nameStr);
             Initialize(ref descStr);
 
+            item.SetPrivateField("m_name", nameStr);
+            item.SetPrivateField("m_description", descStr);
             typeof(FactoryStation).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factoryType);
-            typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
-            typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
 
             var guid = GUID.Parse(guidString);
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
 
-            //AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            //RuntimeAssetStorage.Add(assets, default);
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
 
             foreach (Producer asset in GameResources.Instance.ControlStations)
             {

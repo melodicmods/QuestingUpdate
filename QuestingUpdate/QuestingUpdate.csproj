@@ -135,6 +135,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\obj\QuestingExtensions.cs" />
     <Compile Include="lib\QuestingCategories.cs" />
     <Compile Include="lib\QuestingDeposits.cs" />
     <Compile Include="lib\QuestingItems.cs" />
