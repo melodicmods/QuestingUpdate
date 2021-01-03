@@ -38,6 +38,10 @@ namespace QuestingUpdate.lib
             Create1IngRecipe("TinTubesRecipe", "TinIngot", "TinTubes", "CopperTubesRecipe", 1, 1, "8F2793C875104B889C29EF1005271171");
             Create1IngRecipe("TinTubesWorktableRecipe", "TinIngot", "TinTubes", "CopperTubesWorktableRecipe", 1, 1, "1C5868D46B4A41EC9F19869633B8D9D6");
 
+            // Misc
+            Create2IngRecipe("AlloyStationRecipe", "CopperTubes", "SulfurPowder", "AlloyForgeStation", "ProductionControlStationRecipe", 3, 1, 1, "2177E7806F3842FF9D929941930DA96F");
+            Create2IngRecipe("AlloyStationWorktableRecipe", "CopperTubes", "SulfurPowder", "AlloyForgeStation", "ProductionControlStationWorktableRecipe", 3, 1, 1, "3E0CB457B5AC44928A4476652F33B18A");
+
             // Modules
             Create4IngRecipe("AlloyForgeTier1Recipe", "CopperPlates", "CopperBolts", "RefineryT1_Shredder", "IntelRefineryT1", "AlloyForgeTier1", "RefineryModuleSide1Recipe", 3, 3, 1, 1, 1, "1A6B5BFD59D5418A9ADD618B85F812E2");
             Create4IngRecipe("AlloyForgeTier2Recipe", "BronzePlates", "BronzeBolts", "RefineryT2_Boiler", "IntelRefineryT2", "AlloyForgeTier2", "RefineryModuleSide2Recipe", 6, 6, 2, 1, 1, "7DAAE7F9C18448E082D8719E10CBDE52");
