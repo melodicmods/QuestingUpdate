@@ -41,7 +41,6 @@ namespace QuestingUpdate {
             switch (scene.name)
             {
                 case "MainMenu":
-                    QuestingVersioning versioning = new QuestingVersioning();
                     GameObject.Find("EarlyAccess").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + version;
                     GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = updateName + " " + update;
                     GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
@@ -53,7 +52,6 @@ namespace QuestingUpdate {
                         writer.Dispose();
                     }
                     new QuestingItems().InitItems();
-                    Debug.Log("[Questing Update | Main]: Items Done.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
                         writer.WriteLine("[Questing Update | Main]: Items Done.");
@@ -63,7 +61,6 @@ namespace QuestingUpdate {
                     }
 
                     new QuestingDeposits().InitDeposits();
-                    Debug.Log("[Questing Update | Main]: Deposits Done.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
                         writer.WriteLine("[Questing Update | Main]: Deposits Done.");
@@ -73,7 +70,6 @@ namespace QuestingUpdate {
                     }
 
                     new QuestingCategories().InitCategories();
-                    Debug.Log("[Questing Update | Main]: Categories Done.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
                         writer.WriteLine("[Questing Update | Main]: Categories Done.");
@@ -83,7 +79,6 @@ namespace QuestingUpdate {
                     }
 
                     new QuestingModules().InitModules();
-                    Debug.Log("[Questing Update | Main]: Modules Done.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
                         writer.WriteLine("[Questing Update | Main]: Modules Done.");
@@ -93,17 +88,24 @@ namespace QuestingUpdate {
                     }
 
                     new QuestingStations().InitStations();
-                    Debug.Log("[Questing Update | Main]: Stations Done.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
                         writer.WriteLine("[Questing Update | Main]: Stations Done.");
                         writer.WriteLine("---Questing Stations End---");
+                        writer.WriteLine("---Questing Modifier Begin---");
+                        writer.Dispose();
+                    }
+
+                    new QuestingModifier().InitModifier();
+                    using (StreamWriter writer = new StreamWriter(path, true))
+                    {
+                        writer.WriteLine("[Questing Update | Main]: Modifier Done.");
+                        writer.WriteLine("---Questing Modifier End---");
                         writer.WriteLine("---Questing Recipes Begin---");
                         writer.Dispose();
                     }
 
                     new QuestingRecipes().InitRecipes();
-                    Debug.Log("[Questing Update | Main]: Recipes Done.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
                         writer.WriteLine("[Questing Update | Main]: Recipes Done.");
@@ -111,10 +113,9 @@ namespace QuestingUpdate {
                         writer.Dispose();
                     }
 
-                    Debug.Log("[Questing Update | Main]: Done with init.");
                     using (StreamWriter writer = new StreamWriter(path, true))
                     {
-                        writer.WriteLine("[Questing Update | Main]: Done with init.");
+                        writer.WriteLine("[Questing Update | Main]: Done with Init.");
                         writer.Dispose();
                     }
                     break;

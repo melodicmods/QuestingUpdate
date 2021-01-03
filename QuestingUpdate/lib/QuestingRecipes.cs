@@ -9,7 +9,6 @@ namespace QuestingUpdate.lib
     {
         public void InitRecipes()
         {
-            ModifyTitanium();
             Create1IngRecipeCategory("CobaltIngotRecipe", "CobaltOre", "CobaltIngot", "TitaniumIngotRecipe", 2, 1, "66A6E0D5D3EA4F37A7E8C8B8494EBEAB", FindCategories("RefinementTier2"));
             Create1IngRecipe("TinIngotRecipe", "TinOre", "TinIngot", "CopperIngotRecipe", 1, 1, "813C576F2689476C930CE875A6920541");
             Create2IngRecipeLooping(FindCategories("ForgeTier1"), "BronzeIngotRecipe", "TinIngot", "CopperIngot", "BronzeIngot", "CopperIngotRecipe", 2, 2, 1, "5834A7C544EA44B7B2F499846F65A5F7");
@@ -73,20 +72,6 @@ namespace QuestingUpdate.lib
             }
             return tempcategory;
         }
-
-        private void ModifyTitanium()
-        {
-            var cobalt = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CobaltIngot");
-            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == "SteelIngot");
-            GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Inputs = new InventoryItemData[] { new InventoryItemData { Item = cobalt, Amount = 2 }, new InventoryItemData { Item = output, Amount = 2 } };
-            GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Categories = new RecipeCategory[] { FindCategories("ForgeTier3") };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Titanium Recipe Modified");
-                writer.Dispose();
-            }
-        }
-
         private void Create1IngRecipe(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId)
         {
             var input = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName);
