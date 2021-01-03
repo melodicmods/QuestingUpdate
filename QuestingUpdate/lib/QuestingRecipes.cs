@@ -10,7 +10,7 @@ namespace QuestingUpdate.lib
         public void InitRecipes()
         {
             ModifyTitanium();
-            Create1IngRecipe("CobaltIngotRecipe", "CobaltOre", "CobaltIngot", "TitaniumIngotRecipe", 2, 1, "66A6E0D5D3EA4F37A7E8C8B8494EBEAB");
+            Create1IngRecipeCategory("CobaltIngotRecipe", "CobaltOre", "CobaltIngot", "TitaniumIngotRecipe", 2, 1, "66A6E0D5D3EA4F37A7E8C8B8494EBEAB", FindCategories("RefinementTier2"));
             Create1IngRecipe("TinIngotRecipe", "TinOre", "TinIngot", "CopperIngotRecipe", 1, 1, "813C576F2689476C930CE875A6920541");
             Create2IngRecipeLooping(FindCategories("ForgeTier1"), "BronzeIngotRecipe", "TinIngot", "CopperIngot", "BronzeIngot", "CopperIngotRecipe", 2, 2, 1, "5834A7C544EA44B7B2F499846F65A5F7");
             Create2IngRecipeLooping(FindCategories("ForgeTier2"), "SteelIngotRecipe", "CoalOre", "IronIngot", "SteelIngot", "IronIngotRecipe", 2, 1, 1, "31285829C32547AFAA7566C70AC01F7B");
@@ -75,6 +75,7 @@ namespace QuestingUpdate.lib
             var cobalt = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CobaltIngot");
             var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == "SteelIngot");
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Inputs = new InventoryItemData[] { new InventoryItemData { Item = cobalt, Amount = 2 }, new InventoryItemData { Item = output, Amount = 2 } };
+            GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Categories = new RecipeCategory[] { FindCategories("ForgeTier3") };
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
                 writer.WriteLine("[Questing Update | Recipes]: Titanium Recipe Modified");
@@ -108,6 +109,34 @@ namespace QuestingUpdate.lib
                 writer.Dispose();
             }
         }
+
+        private void Create1IngRecipeCategory(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, RecipeCategory recipeCategory)
+        {
+            var input = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input, Amount = inputAmount } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = baseRecipe.RequiredUpgrades;
+
+            recipe.Categories = new RecipeCategory[] { recipeCategory };
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
         private void Create2IngRecipe(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId)
         {
             var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);

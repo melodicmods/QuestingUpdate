@@ -90,11 +90,11 @@ namespace QuestingUpdate.lib {
             prefabParent.SetActive(false);
             var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
             var module = newmodule.GetComponentInChildren<FactoryStation>();
+            var producer = newmodule.GetComponentInChildren<Producer>();
             newmodule.SetName("AlloyForgeStation");
             var gridmodule = newmodule.GetComponent<GridModule>();
             gridmodule.VariantName = variantname;
             gridmodule.Item = item;
-            item.Prefabs = new GameObject[] { newmodule };
 
             var productionGroup = QuestingReferences.GetOrCreateTyping(factoryType);
             foreach (ProductionModule sleepersmodule in productionGroup.Modules)
@@ -115,9 +115,12 @@ namespace QuestingUpdate.lib {
             item.SetPrivateField("m_description", descStr);
             typeof(FactoryStation).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factoryType);
             typeof(FactoryStation).GetField("m_productionGroup", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, productionGroup);
+            typeof(Producer).GetField("m_categories", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(producer, categories);
 
             var guid = GUID.Parse(guidString);
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
+
+            item.Prefabs = new GameObject[] { newmodule };
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
