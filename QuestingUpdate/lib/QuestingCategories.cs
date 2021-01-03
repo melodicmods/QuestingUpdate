@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using UnityEngine;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate.lib
 {
@@ -14,6 +15,8 @@ namespace QuestingUpdate.lib
             CreateRecipeCategory("ForgeTier3", "52BACA27F2744A11AC5A8FDDFD393426");
             CreateFactoryCategory("AlloyForge", ALLOY_FORGE_FACTORY_GUID);
             CreateModuleCategory("AlloyForge", "EAB2EA1154F34FFF8CC74CA0C23ECACD");
+            QuestingStations stations = new QuestingStations();
+            QuestingReferences.GetOrCreateTyping(stations.FindFactoryCategories("AlloyForge"));
 
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
@@ -37,6 +40,7 @@ namespace QuestingUpdate.lib
                 writer.WriteLine("[Questing Update | Categories]: Factory Category with name " + name + " has been loaded");
                 writer.Dispose();
             }
+
         }
 
         private void CreateModuleCategory(string name, string categoryId)

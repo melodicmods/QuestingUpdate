@@ -4,13 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using QuestingUpdate.lib.obj;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate.lib {
     class QuestingStations : MonoBehaviour {
         private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
         public void InitStations() {
-            CreateStation(FindCategories("AlloyForge"), "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "AB14B23AB2E544BFBBEB5EEACB11D944", Sprite2("Resources/Stations/AlloyForgeControlStation.png"));
+            var forges = new RecipeCategory[] { FindRecipeCategories("ForgeTier1"), FindRecipeCategories("ForgeTier2"), FindRecipeCategories("ForgeTier3") };
+            CreateStation(FindFactoryCategories("AlloyForge"), "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "AB14B23AB2E544BFBBEB5EEACB11D944", Sprite2("Resources/Stations/AlloyForgeControlStation.png"), "Alloy", forges);
 
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
@@ -26,46 +27,29 @@ namespace QuestingUpdate.lib {
             str.OnAfterDeserialize();
         }
 
-        public FactoryType FindCategories(string categoryName) {
+        public FactoryType FindFactoryCategories(string categoryName) {
             return GameResources.Instance.FactoryTypes.FirstOrDefault(type => type?.name == categoryName);
         }
 
-        //private void CreateStation(FactoryType factoryType, string codename, int maxStack, LocalizedString name, LocalizedString desc, string guidString) {
-        //    var guid        = GUID.Parse(guidString);
-        //    var prodStation = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID);
-        //    if (prodStation == null) {
-        //        Debug.LogError($"No production station item found ({productionStationGUID}).");
-        //        return;
-        //    }
-
-        //    var item = ScriptableObject.CreateInstance<ItemDefinition>();
-        //    item.name     = codename;
-        //    item.Category = prodStation.Category;
-        //    item.MaxStack = maxStack;
-
-        //    var nameStr = name;
-        //    var descStr = desc;
-        //    Initialize(ref nameStr);
-        //    Initialize(ref descStr);
-        //    ItemDef_mNameField?.SetValue(item, nameStr);
-        //    ItemDef_mDescriptionField?.SetValue(item, descStr);
-
-        //    Def_AssetIdField?.SetValue(item, guid);
-
-        //    // Copy prefabs, update props, and set as out new item's prefabs.
-        //    item.Prefabs = new GameObject[prodStation.Prefabs.Length];
-
-        //    for (var i = 0; i < prodStation.Prefabs.Length; i++) {
-        //        item.Prefabs[i] = Instantiate(prodStation.Prefabs[i], prodStation.Prefabs[i].transform);
-
-        //        if (item.Prefabs[i].TryGetComponent<FactoryStation>(out var factoryStation)) {
-        //            FactoryStation_mFactoryTypeField.SetValue(factoryStation, factoryType);
-        //        }
-        //    }
-
-        //    AssetReference[] assets = {new AssetReference {Object = item, Guid = guid, Labels = new string[0]}};
-        //    RuntimeAssetStorage.Add(assets, default);
-        //}
+        private RecipeCategory tempcategory;
+        public RecipeCategory FindRecipeCategories(string categoryname)
+        {
+            tempcategory = null;
+            foreach (Recipe recipe in GameResources.Instance.Recipes)
+            {
+                foreach (RecipeCategory category in recipe.Categories)
+                {
+                    if (category != null && categoryname != null)
+                    {
+                        if (category.name == categoryname)
+                        {
+                            tempcategory = category;
+                        }
+                    }
+                }
+            }
+            return tempcategory;
+        }
 
         private Sprite Sprite2(string iconpath)
         {
@@ -90,7 +74,7 @@ namespace QuestingUpdate.lib {
             return sprite;
         }
 
-        private void CreateStation(FactoryType factoryType, string codename, int maxStack, LocalizedString name, LocalizedString desc, string guidString, Sprite icon)
+        private void CreateStation(FactoryType factoryType, string codename, int maxStack, LocalizedString name, LocalizedString desc, string guidString, Sprite icon, string variantname, RecipeCategory[] categories)
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID)?.Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
@@ -107,20 +91,19 @@ namespace QuestingUpdate.lib {
             var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
             var module = newmodule.GetComponentInChildren<FactoryStation>();
             newmodule.SetName("AlloyForgeStation");
+            var gridmodule = newmodule.GetComponent<GridModule>();
+            gridmodule.VariantName = variantname;
+            gridmodule.Item = item;
             item.Prefabs = new GameObject[] { newmodule };
-            GameObject[] debuger = item.Prefabs;
-            var i = 1;
-            foreach (GameObject init in debuger)
+
+            var productionGroup = QuestingReferences.GetOrCreateTyping(factoryType);
+            foreach (ProductionModule sleepersmodule in productionGroup.Modules)
             {
                 using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
                 {
-                    writer.WriteLine("[Questing Update | Stations]: Array Num: " + i + " Array Data: " + init);
-                    var writeThis = JsonConvert.SerializeObject(init);
-                    writer.WriteLine("[Questing Update | Stations]: " + writeThis);
-                    writer.WriteLine("[Questing Update | Stations]: " + GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == productionStationGUID).Category);
+                    writer.WriteLine("[Questing Update | Stations]: " + sleepersmodule.name);
                     writer.Dispose();
                 }
-                i++;
             }
 
             LocalizedString nameStr = name;
@@ -131,21 +114,13 @@ namespace QuestingUpdate.lib {
             item.SetPrivateField("m_name", nameStr);
             item.SetPrivateField("m_description", descStr);
             typeof(FactoryStation).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factoryType);
+            typeof(FactoryStation).GetField("m_productionGroup", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, productionGroup);
 
             var guid = GUID.Parse(guidString);
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-
-            foreach (Producer asset in GameResources.Instance.ControlStations)
-            {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("[Questing Update | Stations]: " + asset);
-                    writer.Dispose();
-                }
-            }
         }
     }
 }

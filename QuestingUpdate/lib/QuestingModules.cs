@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using QuestingUpdate.lib.scripts;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -94,6 +95,8 @@ namespace QuestingUpdate.lib
             var modulecategory = RuntimeAssetCacheLookup.Get<ModuleCategory>().First(s => s.name == factorytypename);
             modulecategory.Modules = modulecategory.Modules.Concat(new ItemDefinition[] { item }).ToArray();
 
+            var productionGroup = QuestingReferences.GetOrCreateTyping(factorytype);
+
             LocalizedString nameStr = name;
             LocalizedString descStr = desc;
             Initialize(ref nameStr);
@@ -102,6 +105,7 @@ namespace QuestingUpdate.lib
             typeof(ProductionModule).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factorytype);
             typeof(ProductionModule).GetField("m_module", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, gridmodule);
             typeof(ProductionModule).GetField("m_categories", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, categories);
+            typeof(ProductionModule).GetField("m_productionGroup", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, productionGroup);
             typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
             typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
 
