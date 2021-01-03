@@ -12,7 +12,7 @@ namespace QuestingUpdate.lib
 {
     class QuestingVersioning : MonoBehaviour
     {
-        private bool needUpdate = false;
+        public bool needUpdate = false;
         public void InitVersions()
         {
             Requester("https://api.github.com/repos/melodicalbuild/questingupdate/releases/latest");

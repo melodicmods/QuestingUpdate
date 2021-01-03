@@ -7,7 +7,8 @@ namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
         public const string version = "0.1.3";
-        public string update = "";
+        private string update = "";
+        private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
 
         public override void Load()
@@ -24,6 +25,15 @@ namespace QuestingUpdate {
             versioning.InitVersions();
             update = versioning.UpdateVersioner();
 
+            if(versioning.needUpdate == false)
+            {
+                QuestingNamer namer = new QuestingNamer();
+                updateName = namer.Namer();
+            } else
+            {
+                updateName = "Questing Update";
+            }
+
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -33,7 +43,7 @@ namespace QuestingUpdate {
                 case "MainMenu":
                     QuestingVersioning versioning = new QuestingVersioning();
                     GameObject.Find("EarlyAccess").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + version;
-                    GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + update;
+                    GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = updateName + " " + update;
                     GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
                     break;
                 case "Island":
