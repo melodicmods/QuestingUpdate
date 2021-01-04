@@ -11,7 +11,7 @@
 - Tin
 
 ### Stations:
-- Alloy Station (WIP)
+- Alloy Station
 
 ### Other:
 - Steel Bolts, Plates, Tubes
@@ -27,7 +27,17 @@
 
 ## Research:
 ### Schematics:
-- None
+- Basic Resource Refining Upgrade
+- Copperworking Upgrade
+- Copper Armor Upgrade (WIP)
+- Simple Weapons Upgrade
+- Basic Alloying Upgrade
+- Alloy Forge 1 Upgrade
+- Bronzeworking Upgrade
+- Tier 1 Turrets Upgrade (WIP)
+- Bronze Armor Upgrade (WIP)
+- Drillship Parts 1 Upgrade
+- Advanced Turrets 1 Upgrade (WIP)
 ### Tree Research:
 - None
 
