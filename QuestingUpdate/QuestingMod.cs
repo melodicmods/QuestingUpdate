@@ -6,7 +6,7 @@ using QuestingUpdate.lib;
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
-        public const string version = "0.1.3";
+        public const string version = "0.2.0";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
@@ -92,15 +92,6 @@ namespace QuestingUpdate {
                     {
                         writer.WriteLine("[Questing Update | Main]: Stations Done.");
                         writer.WriteLine("---Questing Stations End---");
-                        writer.WriteLine("---Questing Modifier Begin---");
-                        writer.Dispose();
-                    }
-
-                    new QuestingModifier().InitModifier();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Modifier Done.");
-                        writer.WriteLine("---Questing Modifier End---");
                         writer.WriteLine("---Questing Recipes Begin---");
                         writer.Dispose();
                     }
@@ -110,6 +101,15 @@ namespace QuestingUpdate {
                     {
                         writer.WriteLine("[Questing Update | Main]: Recipes Done.");
                         writer.WriteLine("---Questing Recipes End---");
+                        writer.WriteLine("---Questing Modifier Begin---");
+                        writer.Dispose();
+                    }
+
+                    new QuestingModifier().InitModifier();
+                    using (StreamWriter writer = new StreamWriter(path, true))
+                    {
+                        writer.WriteLine("[Questing Update | Main]: Modifier Done.");
+                        writer.WriteLine("---Questing Modifier End---");
                         writer.Dispose();
                     }
 

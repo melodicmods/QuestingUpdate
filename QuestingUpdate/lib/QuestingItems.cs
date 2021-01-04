@@ -67,6 +67,36 @@ namespace QuestingUpdate.lib
                 "This item is to indicate that an item is null",
                 "29B8BE6CAB6E43BB99ED496C06553B0A", "IronIngot", Sprite2("Resources/Icon/QuestingLogo.png"));
 
+            // Tier 1 Upgrades
+            CreateItem("UpgradeResourceRefining1", 5, "Basic Resource Refining Upgrade", "The Upgrade to Alloy for Further Resource Refining \r\n" + "Part of the Questing Update",
+                "DA9BBD26D3A44E3DA094BEA4BE6D0B90", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeCopperworking", 5, "Copperworking Upgrade", "The Upgrade to Allow Production of Copper Parts \r\n" + "Part of the Questing Update",
+                "16AE4FFC37F044C7B31E6D37726763E0", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeCopperArmor", 5, "Copper Armor Upgrade", "The Upgrade to Allow Production of Copper Armor \r\n" + "Part of the Questing Update",
+                "E4D83E8A4AAC419DA0E09CBF710B40FF", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeSimpleWeapons", 5, "Simple Weapons Upgrade", "The Upgrade to Allow Production of Simple Weaponry \r\n" + "Part of the Questing Update",
+                "C7A3B3ED36884410A4E61D99B7D91B88", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeBasicAlloying", 5, "Basic Alloying Upgrade", "The Research Behind the Alloys of this World \r\n" + "Part of the Questing Update",
+                "FBF4F9DCA52C4683A1AB998104357E9F", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAlloyForge1", 5, "Alloy Forge 1 Upgrade", "The Research for Creation of Alloys \r\n" + "Part of the Questing Update",
+                "FF35E3D91A0F413ABDC957705190CD2B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeBronzeworking", 5, "Bronzeworking Upgrade", "The Research for Manipulation of Bronze \r\n" + "Part of the Questing Update",
+                "E23517F2F1224360AE37A85F630F59A5", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeTurretsTier1", 5, "Tier 1 Turrets Upgrade", "The Research for the Creation of Turrets \r\n" + "Part of the Questing Update",
+                "8D320595B3D1419B9A84104A01C2ADBD", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeBronzeArmor", 5, "Bronze Armor Upgrade", "The Research for the Creation of Bronze Armor \r\n" + "Part of the Questing Update",
+                "5D8EB28412594FC0A173042DE8DA39F4", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeDrillshipParts1", 5, "Drillship Parts 1 Upgrade", "The Research for the Creation of Tier 2 Drillship Parts \r\n" + "Part of the Questing Update",
+                "B7B1EF06BF1E484383863687DCAD6FD8", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAdvancedTurrets1", 5, "Advanced Turrets 1 Upgrade", "The Research for the Creation of Advanced Turrets \r\n" + "Part of the Questing Update",
+                "09F0ADFEDF734F39AEC98700F117B6F2", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+
+            // Tier 2 Upgrades
+
+
+            // Tier 3 Upgrades
+
+
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
                 writer.WriteLine("[Questing Update | Items]: Items Loaded...");

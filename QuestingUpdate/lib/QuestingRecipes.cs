@@ -41,6 +41,22 @@ namespace QuestingUpdate.lib
             Create2IngRecipe("AlloyStationRecipe", "CopperTubes", "SulfurPowder", "AlloyForgeStation", "ProductionControlStationRecipe", 3, 1, 1, "2177E7806F3842FF9D929941930DA96F");
             Create2IngRecipe("AlloyStationWorktableRecipe", "CopperTubes", "SulfurPowder", "AlloyForgeStation", "ProductionControlStationWorktableRecipe", 3, 1, 1, "3E0CB457B5AC44928A4476652F33B18A");
 
+            // Schematics
+            // Tier 1
+            Create1IngRecipeSchematic("UpgradeResourceRefining1Recipe", "IntelRefineryT1", "UpgradeResourceRefining1", "UpgradeStarterRefineryRecipe", 1, 1, "4B9CF15AF3C04BCD8964DF6C3C426A77", "UpgradeStarterRefinery");
+            Create2IngRecipeSchematic("UpgradeCopperworkingRecipe", "IntelRefineryT1", "CopperIngot", "UpgradeCopperworking", "UpgradeStarterRefineryRecipe", 1, 5, 1, "F6D20287D16444149E22ECCB43F217AF", "UpgradeStarterRefinery");
+            Create3IngRecipeSchematic("UpgradeCopperArmorRecipe", "IntelProductionT1", "CopperIngot", "CopperPlates", "UpgradeCopperArmor", "UpgradeStarterRefineryRecipe", 1, 5, 5, 1, "4FD0DCE1595F45A8A13BAC166D42255A", "UpgradeCopperworking");
+            Create3IngRecipeSchematic2("UpgradeSimpleWeaponsRecipe", "IntelProductionT1", "CopperIngot", "CopperBolts", "UpgradeSimpleWeapons", "UpgradeStarterRefineryRecipe", 1, 5, 5, 1, "808A3382BB6F4D97B526FF57CEC85C93", "UpgradeCopperworking", "SimpleExplosivesSchematic");
+            Create3IngRecipeSchematic2("UpgradeBasicAlloyingRecipe", "IntelRefineryT1", "CopperIngot", "TinIngot", "UpgradeBasicAlloying", "UpgradeStarterRefineryRecipe", 1, 5, 5, 1, "AC93E7D8912F4A1E98AF130612852441", "UpgradeCopperworking", "UpgradeResourceRefining1");
+            Create2IngRecipeSchematic("UpgradeAlloyForge1Recipe", "IntelRefineryT1", "TinIngot", "UpgradeAlloyForge1", "UpgradeStarterRefineryRecipe", 2, 15, 1, "B2C92D2FD58942DB84758DB5174DC6AB", "UpgradeBasicAlloying");
+            Create2IngRecipeSchematic("UpgradeBronzeworkingRecipe", "IntelProductionT1", "BronzeIngot", "UpgradeBronzeworking", "UpgradeStarterRefineryRecipe", 1, 10, 1, "71EF043D09FF4DC4AB60946A74D43061", "UpgradeAlloyForge1");
+            Create2IngRecipeSchematic2("UpgradeTurretsTier1Recipe", "SulfurPowder", "CopperGunComponents", "UpgradeTurretsTier1", "UpgradeStarterRefineryRecipe", 10, 2, 1, "3FF61953BE6D4728B1FBFB5EE211FC9D", "UpgradeBronzeworking", "UpgradeSimpleWeapons");
+            Create2IngRecipeSchematic2("UpgradeBronzeArmorRecipe", "BronzePlates", "BronzeBolts", "UpgradeBronzeArmor", "UpgradeStarterRefineryRecipe", 10, 10, 1, "3E64FBD9E921493F95F39F7807BD3954", "UpgradeBronzeworking", "UpgradeCopperArmor");
+            Create2IngRecipeSchematic("UpgradeDrillshipParts1Recipe", "IntelProductionT1", "BronzeIngot", "UpgradeDrillshipParts1", "UpgradeStarterRefineryRecipe", 2, 20, 1, "2BF4096EB29D44669847368D1CB34AA8", "UpgradeBronzeworking");
+            Create3IngRecipeSchematic("UpgradeAdvancedTurrets1Recipe", "TurretModule", "IntelProductionT1", "BronzeIngot", "UpgradeAdvancedTurrets1", "UpgradeStarterRefineryRecipe", 1, 2, 20, 1, "9865CE4C53DC4D52A8A0DC349859C510", "UpgradeTurretsTier1");
+
+            // Tier 2
+
             // Modules
             Create4IngRecipe("AlloyForgeTier1Recipe", "CopperPlates", "CopperBolts", "RefineryT1_Shredder", "IntelRefineryT1", "AlloyForgeTier1", "RefineryModuleSide1Recipe", 3, 3, 1, 1, 1, "1A6B5BFD59D5418A9ADD618B85F812E2");
             Create4IngRecipe("AlloyForgeTier2Recipe", "BronzePlates", "BronzeBolts", "RefineryT2_Boiler", "IntelRefineryT2", "AlloyForgeTier2", "RefineryModuleSide2Recipe", 6, 6, 2, 1, 1, "7DAAE7F9C18448E082D8719E10CBDE52");
@@ -83,6 +99,183 @@ namespace QuestingUpdate.lib
             recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input, Amount = inputAmount } };
             recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
             recipe.RequiredUpgrades = baseRecipe.RequiredUpgrades;
+
+            recipe.Categories = baseRecipe.Categories.ToArray();
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
+        private void Create1IngRecipeSchematic(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, string requiredItem)
+        {
+            var input = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+            var requiredItemWrite = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input, Amount = inputAmount } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = new ItemDefinition[] { requiredItemWrite };
+
+            recipe.Categories = baseRecipe.Categories.ToArray();
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
+        private void Create2IngRecipeSchematic(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId, string requiredItem)
+        {
+            var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
+            var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+            var requiredItemWrite = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = new ItemDefinition[] { requiredItemWrite };
+
+            recipe.Categories = baseRecipe.Categories.ToArray();
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
+        private void Create2IngRecipeSchematic2(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId, string requiredItem1, string requiredItem2)
+        {
+            var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
+            var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+            var requiredItemWrite1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem1);
+            var requiredItemWrite2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem2);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = new ItemDefinition[] { requiredItemWrite1, requiredItemWrite2 };
+
+            recipe.Categories = baseRecipe.Categories.ToArray();
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
+        private void Create3IngRecipeSchematic(string recipeName, string inputName1, string inputName2, string inputName3, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int outputAmount, string itemId, string requiredItem)
+        {
+            var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
+            var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
+            var input3 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName3);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+            var requiredItemWrite = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 }, new InventoryItemData { Item = input3, Amount = inputAmount3 } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = new ItemDefinition[] { requiredItemWrite };
+
+            recipe.Categories = baseRecipe.Categories.ToArray();
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
+        private void Create3IngRecipeSchematic2(string recipeName, string inputName1, string inputName2, string inputName3, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int outputAmount, string itemId, string requiredItem1, string requiredItem2)
+        {
+            var input1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName1);
+            var input2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName2);
+            var input3 = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName3);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+            var requiredItemWrite1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem1);
+            var requiredItemWrite2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem2);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input1, Amount = inputAmount1 }, new InventoryItemData { Item = input2, Amount = inputAmount2 }, new InventoryItemData { Item = input3, Amount = inputAmount3 } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = new ItemDefinition[] { requiredItemWrite1, requiredItemWrite2 };
+
+            recipe.Categories = baseRecipe.Categories.ToArray();
+
+            var guid = GUID.Parse(itemId);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(recipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
+                writer.Dispose();
+            }
+        }
+
+        private void Create1IngRecipeSchematic2(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, string requiredItem1, string requiredItem2)
+        {
+            var input = GameResources.Instance.Items.FirstOrDefault(s => s.name == inputName);
+            var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputName);
+            var baseRecipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipeName);
+            var requiredItemWrite1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem1);
+            var requiredItemWrite2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == requiredItem2);
+
+            var recipe = ScriptableObject.CreateInstance<Recipe>();
+            recipe.name = recipeName;
+            recipe.Inputs = new InventoryItemData[] { new InventoryItemData { Item = input, Amount = inputAmount } };
+            recipe.Output = new InventoryItemData { Item = output, Amount = outputAmount };
+            recipe.RequiredUpgrades = new ItemDefinition[] { requiredItemWrite1, requiredItemWrite2 };
 
             recipe.Categories = baseRecipe.Categories.ToArray();
 
