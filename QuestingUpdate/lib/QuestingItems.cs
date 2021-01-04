@@ -68,7 +68,7 @@ namespace QuestingUpdate.lib
                 "29B8BE6CAB6E43BB99ED496C06553B0A", "IronIngot", Sprite2("Resources/Icon/QuestingLogo.png"));
 
             // Tier 1 Upgrades
-            CreateItem("UpgradeResourceRefining1", 5, "Basic Resource Refining Upgrade", "The Upgrade to Alloy for Further Resource Refining \r\n" + "Part of the Questing Update",
+            CreateItem("UpgradeResourceRefining1", 5, "Basic Resource Refining Upgrade", "The Upgrade to Allow for Further Resource Refining \r\n" + "Part of the Questing Update",
                 "DA9BBD26D3A44E3DA094BEA4BE6D0B90", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
             CreateItem("UpgradeCopperworking", 5, "Copperworking Upgrade", "The Upgrade to Allow Production of Copper Parts \r\n" + "Part of the Questing Update",
                 "16AE4FFC37F044C7B31E6D37726763E0", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
@@ -90,12 +90,18 @@ namespace QuestingUpdate.lib
                 "B7B1EF06BF1E484383863687DCAD6FD8", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
             CreateItem("UpgradeAdvancedTurrets1", 5, "Advanced Turrets 1 Upgrade", "The Research for the Creation of Advanced Turrets \r\n" + "Part of the Questing Update",
                 "09F0ADFEDF734F39AEC98700F117B6F2", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeNull", 5, "Null Upgrade", "The Upgrade to Alloy for Further Resource Refining \r\n" + "Part of the Questing Update",
+                "D3DEA69A69BF47CC9893D88EB6565D48", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
             // Tier 2 Upgrades
-
+            CreateItem("UpgradeAdvancedAlloying", 5, "Advanced Alloying Upgrade", "The Research Behind the Advanced Alloys of this World \r\n" + "Part of the Questing Update",
+                "667E1658F21942008E5F2DAE964EC27D", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
             // Tier 3 Upgrades
-
+            CreateItem("UpgradePerfectAlloying", 5, "Perfect Alloying Upgrade", "The Research Behind the Perfect Alloys of this World \r\n" + "Part of the Questing Update",
+                "0FD0950108794340B738F103E4DA244A", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeResourceRefining3", 5, "Perfect Resource Refining Upgrade", "The Upgrade to Allow for Further Resource Refining \r\n" + "Part of the Questing Update",
+                "9FB8134FF4AA441987F134B74AB26BE1", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {

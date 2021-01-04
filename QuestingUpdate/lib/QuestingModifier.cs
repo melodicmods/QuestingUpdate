@@ -17,6 +17,38 @@ namespace QuestingUpdate.lib
             ModifyItem1Upgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
             ModifyItem1Upgrade("UpgradeResourceRefining1", "SimpleExplosivesSchematicRecipe");
 
+            // Tier 1 Item Updates
+            ModifyItem1Upgrade("UpgradeResourceRefining1", "TinIngotRecipe");
+            ModifyItem1Upgrade("UpgradeResourceRefining1", "CopperIngotRecipe");
+            ModifyItem1Upgrade("UpgradeCopperworking", "TinBoltsRecipe");
+            ModifyItem1Upgrade("UpgradeCopperworking", "TinPlatesRecipe");
+            ModifyItem1Upgrade("UpgradeCopperworking", "TinTubesRecipe");
+            ModifyItem1Upgrade("UpgradeCopperworking", "CopperBoltsRecipe");
+            ModifyItem1Upgrade("UpgradeCopperworking", "CopperPlatesRecipe");
+            ModifyItem1Upgrade("UpgradeCopperworking", "CopperTubesRecipe");
+            // ModifyItem1Upgrade("UpgradeCopperArmor", "CopperArmorRecipe");
+            ModifyItem1Upgrade("UpgradeSimpleWeapons", "RevolverRecipe");
+            ModifyItem1Upgrade("UpgradeSimpleWeapons", "ShotgunRecipe");
+            //ModifyItem1Upgrade("UpgradeTurretsTier1", "TurretModuleRecipe");
+            ModifyItem1Upgrade("UpgradeBasicAlloying", "AlloyT1Recipe");
+            ModifyItem1Upgrade("UpgradeBasicAlloying", "BronzeIngotRecipe");
+            ModifyItem1Upgrade("UpgradeBronzeworking", "BronzeTubesRecipe");
+            ModifyItem1Upgrade("UpgradeBronzeworking", "BronzePlatesRecipe");
+            ModifyItem1Upgrade("UpgradeBronzeworking", "BronzeBoltsRecipe");
+            ModifyItem1Upgrade("UpgradeDrillshipParts1", "DrillUpgrade2Recipe");
+            ModifyItem1Upgrade("UpgradeDrillshipParts1", "EngineUpgrade2Recipe");
+            ModifyItem1Upgrade("UpgradeDrillshipParts1", "HullUpgrade2Recipe");
+            ModifyItem1Upgrade("UpgradeDrillshipParts1", "TracksUpgrade2Recipe");
+            ModifyItem1Upgrade("UpgradeDrillshipParts1", "ShipCoreUpgrade2Recipe");
+
+            // Tier 2 Item Updates
+            ModifyItem1Upgrade("UpgradeAdvancedAlloying", "AlloyT2Recipe");
+
+            // Tier 3 Item Updates
+            ModifyItem1Upgrade("UpgradePerfectAlloying", "AlloyT3Recipe");
+            ModifyItem1Upgrade("UpgradePerfectAlloying", "TitaniumIngotRecipe");
+            ModifyItem1Upgrade("UpgradeResourceRefining3", "CobaltIngotRecipe");
+
             // Tier 1
             ModifyItem1Table("ResearchTier1", "UpgradeResourceRefining1Recipe");
             ModifyItem1Table("ResearchTier1", "UpgradeStarterRefineryRecipe");
@@ -32,6 +64,9 @@ namespace QuestingUpdate.lib
             ModifyItem1Table("ResearchTier1", "UpgradeBronzeArmorRecipe");
             ModifyItem1Table("ResearchTier1", "UpgradeDrillshipParts1Recipe");
             ModifyItem1Table("ResearchTier1", "UpgradeAdvancedTurrets1Recipe");
+            ModifyItem1Table("ForgeTier1", "AlloyT1Recipe");
+            ModifyItem1Table("ForgeTier2", "AlloyT2Recipe");
+            ModifyItem1Table("ForgeTier3", "AlloyT3Recipe");
 
             // Tier 2
 
