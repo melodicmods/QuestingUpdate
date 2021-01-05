@@ -180,6 +180,14 @@ robocopy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\
 :: SET UnityPath=c:\Program Files\Unity\Hub\Editor\2020.1.17f1
 :: SET MonoPath=%25UnityPath%25\Editor\Data\MonoBleedingEdge
 :: "%25MonoPath%25\bin\mono.exe" "%25MonoPath%25\lib\mono\4.5\pdb2mdb.exe" "$(TargetPath)"
-:: copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"</PostBuildEvent>
+:: copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
+
+cd "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods"
+7z a Update.zip *.dll Resources/
+copy Update.zip "D:\Coding\keydownloader\downloads" /y
+D:
+cd "D:\Coding\keydownloader\downloads"
+git commit -am "Update Downloads"
+git push</PostBuildEvent>
   </PropertyGroup>
 </Project>
