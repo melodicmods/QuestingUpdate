@@ -8,7 +8,7 @@ namespace QuestingUpdate.lib
 {
     class QuestingModules : MonoBehaviour
     {
-        public void InitModules()
+        public void InitModules() 
         {
             var tier1Forge = new RecipeCategory[] { Findcategories("ForgeTier1") };
             var tier2Forge = new RecipeCategory[] { Findcategories("ForgeTier1"), Findcategories("ForgeTier2") };
