@@ -183,7 +183,7 @@ robocopy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\
 :: copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
 
 cd "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods"
-7z a Update.zip *.dll Resources/
+7z a QuestingUpdate.zip *.dll Resources/
 copy Update.zip "D:\Coding\keydownloader\downloads" /y
 D:
 cd "D:\Coding\keydownloader\downloads"
