@@ -29,6 +29,20 @@ namespace QuestingUpdate.lib
             }
         }
 
+        private void ResourceCheck()
+        {
+            using (StreamReader reader = new StreamReader("Resources/Version.txt"))
+            {
+                var version = reader.ReadToEnd();
+                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                {
+                    writer.WriteLine("[Questing Update | Versioning]: Resource Version is " + version);
+                    writer.Dispose();
+                }
+                reader.Dispose();
+            }
+        }
+
         private string html;
 
         private void Requester(string url)
