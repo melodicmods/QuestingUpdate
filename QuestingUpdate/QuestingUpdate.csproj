@@ -184,7 +184,7 @@ robocopy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\
 
 cd "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods"
 7z a QuestingUpdate.zip *.dll Resources/
-copy Update.zip "D:\Coding\keydownloader\downloads" /y
+copy QuestingUpdate.zip "D:\Coding\keydownloader\downloads" /y
 D:
 cd "D:\Coding\keydownloader\downloads\dev"
 git commit -am "Update Downloads"
