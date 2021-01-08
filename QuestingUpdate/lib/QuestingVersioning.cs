@@ -7,23 +7,30 @@ using Newtonsoft.Json;
 using System.Dynamic;
 using UnityEngine;
 using System.Net;
+using System.IO.Compression;
 
 namespace QuestingUpdate.lib
 {
     class QuestingVersioning : MonoBehaviour
     {
+        private string resourceVersion;
+        private static readonly string ResourcePath = Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/Resources";
+        private static readonly string DownloadPath = Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/QuestingResources.zip";
+        private static readonly string ExtractPath = Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/";
         public bool needUpdate = false;
         public void InitVersions()
         {
-            Requester("https://api.github.com/repos/melodicalbuild/questingupdate/releases/latest");
+            Requester("https://live-downloads.herokuapp.com/versioning");
+            ResourceCheck();
         }
 
         public string UpdateVersioner()
         {
-            if(needUpdate == true)
+            if (needUpdate == true)
             {
                 return "(Update Available)";
-            } else
+            }
+            else
             {
                 return "";
             }
@@ -31,15 +38,55 @@ namespace QuestingUpdate.lib
 
         private void ResourceCheck()
         {
-            using (StreamReader reader = new StreamReader("Resources/Version.txt"))
+            if (Directory.Exists(@ResourcePath))
             {
-                var version = reader.ReadToEnd();
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                if (File.Exists(@ResourcePath + "/Version.txt"))
                 {
-                    writer.WriteLine("[Questing Update | Versioning]: Resource Version is " + version);
-                    writer.Dispose();
+                    var version = File.ReadAllText(Path.Combine(@ResourcePath, "Version.txt"));
+                    if (version != resourceVersion)
+                    {
+                        Directory.Delete(@ResourcePath, true);
+                        using (WebClient wc = new WebClient())
+                        {
+                            wc.DownloadFile(
+                                new System.Uri("https://live-downloads.herokuapp.com/downloads/resources/QuestingResources.zip"),
+                                @DownloadPath
+                            );
+                        }
+                        ZipFile.ExtractToDirectory(@DownloadPath, @ExtractPath);
+                        File.Delete(@DownloadPath);
+
+                        using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                        {
+                            writer.WriteLine("[Questing Update | Versioning]: Resource Version Updated to " + version);
+                            writer.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+                        {
+                            writer.WriteLine("[Questing Update | Versioning]: Resource Version is " + version);
+                            writer.Dispose();
+                        }
+                    }
                 }
-                reader.Dispose();
+                else
+                {
+                    File.WriteAllText(@ResourcePath + "/Version.txt", "0.0.0");
+                }
+            }
+            else
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    wc.DownloadFile(
+                        new System.Uri("https://live-downloads.herokuapp.com/downloads/resources/QuestingResources.zip"),
+                        @DownloadPath
+                    );
+                }
+                ZipFile.ExtractToDirectory(@DownloadPath, @ExtractPath);
+                File.Delete(@DownloadPath);
             }
         }
 
@@ -48,8 +95,16 @@ namespace QuestingUpdate.lib
         private void Requester(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.UserAgent = "MelodicAlbuild";
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            request.ContentType = "application/json; charset=utf-8";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = "{ \"mod\" : \"questing\" }";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+            }
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
@@ -58,7 +113,7 @@ namespace QuestingUpdate.lib
                 html = reader.ReadToEnd();
             }
             var root = JsonConvert.DeserializeObject<Rootobject>(html);
-            if(root.tag_name != QuestingMod.version)
+            if (root.modVersion != QuestingMod.version)
             {
                 using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
                 {
@@ -66,7 +121,8 @@ namespace QuestingUpdate.lib
                     writer.Dispose();
                 }
                 needUpdate = true;
-            } else
+            }
+            else
             {
                 using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
                 {
@@ -74,91 +130,17 @@ namespace QuestingUpdate.lib
                     writer.Dispose();
                 }
             }
-
+            resourceVersion = root.resourceVersion;
         }
+
 
         public class Rootobject
         {
-            public string url { get; set; }
-            public string assets_url { get; set; }
-            public string upload_url { get; set; }
-            public string html_url { get; set; }
-            public int id { get; set; }
-            public Author author { get; set; }
-            public string node_id { get; set; }
-            public string tag_name { get; set; }
-            public string target_commitish { get; set; }
-            public string name { get; set; }
-            public bool draft { get; set; }
-            public bool prerelease { get; set; }
-            public DateTime created_at { get; set; }
-            public DateTime published_at { get; set; }
-            public Asset[] assets { get; set; }
-            public string tarball_url { get; set; }
-            public string zipball_url { get; set; }
-            public string body { get; set; }
+            public string resourceVersion { get; set; }
+            public string modVersion { get; set; }
+            public string updateName { get; set; }
         }
 
-        public class Author
-        {
-            public string login { get; set; }
-            public int id { get; set; }
-            public string node_id { get; set; }
-            public string avatar_url { get; set; }
-            public string gravatar_id { get; set; }
-            public string url { get; set; }
-            public string html_url { get; set; }
-            public string followers_url { get; set; }
-            public string following_url { get; set; }
-            public string gists_url { get; set; }
-            public string starred_url { get; set; }
-            public string subscriptions_url { get; set; }
-            public string organizations_url { get; set; }
-            public string repos_url { get; set; }
-            public string events_url { get; set; }
-            public string received_events_url { get; set; }
-            public string type { get; set; }
-            public bool site_admin { get; set; }
-        }
-
-        public class Asset
-        {
-            public string url { get; set; }
-            public int id { get; set; }
-            public string node_id { get; set; }
-            public string name { get; set; }
-            public object label { get; set; }
-            public Uploader uploader { get; set; }
-            public string content_type { get; set; }
-            public string state { get; set; }
-            public int size { get; set; }
-            public int download_count { get; set; }
-            public DateTime created_at { get; set; }
-            public DateTime updated_at { get; set; }
-            public string browser_download_url { get; set; }
-        }
-
-        public class Uploader
-        {
-            public string login { get; set; }
-            public int id { get; set; }
-            public string node_id { get; set; }
-            public string avatar_url { get; set; }
-            public string gravatar_id { get; set; }
-            public string url { get; set; }
-            public string html_url { get; set; }
-            public string followers_url { get; set; }
-            public string following_url { get; set; }
-            public string gists_url { get; set; }
-            public string starred_url { get; set; }
-            public string subscriptions_url { get; set; }
-            public string organizations_url { get; set; }
-            public string repos_url { get; set; }
-            public string events_url { get; set; }
-            public string received_events_url { get; set; }
-            public string type { get; set; }
-            public bool site_admin { get; set; }
-        }
 
     }
 }

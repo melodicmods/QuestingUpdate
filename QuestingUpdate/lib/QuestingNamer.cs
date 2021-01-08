@@ -16,16 +16,23 @@ namespace QuestingUpdate.lib
         private string updateName;
         public string Namer()
         {
-            var version = QuestingMod.version;
-            Requester("https://api.github.com/repos/melodicalbuild/questingupdate/releases/tags/" + version);
+            Requester("https://live-downloads.herokuapp.com/versioning");
             return updateName;
         }
         private string html;
         private void Requester(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.UserAgent = "MelodicAlbuild";
-            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            request.ContentType = "application/json; charset=utf-8";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = "{ \"mod\" : \"questing\" }";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+            }
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
@@ -35,7 +42,7 @@ namespace QuestingUpdate.lib
             }
             var root = JsonConvert.DeserializeObject<Rootobject>(html);
 
-            updateName = root.name;
+            updateName = root.updateName;
         }
     }
 }
