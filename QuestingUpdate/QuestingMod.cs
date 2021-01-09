@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using QuestingUpdate.lib;
+using System.Diagnostics;
 
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
@@ -10,11 +11,10 @@ namespace QuestingUpdate {
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
-
         public override void Load()
         {
             var lastWrite = File.GetLastWriteTime(typeof(QuestingMod).Assembly.Location);
-            Debug.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
+            UnityEngine.Debug.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
             using (StreamWriter writer = new StreamWriter(path))
             {
                 writer.WriteLine($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
@@ -33,11 +33,17 @@ namespace QuestingUpdate {
             {
                 updateName = "Questing Update";
             }
+            
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            var rootGameObject = scene.GetRootGameObjects()[0];
+            if (!rootGameObject.gameObject.HasComponent<Component>())
+            {
+                rootGameObject.gameObject.AddComponent<Component>();
+            }
             switch (scene.name)
             {
                 case "MainMenu":
@@ -124,7 +130,7 @@ namespace QuestingUpdate {
 
         public override void Unload()
         {
-            Debug.Log("[Questing Update | Main]: Questing Update unloaded");
+            UnityEngine.Debug.Log("[Questing Update | Main]: Questing Update unloaded");
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine("[Questing Update | Main]: Game Finished, Closing...");
