@@ -94,8 +94,19 @@ namespace QuestingUpdate.lib
                 "D3DEA69A69BF47CC9893D88EB6565D48", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
             // Tier 2 Upgrades
+            CreateItem("UpgradeIronRefining", 5, "Iron Refining Upgrade", "Iron... It's just... Iron \r\n" + "Part of the Questing Update",
+                "A2F41C4439B44BD9B6F7661A49F4BBC6", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeIronworking", 5, "Ironworking Upgrade", "Iron into Ingots? Absolutly! \r\n" + "Part of the Questing Update",
+                "72494C7FF1654A8B81A4D2F8F3CDDAC0", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAdvancedIronParts", 5, "Advanced Iron Parts Upgrade", "Iron isn't useless right? Wrong! \r\n" + "Part of the Questing Update",
+                "84025220E5CD4C729B63BB8EF50F9EE0", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeIronArmor", 5, "Iron Armor Upgrade", "The Research for the Creation of Iron Armor \r\n" + "Part of the Questing Update",
+                "00F785F49BDF4272855FEF7253F660A3", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeResourceRefining2", 5, "Advanced Resource Refining Upgrade", "Need Resources? We got those. \r\n" + "Part of the Questing Update",
+                "D7556249DC4E4FF899ABCFCEDC0F7E30", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
             CreateItem("UpgradeAdvancedAlloying", 5, "Advanced Alloying Upgrade", "The Research Behind the Advanced Alloys of this World \r\n" + "Part of the Questing Update",
                 "667E1658F21942008E5F2DAE964EC27D", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+
 
             // Tier 3 Upgrades
             CreateItem("UpgradePerfectAlloying", 5, "Perfect Alloying Upgrade", "The Research Behind the Perfect Alloys of this World \r\n" + "Part of the Questing Update",
