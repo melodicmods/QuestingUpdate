@@ -106,6 +106,20 @@ namespace QuestingUpdate.lib
                 "D7556249DC4E4FF899ABCFCEDC0F7E30", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
             CreateItem("UpgradeAdvancedAlloying", 5, "Advanced Alloying Upgrade", "The Research Behind the Advanced Alloys of this World \r\n" + "Part of the Questing Update",
                 "667E1658F21942008E5F2DAE964EC27D", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAlloyForge2", 5, "Alloy Forge 2 Upgrade", "The Research for Creation of Iron Alloys \r\n" + "Part of the Questing Update",
+                "0DBAB60356DC4BF091E068BC98F9506B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeSteelworking", 5, "Steelworking Upgrade", "The Research for the Manipulation of Steel \r\n" + "Part of the Questing Update",
+                "60B0343DED18402BAB64B3F14F58C7E8", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeSteelArmor", 5, "Steel Armor Upgrade", "The Research for the Creation of Steel Armor \r\n" + "Part of the Questing Update",
+                "0B57AA5FCC484DF2A05329A644B1D052", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeImprovedWeapons", 5, "Improved Weapons Upgrade", "The Research for the Creation of Better Weapons \r\n" + "Part of the Questing Update",
+                "F676A8F8A6964CD89AC7A015614B288A", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeTurretsTier2", 5, "Tier 2 Turrets Upgrade", "The Research for the Creation of Better Weapons \r\n" + "Part of the Questing Update",
+                "B1EF9CC1DB5843ABBAD7A25C9C1DFD02", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAdvancedTurrets2", 5, "Advanced Turrets 2 Upgrade", "The Research for the Creation of Even More Advanced Turrets \r\n" + "Part of the Questing Update",
+                "887DA322DAA9466ABEDDA514E7C7B139", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeDrillshipParts2", 5, "Drillship Parts 2 Upgrade", "The Research for the Creation of Tier 3 Drillship Parts \r\n" + "Part of the Questing Update",
+                "F04E93F446F94C43BC3577E244AE737B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
 
             // Tier 3 Upgrades
