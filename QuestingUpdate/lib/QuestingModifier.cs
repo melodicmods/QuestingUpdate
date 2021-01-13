@@ -13,60 +13,60 @@ namespace QuestingUpdate.lib
         {
             Test("UpgradeAlloyForge1Recipe");
             ModifyTitanium();
-            ModifyItem1Upgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
-            ModifyItem1Upgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
-            ModifyItem1Upgrade("UpgradeResourceRefining1", "SimpleExplosivesSchematicRecipe");
+            ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
+            ModifyUpgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
+            ModifyUpgrade("UpgradeResourceRefining1", "SimpleExplosivesSchematicRecipe");
 
             // Tier 1 Item Updates
-            ModifyItem1Upgrade("UpgradeResourceRefining1", "TinIngotRecipe");
-            ModifyItem1Upgrade("UpgradeResourceRefining1", "CopperIngotRecipe");
-            ModifyItem1Upgrade("UpgradeCopperworking", "TinBoltsRecipe");
-            ModifyItem1Upgrade("UpgradeCopperworking", "TinPlatesRecipe");
-            ModifyItem1Upgrade("UpgradeCopperworking", "TinTubesRecipe");
-            ModifyItem1Upgrade("UpgradeCopperworking", "CopperBoltsRecipe");
-            ModifyItem1Upgrade("UpgradeCopperworking", "CopperPlatesRecipe");
-            ModifyItem1Upgrade("UpgradeCopperworking", "CopperTubesRecipe");
-            // ModifyItem1Upgrade("UpgradeCopperArmor", "CopperArmorRecipe");
-            ModifyItem1Upgrade("UpgradeSimpleWeapons", "RevolverRecipe");
-            ModifyItem1Upgrade("UpgradeSimpleWeapons", "ShotgunRecipe");
-            //ModifyItem1Upgrade("UpgradeTurretsTier1", "TurretModuleRecipe");
-            ModifyItem1Upgrade("UpgradeBasicAlloying", "AlloyT1Recipe");
-            ModifyItem1Upgrade("UpgradeBasicAlloying", "BronzeIngotRecipe");
-            ModifyItem1Upgrade("UpgradeBronzeworking", "BronzeTubesRecipe");
-            ModifyItem1Upgrade("UpgradeBronzeworking", "BronzePlatesRecipe");
-            ModifyItem1Upgrade("UpgradeBronzeworking", "BronzeBoltsRecipe");
-            ModifyItem1Upgrade("UpgradeDrillshipParts1", "DrillUpgrade2Recipe");
-            ModifyItem1Upgrade("UpgradeDrillshipParts1", "EngineUpgrade2Recipe");
-            ModifyItem1Upgrade("UpgradeDrillshipParts1", "HullUpgrade2Recipe");
-            ModifyItem1Upgrade("UpgradeDrillshipParts1", "TracksUpgrade2Recipe");
-            ModifyItem1Upgrade("UpgradeDrillshipParts1", "ShipCoreUpgrade2Recipe");
+            ModifyUpgrade("UpgradeResourceRefining1", "TinIngotRecipe");
+            ModifyUpgrade("UpgradeResourceRefining1", "CopperIngotRecipe");
+            ModifyUpgrade("UpgradeCopperworking", "TinBoltsRecipe");
+            ModifyUpgrade("UpgradeCopperworking", "TinPlatesRecipe");
+            ModifyUpgrade("UpgradeCopperworking", "TinTubesRecipe");
+            ModifyUpgrade("UpgradeCopperworking", "CopperBoltsRecipe");
+            ModifyUpgrade("UpgradeCopperworking", "CopperPlatesRecipe");
+            ModifyUpgrade("UpgradeCopperworking", "CopperTubesRecipe");
+            // ModifyUpgrade("UpgradeCopperArmor", "CopperArmorRecipe");
+            ModifyUpgrade("UpgradeSimpleWeapons", "RevolverRecipe");
+            ModifyUpgrade("UpgradeSimpleWeapons", "ShotgunRecipe");
+            //ModifyUpgrade("UpgradeTurretsTier1", "TurretModuleRecipe");
+            ModifyUpgrade("UpgradeBasicAlloying", "AlloyT1Recipe");
+            ModifyUpgrade("UpgradeBasicAlloying", "BronzeIngotRecipe");
+            ModifyUpgrade("UpgradeBronzeworking", "BronzeTubesRecipe");
+            ModifyUpgrade("UpgradeBronzeworking", "BronzePlatesRecipe");
+            ModifyUpgrade("UpgradeBronzeworking", "BronzeBoltsRecipe");
+            ModifyUpgrade("UpgradeDrillshipParts1", "DrillUpgrade2Recipe");
+            ModifyUpgrade("UpgradeDrillshipParts1", "EngineUpgrade2Recipe");
+            ModifyUpgrade("UpgradeDrillshipParts1", "HullUpgrade2Recipe");
+            ModifyUpgrade("UpgradeDrillshipParts1", "TracksUpgrade2Recipe");
+            ModifyUpgrade("UpgradeDrillshipParts1", "ShipCoreUpgrade2Recipe");
 
             // Tier 2 Item Updates
-            ModifyItem1Upgrade("UpgradeAdvancedAlloying", "AlloyT2Recipe");
+            ModifyUpgrade("UpgradeAdvancedAlloying", "AlloyT2Recipe");
 
             // Tier 3 Item Updates
-            ModifyItem1Upgrade("UpgradePerfectAlloying", "AlloyT3Recipe");
-            ModifyItem1Upgrade("UpgradePerfectAlloying", "TitaniumIngotRecipe");
-            ModifyItem1Upgrade("UpgradeResourceRefining3", "CobaltIngotRecipe");
+            ModifyUpgrade("UpgradePerfectAlloying", "AlloyT3Recipe");
+            ModifyUpgrade("UpgradePerfectAlloying", "TitaniumIngotRecipe");
+            ModifyUpgrade("UpgradeResourceRefining3", "CobaltIngotRecipe");
 
             // Tier 1
-            ModifyItem1Table("ResearchTier1", "UpgradeResourceRefining1Recipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeStarterRefineryRecipe");
-            ModifyItem1Table("ResearchTier1", "SimpleExplosivesSchematicRecipe");
-            ModifyItem1Table("ResearchTier1", "StarterStructuresSchematicRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeCopperworkingRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeCopperArmorRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeSimpleWeaponsRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeBasicAlloyingRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeAlloyForge1Recipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeBronzeworkingRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeTurretsTier1Recipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeBronzeArmorRecipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeDrillshipParts1Recipe");
-            ModifyItem1Table("ResearchTier1", "UpgradeAdvancedTurrets1Recipe");
-            ModifyItem1Table("ForgeTier1", "AlloyT1Recipe");
-            ModifyItem1Table("ForgeTier2", "AlloyT2Recipe");
-            ModifyItem1Table("ForgeTier3", "AlloyT3Recipe");
+            ModifyTable("ResearchTier1", "UpgradeResourceRefining1Recipe");
+            ModifyTable("ResearchTier1", "UpgradeStarterRefineryRecipe");
+            ModifyTable("ResearchTier1", "SimpleExplosivesSchematicRecipe");
+            ModifyTable("ResearchTier1", "StarterStructuresSchematicRecipe");
+            ModifyTable("ResearchTier1", "UpgradeCopperworkingRecipe");
+            ModifyTable("ResearchTier1", "UpgradeCopperArmorRecipe");
+            ModifyTable("ResearchTier1", "UpgradeSimpleWeaponsRecipe");
+            ModifyTable("ResearchTier1", "UpgradeBasicAlloyingRecipe");
+            ModifyTable("ResearchTier1", "UpgradeAlloyForge1Recipe");
+            ModifyTable("ResearchTier1", "UpgradeBronzeworkingRecipe");
+            ModifyTable("ResearchTier1", "UpgradeTurretsTier1Recipe");
+            ModifyTable("ResearchTier1", "UpgradeBronzeArmorRecipe");
+            ModifyTable("ResearchTier1", "UpgradeDrillshipParts1Recipe");
+            ModifyTable("ResearchTier1", "UpgradeAdvancedTurrets1Recipe");
+            ModifyTable("ForgeTier1", "AlloyT1Recipe");
+            ModifyTable("ForgeTier2", "AlloyT2Recipe");
+            ModifyTable("ForgeTier3", "AlloyT3Recipe");
 
             // Tier 2
 
@@ -123,7 +123,7 @@ namespace QuestingUpdate.lib
             }
         }
 
-        private void ModifyItem1Upgrade(string name1, string modifyName)
+        private void ModifyUpgrade(string name1, string modifyName)
         {
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == modifyName).RequiredUpgrades = new ItemDefinition[] { item1 };
@@ -134,7 +134,7 @@ namespace QuestingUpdate.lib
             }
         }
 
-        private void ModifyItem1Table(string name1, string modifyName)
+        private void ModifyTable(string name1, string modifyName)
         {
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == modifyName).Categories = new RecipeCategory[] { FindCategories(name1) };
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
@@ -144,7 +144,7 @@ namespace QuestingUpdate.lib
             }
         }
 
-        private void ModifyItem2Upgrade(string name1, string name2, string modifyName)
+        private void ModifyUpgrade(string name1, string name2, string modifyName)
         {
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name2);
@@ -156,7 +156,7 @@ namespace QuestingUpdate.lib
             }
         }
 
-        private void ModifyItem3Upgrade(string name1, string name2, string name3, string modifyName)
+        private void ModifyUpgrade(string name1, string name2, string name3, string modifyName)
         {
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name2);

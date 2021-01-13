@@ -13,9 +13,9 @@ namespace QuestingUpdate.lib
             var tier1Forge = new RecipeCategory[] { Findcategories("ForgeTier1") };
             var tier2Forge = new RecipeCategory[] { Findcategories("ForgeTier1"), Findcategories("ForgeTier2") };
             var tier3Forge = new RecipeCategory[] { Findcategories("ForgeTier1"), Findcategories("ForgeTier2"), Findcategories("ForgeTier3") };
-            CreateInitialItemModuleProduction("AlloyForgeTier1", "Tier1", 5, "RefineryModuleT1", "Alloy Forge Tier 1", "The Alloy Forge for Bronze", "4491E93910334C76AD68061AA8E71B5C", "RefineryModuleT1", "AlloyForge", Sprite2("Resources/Modules/AlloyForge1.png"), tier1Forge);
-            CreateItemModuleProduction("AlloyForgeTier2", "Tier2", 5, "RefineryModuleT2", "Alloy Forge Tier 2", "The Alloy Forge for Steel", "3090980A28994112A197A342945DD1D0", "RefineryModuleT2", "AlloyForge", Sprite2("Resources/Modules/AlloyForge2.png"), tier2Forge);
-            CreateItemModuleProduction("AlloyForgeTier3", "Tier3", 5, "RefineryModuleT3", "Alloy Forge Tier 3", "The Alloy Forge for Titanium", "1B2D3ED6CDCC460191183B13BA8D5F5F", "RefineryModuleT3", "AlloyForge", Sprite2("Resources/Modules/AlloyForge3.png"), tier3Forge);
+            CreateProductionModule("AlloyForgeTier1", "Tier1", 5, "RefineryModuleT1", "Alloy Forge Tier 1", "The Alloy Forge for Bronze", "4491E93910334C76AD68061AA8E71B5C", "RefineryModuleT1", "AlloyForge", Sprite2("Resources/Modules/AlloyForge1.png"), tier1Forge, true);
+            CreateProductionModule("AlloyForgeTier2", "Tier2", 5, "RefineryModuleT2", "Alloy Forge Tier 2", "The Alloy Forge for Steel", "3090980A28994112A197A342945DD1D0", "RefineryModuleT2", "AlloyForge", Sprite2("Resources/Modules/AlloyForge2.png"), tier2Forge);
+            CreateProductionModule("AlloyForgeTier3", "Tier3", 5, "RefineryModuleT3", "Alloy Forge Tier 3", "The Alloy Forge for Titanium", "1B2D3ED6CDCC460191183B13BA8D5F5F", "RefineryModuleT3", "AlloyForge", Sprite2("Resources/Modules/AlloyForge3.png"), tier3Forge);
 
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
@@ -73,7 +73,7 @@ namespace QuestingUpdate.lib
             str.OnAfterDeserialize();
         }
 
-        public void CreateItemModuleProduction(string codename, string variantname, int maxstack, string baseitem, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
+        public void CreateProductionModule(string codename, string variantname, int maxstack, string baseitem, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
@@ -123,7 +123,7 @@ namespace QuestingUpdate.lib
             }
         }
 
-        public void CreateInitialItemModuleProduction(string codename, string variantname, int maxstack, string basename, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
+        public void CreateProductionModule(string codename, string variantname, int maxstack, string basename, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories, bool looping)
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
