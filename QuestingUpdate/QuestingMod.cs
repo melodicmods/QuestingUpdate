@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
-        public const string version = "0.2.2";
+        public const string version = "0.2.5";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";

@@ -43,6 +43,7 @@ namespace QuestingUpdate.lib
 
             // Tier 2 Item Updates
             ModifyUpgrade("UpgradeAdvancedAlloying", "AlloyT2Recipe");
+            ModifyUpgrade("UpgradeDrillshipParts2", "UpgradeBasicRefinery2Recipe");
 
             // Tier 3 Item Updates
             ModifyUpgrade("UpgradePerfectAlloying", "AlloyT3Recipe");
@@ -69,6 +70,22 @@ namespace QuestingUpdate.lib
             ModifyTable("ForgeTier3", "AlloyT3Recipe");
 
             // Tier 2
+            ModifyTable("ResearchTier2", "UpgradeIronRefiningRecipe");
+            ModifyTable("ResearchTier2", "UpgradeIronworkingRecipe");
+            ModifyTable("ResearchTier2", "UpgradeAdvancedIronPartsRecipe");
+            ModifyTable("ResearchTier2", "UpgradeIronArmorRecipe");
+            ModifyTable("ResearchTier2", "UpgradeResourceRefining2Recipe");
+            ModifyTable("ResearchTier2", "UpgradeAdvancedAlloyingRecipe");
+            ModifyTable("ResearchTier2", "UpgradeAlloyForge2Recipe");
+            ModifyTable("ResearchTier2", "UpgradeSteelworkingRecipe");
+            ModifyTable("ResearchTier2", "UpgradeSteelArmorRecipe");
+            ModifyTable("ResearchTier2", "UpgradeImprovedWeaponsRecipe");
+            ModifyTable("ResearchTier2", "UpgradeTurretsTier2Recipe");
+            ModifyTable("ResearchTier2", "UpgradeAdvancedTurrets2Recipe");
+            ModifyTable("ResearchTier2", "UpgradeDrillshipParts2Recipe");
+
+            // Tier 3
+
 
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
