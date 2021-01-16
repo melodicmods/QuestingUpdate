@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QuestingUpdate.lib.storage;
 
 namespace QuestingUpdate.lib
 {
@@ -11,7 +12,6 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
-            Test("UpgradeAlloyForge1Recipe");
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
             ModifyUpgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
@@ -27,8 +27,8 @@ namespace QuestingUpdate.lib
             ModifyUpgrade("UpgradeCopperworking", "CopperPlatesRecipe");
             ModifyUpgrade("UpgradeCopperworking", "CopperTubesRecipe");
             // ModifyUpgrade("UpgradeCopperArmor", "CopperArmorRecipe");
-            ModifyUpgrade("UpgradeSimpleWeapons", "RevolverRecipe");
-            ModifyUpgrade("UpgradeSimpleWeapons", "ShotgunRecipe");
+            ModifyUpgrade("UpgradeSimpleWeapons", "RevolverWeaponRecipe");
+            ModifyUpgrade("UpgradeSimpleWeapons", "ShotgunWeaponRecipe");
             //ModifyUpgrade("UpgradeTurretsTier1", "TurretModuleRecipe");
             ModifyUpgrade("UpgradeBasicAlloying", "AlloyT1Recipe");
             ModifyUpgrade("UpgradeBasicAlloying", "BronzeIngotRecipe");
@@ -43,7 +43,11 @@ namespace QuestingUpdate.lib
 
             // Tier 2 Item Updates
             ModifyUpgrade("UpgradeAdvancedAlloying", "AlloyT2Recipe");
-            ModifyUpgrade("UpgradeDrillshipParts2", "UpgradeBasicRefinery2Recipe");
+            ModifyUpgrade(QuestingGUIDs.DrillShipParts1Upgrade, QuestingGUIDs.UpgradeBasicProduction2Recipe);
+            ModifyUpgrade(QuestingGUIDs.UpgradeBasicProduction, QuestingGUIDs.UpgradeBasicResearch2Recipe);
+            ModifyUpgrade(QuestingGUIDs.UpgradeBasicResearch, QuestingGUIDs.UpgradeBasicRefinery2Recipe);
+            ModifyUpgrade(QuestingGUIDs.UpgradeBasicResearch, QuestingGUIDs.ImprovedStructuresSchematicRecipe);
+            ModifyUpgrade("UpgradeResourceRefining2Recipe", "UpgradeAdvancedIronPartsRecipe", QuestingGUIDs.ImprovedExplosivesSchematicRecipe);
 
             // Tier 3 Item Updates
             ModifyUpgrade("UpgradePerfectAlloying", "AlloyT3Recipe");
@@ -114,19 +118,6 @@ namespace QuestingUpdate.lib
             return tempcategory;
         }
 
-        private void Test(string name)
-        {
-            var item = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == name);
-            foreach (RecipeCategory definition in item.Categories)
-            {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("[Questing Update | Modifier]: " + definition.name);
-                    writer.Dispose();
-                }
-            }
-        }
-
         private void ModifyTitanium()
         {
             var cobalt = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CobaltIngot");
@@ -147,6 +138,52 @@ namespace QuestingUpdate.lib
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
                 writer.WriteLine("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
+                writer.Dispose();
+            }
+        }
+
+        private void ModifyUpgrade(string name1, GUID woot)
+        {
+            var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
+            GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1 };
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
+                writer.Dispose();
+            }
+        }
+
+        private void ModifyUpgrade(GUID name1, GUID woot)
+        {
+            var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name1);
+            GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1 };
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
+                writer.Dispose();
+            }
+        }
+
+        private void ModifyUpgrade(GUID name1, GUID name2, GUID woot)
+        {
+            var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name1);
+            var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name2);
+            GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1, item2 };
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
+                writer.Dispose();
+            }
+        }
+
+        private void ModifyUpgrade(string name1, string name2, GUID woot)
+        {
+            var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
+            var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name2);
+            GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1, item2 };
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
                 writer.Dispose();
             }
         }
