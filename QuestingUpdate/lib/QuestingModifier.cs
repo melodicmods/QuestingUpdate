@@ -136,19 +136,18 @@ namespace QuestingUpdate.lib
 
         private void ModifyCoalModule()
         {
-            QuestingAssets questingAssets = new QuestingAssets();
             var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
             foreach (GameObject obj in item.Prefabs)
             {
                 if (obj.name == "CoalPowerModuleTop1")
                 {
                     Destroy(obj);
-                    item.Prefabs = new GameObject[] { item.Prefabs[0], questingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab") };
+                    item.Prefabs = new GameObject[] { item.Prefabs[0], QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab") };
                 }
             }
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
-                writer.WriteLine("[Questing Update | Modifier]: " + questingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab").name);
+                writer.WriteLine("[Questing Update | Modifier]: " + QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab").name);
                 writer.Dispose();
             }
         }
