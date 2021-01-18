@@ -11,7 +11,7 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
-            ModifyCoalModule();
+            //ModifyCoalModule();
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
             ModifyUpgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
@@ -123,23 +123,23 @@ namespace QuestingUpdate.lib
             QuestLog.Log("[Questing Update | Modifier]: Titanium Recipe Modified");
         }
 
-        private void ModifyCoalModule()
-        {
-            var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
-            var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
+        //private void ModifyCoalModule()
+        //{
+        //    var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+        //    var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
 
-            RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
+        //    RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
 
-            foreach (var obj in item.Prefabs)
-            {
-                if (obj.name == "CoalPowerModuleTop1")
-                {
-                    Destroy(obj);
-                    item.Prefabs = new[] { item.Prefabs[0], newPrefab };
-                }
-            }
-            QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
-        }
+        //    foreach (var obj in item.Prefabs)
+        //    {
+        //        if (obj.name == "CoalPowerModuleTop1")
+        //        {
+        //            Destroy(obj);
+        //            item.Prefabs = new[] { item.Prefabs[0], newPrefab };
+        //        }
+        //    }
+        //    QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
+        //}
 
         private void ModifyUpgrade(string name1, string modifyName)
         {

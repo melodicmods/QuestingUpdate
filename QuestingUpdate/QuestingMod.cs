@@ -34,8 +34,11 @@ namespace QuestingUpdate {
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
+        private bool onSceneLoadedDone = false;
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            if (scene.name != "Island" || scene.name != "MainMenu" || onSceneLoadedDone) return;
+            onSceneLoadedDone = true;
             switch (scene.name)
             {
                 case "MainMenu":
