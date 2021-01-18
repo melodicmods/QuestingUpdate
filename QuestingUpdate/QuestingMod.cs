@@ -8,7 +8,7 @@ using QuestingUpdate.lib.scripts;
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
-        public const string version = "0.2.6";
+        public const string version = "0.3.0";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
@@ -16,7 +16,7 @@ namespace QuestingUpdate {
         {
             var lastWrite = File.GetLastWriteTime(typeof(QuestingMod).Assembly.Location);
             UnityEngine.Debug.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
-            QuestLog.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
+            QuestLog.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}", true);
 
             QuestingVersioning versioning = new QuestingVersioning();
             versioning.InitVersions();
@@ -34,11 +34,8 @@ namespace QuestingUpdate {
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        private bool onSceneLoadedDone = false;
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            if (scene.name != "Island" || scene.name != "MainMenu" || onSceneLoadedDone) return;
-            onSceneLoadedDone = true;
             switch (scene.name)
             {
                 case "MainMenu":

@@ -27,8 +27,8 @@ namespace QuestingUpdate.lib
             ModifyUpgrade("UpgradeCopperworking", "CopperPlatesRecipe");
             ModifyUpgrade("UpgradeCopperworking", "CopperTubesRecipe");
             // ModifyUpgrade("UpgradeCopperArmor", "CopperArmorRecipe");
-            ModifyUpgrade("UpgradeSimpleWeapons", "RevolverWeaponRecipe");
-            ModifyUpgrade("UpgradeSimpleWeapons", "ShotgunWeaponRecipe");
+            ModifyUpgrade("UpgradeSimpleWeapons", QuestingGUIDs.RevolverWeaponRecipe);
+            ModifyUpgrade("UpgradeSimpleWeapons", QuestingGUIDs.ShotgunWeaponRecipe);
             //ModifyUpgrade("UpgradeTurretsTier1", "TurretModuleRecipe");
             ModifyUpgrade("UpgradeBasicAlloying", "AlloyT1Recipe");
             ModifyUpgrade("UpgradeBasicAlloying", "BronzeIngotRecipe");
@@ -125,20 +125,37 @@ namespace QuestingUpdate.lib
 
         //private void ModifyCoalModule()
         //{
-        //    var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+        //    //var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+        //    //var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
+
+        //    //RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
+
+        //    //foreach (var obj in item.Prefabs)
+        //    //{
+        //    //    if (obj.name == "CoalPowerModuleTop1")
+        //    //    {
+        //    //        Destroy(obj);
+        //    //        item.Prefabs = new[] { item.Prefabs[0], newPrefab };
+        //    //    }
+        //    //}
+        //    //QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
         //    var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
-
-        //    RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
-
-        //    foreach (var obj in item.Prefabs)
+        //    QuestLog.Log("[Questing Update | Modifier]: " + newPrefab);
+        //    foreach (var megaobj in newPrefab.GetComponentsInChildren<Transform>())
         //    {
-        //        if (obj.name == "CoalPowerModuleTop1")
+        //        QuestLog.Log("[Questing Update | Modifier]: " + megaobj);
+        //    }
+        //    var cache = NetworkResources.Instance.GridModules.Prefabs;
+        //    foreach(var obj in cache)
+        //    {
+        //        if(obj.name == "CoalPowerModuleTop1")
         //        {
-        //            Destroy(obj);
-        //            item.Prefabs = new[] { item.Prefabs[0], newPrefab };
+        //            foreach(var outobj in obj.GetComponentsInChildren<Animator>())
+        //            {
+        //                QuestLog.Log("[Questing Update | Modifier]: " + outobj);
+        //            }
         //        }
         //    }
-        //    QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
         //}
 
         private void ModifyUpgrade(string name1, string modifyName)
