@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using QuestingUpdate.lib.storage;
 using QuestingUpdate.lib.scripts;
 using UnityEngine;
@@ -94,11 +91,7 @@ namespace QuestingUpdate.lib
             // Tier 3
 
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: Modifiers Loaded...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: Modifiers Loaded...");
         }
 
         private RecipeCategory tempcategory;
@@ -127,62 +120,46 @@ namespace QuestingUpdate.lib
             var output = GameResources.Instance.Items.FirstOrDefault(s => s.name == "SteelIngot");
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Inputs = new InventoryItemData[] { new InventoryItemData { Item = cobalt, Amount = 2 }, new InventoryItemData { Item = output, Amount = 2 } };
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Categories = new RecipeCategory[] { FindCategories("ForgeTier3") };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: Titanium Recipe Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: Titanium Recipe Modified");
         }
 
         private void ModifyCoalModule()
         {
             var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
-            foreach (GameObject obj in item.Prefabs)
+            var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
+
+            RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
+
+            foreach (var obj in item.Prefabs)
             {
                 if (obj.name == "CoalPowerModuleTop1")
                 {
                     Destroy(obj);
-                    item.Prefabs = new GameObject[] { item.Prefabs[0], QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab") };
+                    item.Prefabs = new[] { item.Prefabs[0], newPrefab };
                 }
             }
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab").name);
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
         }
 
         private void ModifyUpgrade(string name1, string modifyName)
         {
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == modifyName).RequiredUpgrades = new ItemDefinition[] { item1 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
         }
 
         private void ModifyUpgrade(string name1, GUID woot)
         {
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
         }
 
         private void ModifyUpgrade(GUID name1, GUID woot)
         {
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name1);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
         }
 
         private void ModifyUpgrade(GUID name1, GUID name2, GUID woot)
@@ -190,11 +167,8 @@ namespace QuestingUpdate.lib
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name1);
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name2);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1, item2 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
+
         }
 
         private void ModifyUpgrade(string name1, string name2, GUID woot)
@@ -202,21 +176,13 @@ namespace QuestingUpdate.lib
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name2);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1, item2 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
         }
 
         private void ModifyTable(string name1, string modifyName)
         {
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == modifyName).Categories = new RecipeCategory[] { FindCategories(name1) };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + modifyName + " Categories Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + modifyName + " Categories Modified");
         }
 
         private void ModifyUpgrade(string name1, string name2, string modifyName)
@@ -224,11 +190,7 @@ namespace QuestingUpdate.lib
             var item1 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name1);
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name2);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == modifyName).RequiredUpgrades = new ItemDefinition[] { item1, item2 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
         }
 
         private void ModifyUpgrade(string name1, string name2, string name3, string modifyName)
@@ -237,11 +199,7 @@ namespace QuestingUpdate.lib
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name2);
             var item3 = GameResources.Instance.Items.FirstOrDefault(s => s.name == name3);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == modifyName).RequiredUpgrades = new ItemDefinition[] { item1, item2, item3 };
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Modifier]: " + modifyName + " Required Upgrades Modified");
         }
     }
 }

@@ -18,11 +18,7 @@ namespace QuestingUpdate.lib
             QuestingStations stations = new QuestingStations();
             QuestingReferences.GetOrCreateTyping(stations.FindFactoryCategories("AlloyForge"));
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Categories]: Categories Loaded...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Categories]: Categories Loaded...");
 
             Debug.Log("[Questing Update | Categories]: Categories Loaded...");
         }
@@ -34,12 +30,7 @@ namespace QuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = ok, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Categories]: Factory Category with name " + name + " has been loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Categories]: Factory Category with name " + name + " has been loaded");
 
         }
 
@@ -50,12 +41,7 @@ namespace QuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = ok, Guid = guid, Labels = new string[4] } };
             RuntimeAssetStorage.Add(assets, default);
-
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Categories]: Module Category with name " + name + " has been loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Categories]: Module Category with name " + name + " has been loaded");
         }
 
         private void CreateRecipeCategory(string name, string categoryId)
@@ -65,12 +51,7 @@ namespace QuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = Forge, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Categories]: Recipe Category with name " + name + " has been loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Categories]: Recipe Category with name " + name + " has been loaded");
         }
     }
 }

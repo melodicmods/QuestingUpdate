@@ -8,6 +8,7 @@ using System.Dynamic;
 using UnityEngine;
 using System.Net;
 using System.IO.Compression;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate.lib
 {
@@ -56,19 +57,11 @@ namespace QuestingUpdate.lib
                         ZipFile.ExtractToDirectory(@DownloadPath, @ExtractPath);
                         File.Delete(@DownloadPath);
 
-                        using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                        {
-                            writer.WriteLine("[Questing Update | Versioning]: Resource Version Updated to " + version);
-                            writer.Dispose();
-                        }
+                        QuestLog.Log("[Questing Update | Versioning]: Resource Version Updated to " + version);
                     }
                     else
                     {
-                        using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                        {
-                            writer.WriteLine("[Questing Update | Versioning]: Resource Version is " + version);
-                            writer.Dispose();
-                        }
+                        QuestLog.Log("[Questing Update | Versioning]: Resource Version is " + version);
                     }
                 }
                 else
@@ -115,20 +108,12 @@ namespace QuestingUpdate.lib
             var root = JsonConvert.DeserializeObject<Rootobject>(html);
             if (root.modVersion != QuestingMod.version)
             {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("[Questing Update | Versioning]: Mod is Not up to Date...");
-                    writer.Dispose();
-                }
+                QuestLog.Log("[Questing Update | Versioning]: Mod is Not up to Date...");
                 needUpdate = true;
             }
             else
             {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("[Questing Update | Versioning]: Mod is Up to Date");
-                    writer.Dispose();
-                }
+                QuestLog.Log("[Questing Update | Versioning]: Mod is Up to Date");
             }
             resourceVersion = root.resourceVersion;
         }

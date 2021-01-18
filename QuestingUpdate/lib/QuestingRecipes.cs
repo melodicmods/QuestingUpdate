@@ -3,6 +3,7 @@ using System.Reflection;
 using UnityEngine;
 using System.IO;
 using QuestingUpdate.lib.storage;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate.lib
 {
@@ -76,11 +77,7 @@ namespace QuestingUpdate.lib
             CreateRecipe("AlloyForgeTier2Recipe", "BronzePlates", "BronzeBolts", "RefineryT2_Boiler", "IntelRefineryT2", "AlloyForgeTier2", "RefineryModuleSide2Recipe", 6, 6, 2, 1, 1, "7DAAE7F9C18448E082D8719E10CBDE52");
             CreateRecipe("AlloyForgeTier3Recipe", "SteelPlates", "SteelBolts", "RefineryT3_Furnace", "IntelRefineryT3", "AlloyForgeTier3", "RefineryModuleSide3Recipe", 9, 9, 2, 1, 1, "48969D10B2344354967CCB4039EB0CBC");
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipes Loaded...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipes Loaded...");
             Debug.Log("[Questing Update | Recipes]: Recipes Loaded...");
         }
         private RecipeCategory tempcategory;
@@ -122,11 +119,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, string requiredItem)
@@ -150,11 +144,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId, string requiredItem)
@@ -179,11 +169,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId, GUID requiredItem)
@@ -208,11 +194,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId, string requiredItem1, string requiredItem2)
@@ -238,11 +220,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int outputAmount, string itemId, string requiredItem)
@@ -268,11 +246,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int outputAmount, string itemId, GUID requiredItem)
@@ -298,11 +272,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int outputAmount, string itemId, string requiredItem1, string requiredItem2)
@@ -329,11 +299,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int outputAmount, string itemId, string requiredItem1, string requiredItem2, string requiredItem3)
@@ -361,11 +327,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, string requiredItem1, string requiredItem2)
@@ -390,11 +352,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, string requiredItem1, string requiredItem2, string requiredItem3)
@@ -420,11 +378,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName, string outputName, string baseRecipeName, int inputAmount, int outputAmount, string itemId, RecipeCategory recipeCategory)
@@ -447,11 +401,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId)
@@ -475,11 +425,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string inputName4, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int inputAmount4, int outputAmount, string itemId)
@@ -505,11 +451,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(string recipeName, string inputName1, string inputName2, string inputName3, string inputName4, string inputName5, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int inputAmount3, int inputAmount4, int inputAmount5, int outputAmount, string itemId)
@@ -536,11 +478,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
         private void CreateRecipe(RecipeCategory recipeCategory, string recipeName, string inputName1, string inputName2, string outputName, string baseRecipeName, int inputAmount1, int inputAmount2, int outputAmount, string itemId)
@@ -564,11 +502,7 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
     }
 }

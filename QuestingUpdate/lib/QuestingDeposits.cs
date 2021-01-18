@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate.lib
 {
@@ -15,11 +16,7 @@ namespace QuestingUpdate.lib
             CreateDeposit(false, 100, "CobaltOre", 2, 5, "TitaniumOre");
             CreateDeposit(true, 100, "CobaltOre", 2, 5, "TitaniumOre");
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Deposits]: Deposits Loaded...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Deposits]: Deposits Loaded...");
 
             Debug.Log("[Questing Update | Deposits]: Deposits Loaded...");
         }
@@ -54,22 +51,14 @@ namespace QuestingUpdate.lib
                     }
                 }
             }
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Deposits]: Deposit Replacing " + ItemToReplace + " has been replaced with " + outputname);
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Deposits]: Deposit Replacing " + ItemToReplace + " has been replaced with " + outputname);
         }
         private ItemDefinition GetItem(string itemname)
         {
             ItemDefinition item = GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
             if (item == null)
             {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("ERROR: [Questing Update | Deposits]: Item is null, name: " + itemname + ". Replacing with NullItem");
-                    writer.Dispose();
-                }
+                QuestLog.Log("ERROR: [Questing Update | Deposits]: Item is null, name: " + itemname + ". Replacing with NullItem");
 
                 Debug.LogError("[Questing Update | Deposits]: Item is null, name: " + itemname + ". Replacing with NullItem");
                 return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");

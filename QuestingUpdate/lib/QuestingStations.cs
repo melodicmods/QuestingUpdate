@@ -13,11 +13,7 @@ namespace QuestingUpdate.lib {
             var forges = new RecipeCategory[] { FindRecipeCategories("ForgeTier1"), FindRecipeCategories("ForgeTier2"), FindRecipeCategories("ForgeTier3") };
             CreateStation(FindFactoryCategories("AlloyForge"), "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "AB14B23AB2E544BFBBEB5EEACB11D944", Sprite2("Resources/Stations/AlloyForgeControlStation.png"), "Alloy", forges);
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Stations]: Stations Loaded...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Stations]: Stations Loaded...");
 
             Debug.Log("[Questing Update | Stations]: Stations Loaded...");
         }
@@ -56,11 +52,7 @@ namespace QuestingUpdate.lib {
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
             if (!File.Exists(path))
             {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("ERROR: [Questing Update | Stations]: Specified Icon path not found: " + path);
-                    writer.Dispose();
-                }
+                QuestLog.Log("ERROR: [Questing Update | Stations]: Specified Icon path not found: " + path);
                 Debug.LogError("[Questing Update | Stations]: Specified Icon path not found: " + path);
                 return null;
             }
@@ -97,14 +89,6 @@ namespace QuestingUpdate.lib {
             gridmodule.Item = item;
 
             var productionGroup = QuestingReferences.GetOrCreateTyping(factoryType);
-            foreach (ProductionModule sleepersmodule in productionGroup.Modules)
-            {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("[Questing Update | Stations]: " + sleepersmodule.name);
-                    writer.Dispose();
-                }
-            }
 
             LocalizedString nameStr = name;
             LocalizedString descStr = desc;

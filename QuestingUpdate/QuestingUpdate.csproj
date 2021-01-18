@@ -426,6 +426,7 @@
   <ItemGroup>
     <Compile Include="lib\QuestingModifier.cs" />
     <Compile Include="lib\QuestingNamer.cs" />
+    <Compile Include="lib\scripts\QuestLog.cs" />
     <Compile Include="lib\scripts\QuestingAssets.cs" />
     <Compile Include="lib\scripts\QuestingExtensions.cs" />
     <Compile Include="lib\QuestingCategories.cs" />

@@ -16,11 +16,7 @@ namespace QuestingUpdate {
         {
             var lastWrite = File.GetLastWriteTime(typeof(QuestingMod).Assembly.Location);
             UnityEngine.Debug.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                writer.WriteLine($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
-                writer.Dispose();
-            }
+            QuestLog.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
 
             QuestingVersioning versioning = new QuestingVersioning();
             versioning.InitVersions();
@@ -48,78 +44,42 @@ namespace QuestingUpdate {
                     GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
                     break;
                 case "Island":
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("---Questing Items Begin---");
-                        writer.Dispose();
-                    }
+                    QuestLog.Log("---Questing Items Begin---");
                     new QuestingItems().InitItems();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Items Done.");
-                        writer.WriteLine("---Questing Items End---");
-                        writer.WriteLine("---Questing Deposits Begin---");
-                        writer.Dispose();
-                    }
+                    QuestLog.Log("[Questing Update | Main]: Items Done.");
+                    QuestLog.Log("---Questing Items End---");
 
+                    QuestLog.Log("---Questing Deposits Begin---");
                     new QuestingDeposits().InitDeposits();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Deposits Done.");
-                        writer.WriteLine("---Questing Deposits End---");
-                        writer.WriteLine("---Questing Categories Begin---");
-                        writer.Dispose();
-                    }
+                    QuestLog.Log("[Questing Update | Main]: Deposits Done.");
+                    QuestLog.Log("---Questing Deposits End---");
 
+                    QuestLog.Log("---Questing Categories Begin---");
                     new QuestingCategories().InitCategories();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Categories Done.");
-                        writer.WriteLine("---Questing Categories End---");
-                        writer.WriteLine("---Questing Modules Begin---");
-                        writer.Dispose();
-                    }
+                    QuestLog.Log("[Questing Update | Main]: Categories Done.");
+                    QuestLog.Log("---Questing Categories End---");
 
+                    QuestLog.Log("---Questing Modules Begin---");
                     new QuestingModules().InitModules();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Modules Done.");
-                        writer.WriteLine("---Questing Modules End---");
-                        writer.WriteLine("---Questing Stations Begin---");
-                        writer.Dispose();
-                    }
+                    QuestLog.Log("[Questing Update | Main]: Modules Done.");
+                    QuestLog.Log("---Questing Modules End---");
 
+                    QuestLog.Log("---Questing Stations Begin---");
                     new QuestingStations().InitStations();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Stations Done.");
-                        writer.WriteLine("---Questing Stations End---");
-                        writer.WriteLine("---Questing Recipes Begin---");
-                        writer.Dispose();
-                    }
-
+                    QuestLog.Log("[Questing Update | Main]: Stations Done.");
+                    QuestLog.Log("---Questing Stations End---");
+                    
+                    QuestLog.Log("---Questing Recipes Begin---");
                     new QuestingRecipes().InitRecipes();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Recipes Done.");
-                        writer.WriteLine("---Questing Recipes End---");
-                        writer.WriteLine("---Questing Modifier Begin---");
-                        writer.Dispose();
-                    }
-
+                    QuestLog.Log("[Questing Update | Main]: Recipes Done.");
+                    QuestLog.Log("---Questing Recipes End---");
+                    
+                    QuestLog.Log("---Questing Modifier Begin---");
                     new QuestingModifier().InitModifier();
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Modifier Done.");
-                        writer.WriteLine("---Questing Modifier End---");
-                        writer.Dispose();
-                    }
-
-                    using (StreamWriter writer = new StreamWriter(path, true))
-                    {
-                        writer.WriteLine("[Questing Update | Main]: Done with Init.");
-                        writer.Dispose();
-                    }
+                    QuestLog.Log("[Questing Update | Main]: Modifier Done.");
+                    QuestLog.Log("---Questing Modifier End---");
+                    
+                    QuestLog.Log("[Questing Update | Main]: Done with Init.");
                     break;
             }
         }
@@ -127,11 +87,7 @@ namespace QuestingUpdate {
         public override void Unload()
         {
             UnityEngine.Debug.Log("[Questing Update | Main]: Questing Update unloaded");
-            using (StreamWriter writer = new StreamWriter(path, true))
-            {
-                writer.WriteLine("[Questing Update | Main]: Game Finished, Closing...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Main]: Game Finished, Closing...");
         }
     }
 }

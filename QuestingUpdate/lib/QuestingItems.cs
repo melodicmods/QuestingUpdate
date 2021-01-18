@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate.lib
 {
@@ -128,11 +129,7 @@ namespace QuestingUpdate.lib
             CreateItem("UpgradeResourceRefining3", 5, "Perfect Resource Refining Upgrade", "The Upgrade to Allow for Further Resource Refining \r\n" + "Part of the Questing Update",
                 "9FB8134FF4AA441987F134B74AB26BE1", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Items]: Items Loaded...");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Items]: Items Loaded...");
 
             Debug.Log("[Questing Update | Items]: Items Loaded...");
         }
@@ -147,11 +144,7 @@ namespace QuestingUpdate.lib
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
             if (!File.Exists(path))
             {
-                using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-                {
-                    writer.WriteLine("ERROR: [Questing Update | Items]: Specified Icon path not found: " + path);
-                    writer.Dispose();
-                }
+                QuestLog.Log("ERROR: [Questing Update | Items]: Specified Icon path not found: " + path);
 
                 Debug.LogError("[Questing Update | Items]: Specified Icon path not found: " + path);
                 return null;
@@ -190,11 +183,7 @@ namespace QuestingUpdate.lib
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
 
-            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
-            {
-                writer.WriteLine("[Questing Update | Items]: Item " + codename + " has been loaded");
-                writer.Dispose();
-            }
+            QuestLog.Log("[Questing Update | Items]: Item " + codename + " has been loaded");
         }
     }
 }
