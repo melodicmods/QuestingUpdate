@@ -5,13 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuestingUpdate.lib.storage;
+using QuestingUpdate.lib.scripts;
+using UnityEngine;
 
 namespace QuestingUpdate.lib
 {
-    class QuestingModifier
+    class QuestingModifier : MonoBehaviour
     {
         public void InitModifier()
         {
+            ModifyCoalModule();
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
             ModifyUpgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
@@ -127,6 +130,25 @@ namespace QuestingUpdate.lib
             using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
             {
                 writer.WriteLine("[Questing Update | Modifier]: Titanium Recipe Modified");
+                writer.Dispose();
+            }
+        }
+
+        private void ModifyCoalModule()
+        {
+            QuestingAssets questingAssets = new QuestingAssets();
+            var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            foreach (GameObject obj in item.Prefabs)
+            {
+                if (obj.name == "CoalPowerModuleTop1")
+                {
+                    Destroy(obj);
+                    item.Prefabs = new GameObject[] { item.Prefabs[0], questingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab") };
+                }
+            }
+            using (StreamWriter writer = new StreamWriter(QuestingMod.path, true))
+            {
+                writer.WriteLine("[Questing Update | Modifier]: " + questingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab").name);
                 writer.Dispose();
             }
         }

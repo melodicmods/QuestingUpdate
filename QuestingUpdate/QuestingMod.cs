@@ -3,11 +3,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using QuestingUpdate.lib;
 using System.Diagnostics;
+using QuestingUpdate.lib.scripts;
 
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
-        public const string version = "0.2.5";
+        public const string version = "0.2.6";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
@@ -39,11 +40,6 @@ namespace QuestingUpdate {
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            var rootGameObject = scene.GetRootGameObjects()[0];
-            if (!rootGameObject.gameObject.HasComponent<Component>())
-            {
-                rootGameObject.gameObject.AddComponent<Component>();
-            }
             switch (scene.name)
             {
                 case "MainMenu":
