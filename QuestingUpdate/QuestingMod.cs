@@ -8,7 +8,7 @@ using QuestingUpdate.lib.scripts;
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
-        public const string version = "0.3.0";
+        public const string version = "0.3.1";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
