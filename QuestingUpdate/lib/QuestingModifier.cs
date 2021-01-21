@@ -27,10 +27,10 @@ namespace QuestingUpdate.lib
             ModifyUpgrade("UpgradeCopperworking", "CopperBoltsRecipe");
             ModifyUpgrade("UpgradeCopperworking", "CopperPlatesRecipe");
             ModifyUpgrade("UpgradeCopperworking", "CopperTubesRecipe");
-            ModifyUpgrade("UpgradeCopperArmor", QuestingGUIDs.ArmorkitCopper);
+            ModifyUpgrade("UpgradeCopperArmor", QuestingGUIDs.ArmorKitCopperRecipe);
             ModifyUpgrade("UpgradeSimpleWeapons", QuestingGUIDs.RevolverWeaponRecipe);
             ModifyUpgrade("UpgradeSimpleWeapons", QuestingGUIDs.ShotgunWeaponRecipe);
-            ModifyUpgrade("UpgradeTurretsTier1", QuestingGUIDs.TurretModulePistol);
+            ModifyUpgrade("UpgradeTurretsTier1", QuestingGUIDs.RevolverTurretModuleRecipe);
             ModifyUpgrade("UpgradeBasicAlloying", "AlloyT1Recipe");
             ModifyUpgrade("UpgradeBasicAlloying", "BronzeIngotRecipe");
             ModifyUpgrade("UpgradeBronzeworking", "BronzeTubesRecipe");
