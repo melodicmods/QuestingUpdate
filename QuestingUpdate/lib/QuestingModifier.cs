@@ -11,7 +11,8 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
-            //ModifyCoalModule();
+            ModifyCoalModule();
+
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
             ModifyUpgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
@@ -123,40 +124,83 @@ namespace QuestingUpdate.lib
             QuestLog.Log("[Questing Update | Modifier]: Titanium Recipe Modified");
         }
 
-        //private void ModifyCoalModule()
-        //{
-        //    //var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
-        //    //var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
+        private void ModifyCoalModule()
+        {
+            var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            var newPrefab = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
+            var newMaterial = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
 
-        //    //RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
+            //RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
 
-        //    //foreach (var obj in item.Prefabs)
-        //    //{
-        //    //    if (obj.name == "CoalPowerModuleTop1")
-        //    //    {
-        //    //        Destroy(obj);
-        //    //        item.Prefabs = new[] { item.Prefabs[0], newPrefab };
-        //    //    }
-        //    //}
-        //    //QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
-        //    var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
-        //    QuestLog.Log("[Questing Update | Modifier]: " + newPrefab);
-        //    foreach (var megaobj in newPrefab.GetComponentsInChildren<Transform>())
-        //    {
-        //        QuestLog.Log("[Questing Update | Modifier]: " + megaobj);
-        //    }
-        //    var cache = NetworkResources.Instance.GridModules.Prefabs;
-        //    foreach(var obj in cache)
-        //    {
-        //        if(obj.name == "CoalPowerModuleTop1")
-        //        {
-        //            foreach(var outobj in obj.GetComponentsInChildren<Animator>())
-        //            {
-        //                QuestLog.Log("[Questing Update | Modifier]: " + outobj);
-        //            }
-        //        }
-        //    }
-        //}
+            //foreach (var obj in item.Prefabs)
+            //{
+            //    if (obj.name == "CoalPowerModuleTop1")
+            //    {
+            //        Destroy(obj);
+            //        item.Prefabs = new[] { item.Prefabs[0], newPrefab };
+            //    }
+            //}
+            //QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
+            //var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
+            //QuestLog.Log("[Questing Update | Modifier]: " + newPrefab);
+            //foreach (var megaobj in newPrefab.GetComponentsInChildren<Transform>())
+            //{
+            //    QuestLog.Log("[Questing Update | Modifier]: " + megaobj);
+            //}
+            //var cache = NetworkResources.Instance.GridModules.Prefabs;
+            //foreach (var obj in cache)
+            //{
+            //    if (obj.name == "CoalPowerModuleTop1")
+            //    {
+            //        foreach (var outobj in obj.GetComponentsInChildren<Animator>())
+            //        {
+            //            QuestLog.Log("[Questing Update | Modifier]: " + outobj);
+            //        }
+            //    }
+            //}
+
+            var cubePrefab = newPrefab;
+            var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            var coalTopPrefab = coalItem.Prefabs[1];
+            var coalTop2 = coalItem.Prefabs[0];
+
+            var parent = new GameObject();
+            parent.SetActive(false);
+            Object.DontDestroyOnLoad(parent);
+
+            var copy = Object.Instantiate(coalTopPrefab, parent.transform);
+            var cubeCopy = Object.Instantiate(cubePrefab, copy.transform);
+            foreach (var thing in copy.GetComponentsInChildren<Animator>())
+            {
+                //QuestLog.Log("" + thing);
+                foreach (var internalthing in thing.GetComponentsInChildren<MeshFilter>())
+                {
+                    foreach (var itemsthing in cubeCopy.GetComponentsInChildren<MeshFilter>())
+                    {
+                        if (internalthing.name == "Cylinder9648")
+                        {
+                            internalthing.mesh = itemsthing.mesh;
+                            
+                        }
+                    }
+                }
+            }
+            
+            foreach(Animator thing in copy.GetComponentsInChildren<Animator>())
+            {
+                foreach (var internalthing in thing.GetComponentsInChildren<MeshRenderer>())
+                {
+                    if (internalthing.name == "Cylinder9648")
+                    {
+                        internalthing.sharedMaterial = newMaterial;
+                        QuestLog.Log("" + newMaterial);
+                    }
+                }
+            }
+
+            cubeCopy.DestroyAuto();
+            coalItem.Prefabs[1] = copy;
+        }
 
         private void ModifyUpgrade(string name1, string modifyName)
         {
