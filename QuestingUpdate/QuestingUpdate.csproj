@@ -424,6 +424,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\addons\AddonController.cs" />
+    <Compile Include="lib\addons\GenericMod\GenericRegistry.cs" />
+    <Compile Include="lib\addons\scripts\AddonLog.cs" />
     <Compile Include="lib\QuestingModifier.cs" />
     <Compile Include="lib\QuestingNamer.cs" />
     <Compile Include="lib\scripts\QuestLog.cs" />

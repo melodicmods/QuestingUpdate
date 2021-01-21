@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using QuestingUpdate.lib;
 using System.Diagnostics;
 using QuestingUpdate.lib.scripts;
+using QuestingUpdate.lib.addons;
 
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
@@ -44,6 +45,9 @@ namespace QuestingUpdate {
                     GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
                     break;
                 case "Island":
+                    QuestLog.Log("---Addon Registration Begin---");
+                    new AddonController();
+                    QuestLog.Log("---Addon Registration End---");
                     QuestLog.Log("---Questing Items Begin---");
                     new QuestingItems().InitItems();
                     QuestLog.Log("[Questing Update | Main]: Items Done.");
