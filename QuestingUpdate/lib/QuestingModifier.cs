@@ -126,10 +126,6 @@ namespace QuestingUpdate.lib
 
         private void ModifyCoalModule()
         {
-            var item = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
-            var newPrefab = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
-            var newMaterial = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
-
             //RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
 
             //foreach (var obj in item.Prefabs)
@@ -159,47 +155,45 @@ namespace QuestingUpdate.lib
             //    }
             //}
 
-            var cubePrefab = newPrefab;
-            var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            var cubePrefab    = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
+            var newMaterial   = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
+            var coalItem      = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            if (coalItem == null) {
+                QuestLog.Log("CoalPowerModuleT1 not found.");
+                return;
+            }
+
             var coalTopPrefab = coalItem.Prefabs[1];
-            var coalTop2 = coalItem.Prefabs[0];
 
             var parent = new GameObject();
             parent.SetActive(false);
-            Object.DontDestroyOnLoad(parent);
+            DontDestroyOnLoad(parent);
 
-            var copy = Object.Instantiate(coalTopPrefab, parent.transform);
-            var cubeCopy = Object.Instantiate(cubePrefab, copy.transform);
-            foreach (var thing in copy.GetComponentsInChildren<Animator>())
-            {
-                //QuestLog.Log("" + thing);
-                foreach (var internalthing in thing.GetComponentsInChildren<MeshFilter>())
-                {
-                    foreach (var itemsthing in cubeCopy.GetComponentsInChildren<MeshFilter>())
-                    {
-                        if (internalthing.name == "Cylinder9648")
-                        {
-                            internalthing.mesh = itemsthing.mesh;
-                            
-                        }
-                    }
-                }
+            var coalTopPrefabCopy = Instantiate(coalTopPrefab, parent.transform);
+            var cubePrefabCopy    = Instantiate(cubePrefab, coalTopPrefabCopy.transform);
+
+            // Get the meshFilter from the instanced cube prefab.
+            var cubeMeshFilter = cubePrefabCopy.GetComponentsInChildren<MeshFilter>().FirstOrDefault(meshFilter => meshFilter.name == "Cylinder9648");
+            if (cubeMeshFilter == null) {
+                QuestLog.Log("cubeMeshFilter (Cylinder9648) not found.");
+                return;
             }
-            
-            foreach(Animator thing in copy.GetComponentsInChildren<Animator>())
-            {
-                foreach (var internalthing in thing.GetComponentsInChildren<MeshRenderer>())
-                {
-                    if (internalthing.name == "Cylinder9648")
-                    {
-                        internalthing.sharedMaterial = newMaterial;
-                        QuestLog.Log("" + newMaterial);
-                    }
+
+            // For each animator in coalTopPrefabCopy.
+            foreach (var animator in coalTopPrefabCopy.GetComponentsInChildren<Animator>()) {
+                // For each meshFilter in animator with name == "Cylinder9648".
+                foreach (var meshFilter in animator.GetComponentsInChildren<MeshFilter>().Where(meshFilter => meshFilter.name == "Cylinder9648")) {
+                    meshFilter.mesh = cubeMeshFilter.mesh;
+                }
+
+                // For each meshRenderer in animator with name == "Cylinder9648".
+                foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == "Cylinder9648")) {
+                    meshRenderer.sharedMaterial = newMaterial;
                 }
             }
 
-            cubeCopy.DestroyAuto();
-            coalItem.Prefabs[1] = copy;
+            cubePrefabCopy.DestroyAuto();
+            coalItem.Prefabs[1] = coalTopPrefabCopy;
         }
 
         private void ModifyUpgrade(string name1, string modifyName)
