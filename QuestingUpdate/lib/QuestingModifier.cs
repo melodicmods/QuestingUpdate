@@ -126,38 +126,9 @@ namespace QuestingUpdate.lib
 
         private void ModifyCoalModule()
         {
-            //RuntimeAssetStorage.Add(new[] { new AssetReference() { Object = newPrefab, Guid = GUID.Parse("D653594B6BC344B3B6D8533A5CB0BA0B"), Labels = new string[0] } }, default);
-
-            //foreach (var obj in item.Prefabs)
-            //{
-            //    if (obj.name == "CoalPowerModuleTop1")
-            //    {
-            //        Destroy(obj);
-            //        item.Prefabs = new[] { item.Prefabs[0], newPrefab };
-            //    }
-            //}
-            //QuestLog.Log("[Questing Update | Modifier]: " + newPrefab.name);
-            //var newPrefab = QuestingAssets.GetAsset("questingbundle.coalplant", "assets/3dobjects/coalpowermoduletop1.prefab");
-            //QuestLog.Log("[Questing Update | Modifier]: " + newPrefab);
-            //foreach (var megaobj in newPrefab.GetComponentsInChildren<Transform>())
-            //{
-            //    QuestLog.Log("[Questing Update | Modifier]: " + megaobj);
-            //}
-            //var cache = NetworkResources.Instance.GridModules.Prefabs;
-            //foreach (var obj in cache)
-            //{
-            //    if (obj.name == "CoalPowerModuleTop1")
-            //    {
-            //        foreach (var outobj in obj.GetComponentsInChildren<Animator>())
-            //        {
-            //            QuestLog.Log("[Questing Update | Modifier]: " + outobj);
-            //        }
-            //    }
-            //}
-
-            var cubePrefab    = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
-            var newMaterial   = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
-            var coalItem      = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            var cubePrefab = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
+            var newMaterial = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
+            var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
             if (coalItem == null) {
                 QuestLog.Log("CoalPowerModuleT1 not found.");
                 return;
@@ -173,7 +144,7 @@ namespace QuestingUpdate.lib
             var cubePrefabCopy    = Instantiate(cubePrefab, coalTopPrefabCopy.transform);
 
             // Get the meshFilter from the instanced cube prefab.
-            var cubeMeshFilter = cubePrefabCopy.GetComponentsInChildren<MeshFilter>().FirstOrDefault(meshFilter => meshFilter.name == "Cylinder9648");
+            var cubeMeshFilter = cubePrefabCopy.GetComponentsInChildren<MeshFilter>().First();
             if (cubeMeshFilter == null) {
                 QuestLog.Log("cubeMeshFilter (Cylinder9648) not found.");
                 return;
@@ -188,10 +159,18 @@ namespace QuestingUpdate.lib
 
                 // For each meshRenderer in animator with name == "Cylinder9648".
                 foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == "Cylinder9648")) {
-                    meshRenderer.sharedMaterial = newMaterial;
+                    meshRenderer.material.mainTexture = newMaterial.mainTexture;
+                    meshRenderer.material.globalIlluminationFlags = newMaterial.globalIlluminationFlags;
+                }
+
+                foreach(var objectlist in coalTopPrefab.GetComponentsInChildren<Transform>())
+                {
+                    foreach (var transformMesh in objectlist.GetComponentsInChildren<MeshRenderer>().Where(transformMesh => transformMesh.name == "Cylinder9648"))
+                    {
+                        transformMesh.material = newMaterial;
+                    }
                 }
             }
-
             cubePrefabCopy.DestroyAuto();
             coalItem.Prefabs[1] = coalTopPrefabCopy;
         }

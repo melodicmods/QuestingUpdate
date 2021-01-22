@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuestingUpdate.lib.addons.GenericMod;
+using QuestingUpdate.lib.addons.ThermoNuclear;
 using QuestingUpdate.lib.addons.scripts;
 using QuestingUpdate.lib.scripts;
 
@@ -17,7 +18,7 @@ namespace QuestingUpdate.lib.addons
             QuestLog.Log("[Addon Manager]: Addon System Enabled");
             AddonLog.Log("[Addon Manager]: Addon System Enabled", true);
             new GenericRegistry().AddonGeneric();
-
+            new Thermonuclear().AddonNuclear();
             AddonLog.Log("[Addon Manager]: Addon System Finished");
             QuestLog.Log("[Addon Manager]: Addon System Finished");
         }
