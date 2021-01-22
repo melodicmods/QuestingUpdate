@@ -11,7 +11,7 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
-            ModifyCoalModule();
+            //ModifyCoalModule();
 
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
