@@ -58,11 +58,11 @@ namespace QuestingUpdate.lib
             CreateRecipe("UpgradeAdvancedTurrets1Recipe", "TurretModule", "IntelProductionT1", "BronzeIngot", "UpgradeAdvancedTurrets1", "UpgradeStarterRefineryRecipe", 1, 2, 20, 1, "9865CE4C53DC4D52A8A0DC349859C510", "UpgradeTurretsTier1");
 
             // Tier 2
-            CreateRecipe("UpgradeIronRefiningRecipe", "CopperIngot", "IntelRefineryT2", "UpgradeIronRefining", "UpgradeStarterRefineryRecipe", 10, 1, 1, "1E4FF66AEF594127940F6B1CC2BFBC5B", QuestingGUIDs.UpgradeBasicProduction2Recipe);
+            CreateRecipe("UpgradeIronRefiningRecipe", "CopperIngot", "IntelRefineryT2", "UpgradeIronRefining", "UpgradeStarterRefineryRecipe", 10, 1, 1, "1E4FF66AEF594127940F6B1CC2BFBC5B", QuestingGUIDs.UpgradeBasicProduction);
             CreateRecipe("UpgradeIronworkingRecipe", "IronOre", "IntelRefineryT2", "UpgradeIronworking", "UpgradeStarterRefineryRecipe", 20, 1, 1, "189D623C94974D9D99E4BABA3A3C3C04", "UpgradeIronRefining");
             CreateRecipe("UpgradeAdvancedIronPartsRecipe", "IronIngot", "IntelProductionT2", "UpgradeAdvancedIronParts", "UpgradeStarterRefineryRecipe", 10, 1, 1, "CC5FDB6325D84483A5D7D0B94CA1176A", "UpgradeIronworking");
             CreateRecipe("UpgradeIronArmorRecipe", "IronIngot", "IronPlates", "IntelProductionT2", "UpgradeIronArmor", "UpgradeStarterRefineryRecipe", 10, 10, 2, 1, "FCC3D9E22DDE483096EE61B52544351C", "UpgradeIronworking", "UpgradeBronzeArmor");
-            CreateRecipe("UpgradeResourceRefining2Recipe", "IronOre", "BronzeIngot", "IntelRefineryT2", "UpgradeResourceRefining2", "UpgradeStarterRefineryRecipe", 10, 10, 2, 1, "71FF16A7CC8B4F9EBB4E438FE3A52DB5", QuestingGUIDs.UpgradeBasicProduction2Recipe);
+            CreateRecipe("UpgradeResourceRefining2Recipe", "IronOre", "BronzeIngot", "IntelRefineryT2", "UpgradeResourceRefining2", "UpgradeStarterRefineryRecipe", 10, 10, 2, 1, "71FF16A7CC8B4F9EBB4E438FE3A52DB5", QuestingGUIDs.UpgradeBasicProduction);
             CreateRecipe("UpgradeAdvancedAlloyingRecipe", "BronzeIngot", "CopperIngot", "IntelResearchT2", "UpgradeAdvancedAlloying", "UpgradeStarterRefineryRecipe", 10, 10, 2, 1, "E54B5252D1AC4CBAB1CC8FE3A4162445", "UpgradeResourceRefining2", "UpgradeIronworking");
             CreateRecipe("UpgradeAlloyForge2Recipe", "BronzeIngot", "IronIngot", "IntelResearchT2", "UpgradeAlloyForge2", "UpgradeStarterRefineryRecipe", 10, 20, 2, 1, "25F63E963AFF4D33B52874A4F29E0383", "UpgradeAdvancedAlloying");
             CreateRecipe("UpgradeSteelworkingRecipe", "SteelIngot", "IntelRefineryT2", "UpgradeSteelworking", "UpgradeStarterRefineryRecipe", 10, 3, 1, "D70B44803CEA47418C166E69DBD9DA98", "UpgradeAlloyForge2");
@@ -71,6 +71,23 @@ namespace QuestingUpdate.lib
             CreateRecipe("UpgradeTurretsTier2Recipe", "TurretModule", "SteelIngot", "IntelResearchT2", "UpgradeTurretsTier2", "UpgradeStarterRefineryRecipe", 3, 10, 3, 1, "16CC22FA14A54A708B9D1495F956BCA5", "UpgradeImprovedWeapons", "UpgradeAdvancedTurrets1");
             CreateRecipe("UpgradeAdvancedTurrets2Recipe", "TurretModule", "SteelPlates", "IntelResearchT2", "UpgradeAdvancedTurrets2", "UpgradeStarterRefineryRecipe", 5, 15, 3, 1, "13868650384046CF875FF50BA83F2117", "UpgradeTurretsTier2");
             CreateRecipe("UpgradeDrillshipParts2Recipe", "ShipCoreUpgrade1", "SteelIngot", "IntelProductionT2", "UpgradeDrillshipParts2", "UpgradeStarterRefineryRecipe", 1, 50, 5, 1, "1DCCCE0FF2E440988A2D381E2E51D6D1", "UpgradeSteelworking", "UpgradeAdvancedIronParts");
+
+            // Tier 3
+            CreateRecipe("UpgradeExpertAlloyingRecipe", "CobaltIngot", "IntelRefineryT3", "UpgradeExpertAlloying", "UpgradeStarterRefineryRecipe", 20, 5, 1, "6C8FA823ED9C4D6D9E02044C4BF22516", "UpgradeCobaltworking", "UpgradeResourceRefining3");
+            CreateRecipe("UpgradeResourceRefining3Recipe", "CobaltOre", "IntelRefineryT3", "UpgradeResourceRefining3", "UpgradeStarterRefineryRecipe", 10, 4, 1, "EF4D2CFFC3C44FCF951190E86C9105E5", QuestingGUIDs.UpgradeAdvancedRefinery);
+            CreateRecipe("UpgradeCobaltRefiningRecipe", "SteelIngot", "IntelRefineryT3", "UpgradeCobaltRefining", "UpgradeStarterRefineryRecipe", 20, 4, 1, "DF7FEF8C7A08437A9F03F9DD172FE87C", QuestingGUIDs.UpgradeAdvancedRefinery);
+            CreateRecipe("UpgradeCobaltworkingRecipe", "CobaltIngot", "IntelProductionT3", "UpgradeCobaltworking", "UpgradeStarterRefineryRecipe", 10, 4, 1, "32D4E1FFAB624402983DC58317C4F408", "UpgradeCobaltRefining");
+            CreateRecipe("UpgradeAdvancedCobaltPartsRecipe", "CobaltIngot", "IntelProductionT3", "UpgradeAdvancedCobaltParts", "UpgradeStarterRefineryRecipe", 50, 5, 1, "D2C9D442F83D4498B251691DFB09B0F1", "UpgradeCobaltworking");
+            CreateRecipe("UpgradeAlloyingTier3Recipe", "SteelIngot", "IntelRefineryT3", "UpgradeAlloyingTier3", "UpgradeStarterRefineryRecipe", 50, 5, 1, "E75309EBF5F8493496166A83D59BEA5D", "UpgradeExpertAlloying");
+            CreateRecipe("UpgradeTitanworkingRecipe", "TitaniumIngot", "IntelProductionT3", "UpgradeTitanworking", "UpgradeStarterRefineryRecipe", 30, 5, 1, "DDC05BA7041F4B1EBEBAF7603931DB32", "UpgradeAlloyingTier3");
+            CreateRecipe("UpgradeCobaltArmorRecipe", "CobaltPlates", "CobaltBolts", "IntelProductionT3", "UpgradeCobaltArmor", "UpgradeStarterRefineryRecipe",15, 10, 5, 1, "6CEBEA28FF7E43609FAC1A7198FAC86E", "UpgradeAdvancedCobaltParts", "UpgradeSteelArmor");
+            CreateRecipe("UpgradeTitanArmorRecipe", "TitaniumPlates", "TitaniumBolts", "IntelProductionT3", "UpgradeTitanArmor", "UpgradeStarterRefineryRecipe", 15, 10, 5, 1, "D0EBEA1A2E4A490AAAEE9E53ACD15B22", "UpgradeTitanworking", "UpgradeCobaltArmor");
+            CreateRecipe("UpgradeAdvancedWeaponsRecipe", "TitaniumPlates", "TitaniumIngot", "IntelProductionT3", "UpgradeAdvancedWeapons", "UpgradeStarterRefineryRecipe", 15, 10, 10, 1, "4012E17308B444A89F6C29232FD76116", "AdvancedExplosivesSchematic", "UpgradeImprovedWeapons", "UpgradeTitanworking");
+            CreateRecipe("UpgradeTurretsTier3Recipe", "TurretModuleSMG", "TitaniumPlates", "IntelProductionT3", "UpgradeTurretsTier3", "UpgradeStarterRefineryRecipe", 3, 10, 5, 1, "F52CDA0029644EACB72C532FFD4B1D20", "UpgradeAdvancedTurrets2", "UpgradeAdvancedWeapons");
+            CreateRecipe("UpgradeAdvancedTurrets3Recipe", "TurretModuleMortar", "TitaniumIngot", "IntelProductionT3", "UpgradeAdvancedTurrets3", "UpgradeStarterRefineryRecipe", 3, 10, 5, 1, "454F57A8C23F48F4B67995B3539FF222", "UpgradeTurretsTier3");
+            CreateRecipe("UpgradeDrillshipParts3Recipe", "ShipCoreUpgrade2", "TitaniumIngot", "IntelProductionT3", "UpgradeDrillshipParts3", "UpgradeStarterRefineryRecipe", 3, 75, 7, 1, "DDD84EAE2C374BA891A06DC18B09C1BB", "UpgradeTitanworking");
+            CreateRecipe("UpgradeDrill4Recipe", "ShipCoreUpgrade3", "TitaniumIngot", "IntelProductionT3", "UpgradeDrill4", "UpgradeStarterRefineryRecipe", 3, 100, 10, 1, "7BCFEA88A7DA4925930FDAFF27734AFF", "UpgradeDrillshipParts3");
+            CreateRecipe("UpgradeHeatResistanceRecipe", "DrillT4_Diamond", "TitaniumIngot", "IntelProductionT3", "UpgradeHeatResistance", "UpgradeStarterRefineryRecipe", 1, 100, 10, 1, "0B7B46FE83644DD489E2239AD5287179", "UpgradeAdvancedWeapons", "UpgradeTitanArmor", "UpgradeDrill4");
 
             // Modules
             CreateRecipe("AlloyForgeTier1Recipe", "CopperPlates", "CopperBolts", "RefineryT1_Shredder", "IntelRefineryT1", "AlloyForgeTier1", "RefineryModuleSide1Recipe", 3, 3, 1, 1, 1, "1A6B5BFD59D5418A9ADD618B85F812E2");
@@ -119,7 +136,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
-            
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -144,6 +162,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -169,6 +189,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -194,6 +216,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -220,6 +244,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -246,6 +272,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -272,6 +300,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -299,6 +329,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -327,6 +359,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -352,6 +386,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -378,6 +414,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -401,6 +439,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -425,6 +465,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -451,6 +493,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -478,6 +522,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
 
@@ -502,6 +548,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = recipe, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[recipeName] = guid;
             QuestLog.Log("[Questing Update | Recipes]: Recipe " + recipeName + " has been Loaded");
         }
     }

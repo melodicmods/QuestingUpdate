@@ -5,11 +5,14 @@ using QuestingUpdate.lib;
 using System.Diagnostics;
 using QuestingUpdate.lib.scripts;
 using QuestingUpdate.lib.addons;
+using QuestingUpdate.lib.storage;
+using QuestingUpdate.lib.gui;
 
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
-        public const string version = "0.3.3";
+        public static bool key = true;
+        public const string version = "0.3.4";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
@@ -37,6 +40,7 @@ namespace QuestingUpdate {
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            scene.GetRootGameObjects()[0].AddComponent<MagicStuff>();
             switch (scene.name)
             {
                 case "MainMenu":
@@ -45,6 +49,9 @@ namespace QuestingUpdate {
                     GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
                     break;
                 case "Island":
+                    QuestLog.Log("---Questing Init Begin---");
+                    new QuestingDict();
+                    QuestLog.Log("---Questing Init End---");
                     QuestLog.Log("---Addon Registration Begin---");
                     new AddonController();
                     QuestLog.Log("---Addon Registration End---");
@@ -82,7 +89,8 @@ namespace QuestingUpdate {
                     new QuestingModifier().InitModifier();
                     QuestLog.Log("[Questing Update | Main]: Modifier Done.");
                     QuestLog.Log("---Questing Modifier End---");
-                    
+
+                    QuestingDict.ReturnAllData();
                     QuestLog.Log("[Questing Update | Main]: Done with Init.");
                     break;
             }
@@ -92,6 +100,18 @@ namespace QuestingUpdate {
         {
             UnityEngine.Debug.Log("[Questing Update | Main]: Questing Update unloaded");
             QuestLog.Log("[Questing Update | Main]: Game Finished, Closing...");
+        }
+    }
+
+    class MagicStuff : MonoBehaviour
+    {
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                TechTree.Enable(QuestingMod.key);
+                QuestingMod.key = !QuestingMod.key;
+            }
         }
     }
 }

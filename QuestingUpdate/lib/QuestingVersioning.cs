@@ -14,7 +14,7 @@ namespace QuestingUpdate.lib
 {
     class QuestingVersioning : MonoBehaviour
     {
-        private string resourceVersion;
+        private string resourceVersion = "";
         private static readonly string ResourcePath = Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/Resources";
         private static readonly string DownloadPath = Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/QuestingResources.zip";
         private static readonly string ExtractPath = Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/";
@@ -43,7 +43,9 @@ namespace QuestingUpdate.lib
             {
                 if (File.Exists(@ResourcePath + "/Version.txt"))
                 {
-                    var version = File.ReadAllText(Path.Combine(@ResourcePath, "Version.txt"));
+                    var version = "";
+                    version = File.ReadAllText(Path.Combine(@ResourcePath, "Version.txt"));
+                    QuestLog.Log("[Questing Update | Versioning]: " + version);
                     if (version != resourceVersion)
                     {
                         Directory.Delete(@ResourcePath, true);

@@ -11,7 +11,7 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
-            //ModifyCoalModule();
+            ModifyCoalModule();
 
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
@@ -90,7 +90,21 @@ namespace QuestingUpdate.lib
             ModifyTable("ResearchTier2", "UpgradeDrillshipParts2Recipe");
 
             // Tier 3
-
+            ModifyTable("ResearchTier3", "UpgradeExpertAlloyingRecipe");
+            ModifyTable("ResearchTier3", "UpgradeResourceRefining3Recipe");
+            ModifyTable("ResearchTier3", "UpgradeCobaltRefiningRecipe");
+            ModifyTable("ResearchTier3", "UpgradeCobaltworkingRecipe");
+            ModifyTable("ResearchTier3", "UpgradeAdvancedCobaltPartsRecipe");
+            ModifyTable("ResearchTier3", "UpgradeAlloyingTier3Recipe");
+            ModifyTable("ResearchTier3", "UpgradeTitanworkingRecipe");
+            ModifyTable("ResearchTier3", "UpgradeCobaltArmorRecipe");
+            ModifyTable("ResearchTier3", "UpgradeTitanArmorRecipe");
+            ModifyTable("ResearchTier3", "UpgradeAdvancedWeaponsRecipe");
+            ModifyTable("ResearchTier3", "UpgradeTurretsTier3Recipe");
+            ModifyTable("ResearchTier3", "UpgradeAdvancedTurrets3Recipe");
+            ModifyTable("ResearchTier3", "UpgradeDrillshipParts3Recipe");
+            ModifyTable("ResearchTier3", "UpgradeDrill4Recipe");
+            ModifyTable("ResearchTier3", "UpgradeHeatResistanceRecipe");
 
             QuestLog.Log("[Questing Update | Modifier]: Modifiers Loaded...");
         }
@@ -128,7 +142,7 @@ namespace QuestingUpdate.lib
         {
             var cubePrefab = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
             var newMaterial = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
-            var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "CoalPowerModuleT1");
+            var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == QuestingGUIDs.CoalPowerModuleT1);
             if (coalItem == null) {
                 QuestLog.Log("CoalPowerModuleT1 not found.");
                 return;

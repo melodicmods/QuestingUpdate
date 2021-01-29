@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using QuestingUpdate.lib.scripts;
+using QuestingUpdate.lib.storage;
 
 namespace QuestingUpdate.lib
 {
@@ -70,27 +71,27 @@ namespace QuestingUpdate.lib
 
             // Tier 1 Upgrades
             CreateItem("UpgradeResourceRefining1", 5, "Basic Resource Refining Upgrade", "The Upgrade to Allow for Further Resource Refining \r\n" + "Part of the Questing Update",
-                "DA9BBD26D3A44E3DA094BEA4BE6D0B90", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "DA9BBD26D3A44E3DA094BEA4BE6D0B90", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/ResourceRefining.png"));
             CreateItem("UpgradeCopperworking", 5, "Copperworking Upgrade", "The Upgrade to Allow Production of Copper Parts \r\n" + "Part of the Questing Update",
-                "16AE4FFC37F044C7B31E6D37726763E0", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "16AE4FFC37F044C7B31E6D37726763E0", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/Copperworking.png"));
             CreateItem("UpgradeCopperArmor", 5, "Copper Armor Upgrade", "The Upgrade to Allow Production of Copper Armor \r\n" + "Part of the Questing Update",
-                "E4D83E8A4AAC419DA0E09CBF710B40FF", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "E4D83E8A4AAC419DA0E09CBF710B40FF", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/CopperArmor.png"));
             CreateItem("UpgradeSimpleWeapons", 5, "Simple Weapons Upgrade", "The Upgrade to Allow Production of Simple Weaponry \r\n" + "Part of the Questing Update",
-                "C7A3B3ED36884410A4E61D99B7D91B88", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "C7A3B3ED36884410A4E61D99B7D91B88", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/SimpleWeapons.png"));
             CreateItem("UpgradeBasicAlloying", 5, "Basic Alloying Upgrade", "The Research Behind the Alloys of this World \r\n" + "Part of the Questing Update",
-                "FBF4F9DCA52C4683A1AB998104357E9F", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "FBF4F9DCA52C4683A1AB998104357E9F", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/BasicAlloying.png"));
             CreateItem("UpgradeAlloyForge1", 5, "Alloy Forge 1 Upgrade", "The Research for Creation of Alloys \r\n" + "Part of the Questing Update",
-                "FF35E3D91A0F413ABDC957705190CD2B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "FF35E3D91A0F413ABDC957705190CD2B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/AlloyForge1.png"));
             CreateItem("UpgradeBronzeworking", 5, "Bronzeworking Upgrade", "The Research for Manipulation of Bronze \r\n" + "Part of the Questing Update",
-                "E23517F2F1224360AE37A85F630F59A5", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "E23517F2F1224360AE37A85F630F59A5", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/Bronzeworking.png"));
             CreateItem("UpgradeTurretsTier1", 5, "Tier 1 Turrets Upgrade", "The Research for the Creation of Turrets \r\n" + "Part of the Questing Update",
-                "8D320595B3D1419B9A84104A01C2ADBD", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "8D320595B3D1419B9A84104A01C2ADBD", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/TurretsTier1.png"));
             CreateItem("UpgradeBronzeArmor", 5, "Bronze Armor Upgrade", "The Research for the Creation of Bronze Armor \r\n" + "Part of the Questing Update",
-                "5D8EB28412594FC0A173042DE8DA39F4", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "5D8EB28412594FC0A173042DE8DA39F4", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/BronzeArmor.png"));
             CreateItem("UpgradeDrillshipParts1", 5, "Drillship Parts 1 Upgrade", "The Research for the Creation of Tier 2 Drillship Parts \r\n" + "Part of the Questing Update",
-                "B7B1EF06BF1E484383863687DCAD6FD8", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "B7B1EF06BF1E484383863687DCAD6FD8", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/DrillshipParts1.png"));
             CreateItem("UpgradeAdvancedTurrets1", 5, "Advanced Turrets 1 Upgrade", "The Research for the Creation of Advanced Turrets \r\n" + "Part of the Questing Update",
-                "09F0ADFEDF734F39AEC98700F117B6F2", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+                "09F0ADFEDF734F39AEC98700F117B6F2", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/AdvancedTurrets1.png"));
             CreateItem("UpgradeNull", 5, "Null Upgrade", "The Upgrade to Alloy for Further Resource Refining \r\n" + "Part of the Questing Update",
                 "D3DEA69A69BF47CC9893D88EB6565D48", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
@@ -124,10 +125,36 @@ namespace QuestingUpdate.lib
 
 
             // Tier 3 Upgrades
-            CreateItem("UpgradePerfectAlloying", 5, "Perfect Alloying Upgrade", "The Research Behind the Perfect Alloys of this World \r\n" + "Part of the Questing Update",
+            CreateItem("UpgradeExpertAlloying", 5, "Expert Alloying Upgrade", "The Research Behind the Expert Alloys of this World \r\n" + "Part of the Questing Update",
                 "0FD0950108794340B738F103E4DA244A", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
             CreateItem("UpgradeResourceRefining3", 5, "Perfect Resource Refining Upgrade", "The Upgrade to Allow for Further Resource Refining \r\n" + "Part of the Questing Update",
                 "9FB8134FF4AA441987F134B74AB26BE1", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeCobaltRefining", 5, "Cobalt Refining Upgrade", "The Upgrade to Allow for Cobalt Refining \r\n" + "Part of the Questing Update",
+                "42E5F6D3E789436EBB24FC590EB997C6", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeCobaltworking", 5, "Cobaltworking Upgrade", "The Upgrade to Allow for the manipulation of Cobalt\r\n" + "Part of the Questing Update",
+                "E2AC066575314C2CB312C889277A22D2", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAdvancedCobaltParts", 5, "Advanced Cobalt Parts Upgrade", "The Upgrade to Allow for the production of Advanced Cobalt Parts\r\n" + "Part of the Questing Update",
+                "594BDE909D34459AAEA8313DF73BD94B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAlloyingTier3", 5, "Alloying Tier 3 Upgrade", "The Research for the Production of Titanium\r\n" + "Part of the Questing Update",
+                "A5FDC05B014B4AE79B3C71944C71FF36", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeTitanworking", 5, "Titanworking Upgrade", "The Research for the Manipulation of Titanium\r\n" + "Part of the Questing Update",
+                "83499CF8DE544195B3947AF0DE637C5E", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeCobaltArmor", 5, "Cobalt Armor Upgrade", "The Research for the Creation of Cobalt Armor\r\n" + "Part of the Questing Update",
+                "BC561A213B4A4EC3812BBCE66ECA6CEF", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeTitanArmor", 5, "Titan Armor Upgrade", "The Research for the Creation of Titanium Armor\r\n" + "Part of the Questing Update",
+                "EFFB2AE586BD451E9DFCF7B1A3AEE9D1", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAdvancedWeapons", 5, "Advanced Weapons Upgrade", "The Research for the Creation of Super Weapons\r\n" + "Part of the Questing Update",
+                "A1063F0ABDE144039B1105C262B7A978", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeTurretsTier3", 5, "Tier 3 Turrets Upgrade", "The Research for the Creation of Super Turrets\r\n" + "Part of the Questing Update",
+                "391CBCB9A49C4C8BAFCD3CF5FC46881A", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeAdvancedTurrets3", 5, "Advanced Turrets 3 Upgrade", "The Research for the Creation of Super Turrets\r\n" + "Part of the Questing Update",
+                "D79640D61ED141FAB724FAC0AE12BB76", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeDrillshipParts3", 5, "Drillship Parts 3 Upgrade", "The Research for the Creation of Tier 3 Drillship Parts\r\n" + "Part of the Questing Update",
+                "FFC4F1CD59EF4B28A51F763FC8AEDCFC", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeDrill4", 5, "Ultimate Drill Upgrade", "The Research for the Creation of the Ultimate Drill\r\n" + "Part of the Questing Update",
+                "0E7B523219484E6C95B7CCDBB95D4F7C", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
+            CreateItem("UpgradeHeatResistance", 5, "Heat Resistance Upgrade", "The Research for the Creation of Heat Resistant Armor\r\n" + "Part of the Questing Update",
+                "49AE0A78605B44BCBFDE86B00D9E963B", "UpgradeStarterRefinery", Sprite2("Resources/Schematics/NullSchematic.png"));
 
             QuestLog.Log("[Questing Update | Items]: Items Loaded...");
 
@@ -183,6 +210,7 @@ namespace QuestingUpdate.lib
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
 
+            QuestingDict.questingRegistry[codename] = guid;
             QuestLog.Log("[Questing Update | Items]: Item " + codename + " has been loaded");
         }
     }

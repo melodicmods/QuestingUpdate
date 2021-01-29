@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 using QuestingUpdate.lib.scripts;
+using QuestingUpdate.lib.storage;
 
 namespace QuestingUpdate.lib
 {
@@ -30,6 +31,8 @@ namespace QuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = ok, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[name] = guid;
             QuestLog.Log("[Questing Update | Categories]: Factory Category with name " + name + " has been loaded");
 
         }
@@ -41,6 +44,8 @@ namespace QuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = ok, Guid = guid, Labels = new string[4] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[name] = guid;
             QuestLog.Log("[Questing Update | Categories]: Module Category with name " + name + " has been loaded");
         }
 
@@ -51,6 +56,8 @@ namespace QuestingUpdate.lib
             var guid = GUID.Parse(categoryId);
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = Forge, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[name] = guid;
             QuestLog.Log("[Questing Update | Categories]: Recipe Category with name " + name + " has been loaded");
         }
     }

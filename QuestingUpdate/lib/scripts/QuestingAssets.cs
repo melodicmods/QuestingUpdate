@@ -48,6 +48,25 @@ namespace QuestingUpdate.lib.scripts
             return asset;
         }
 
+        public static Texture2D GetTexture(string assetBundleName, string objectNameToLoad)
+        {
+
+            // See if we already loaded a bundle for `assetBundleName` and if not load it.
+            if (!assetBundles.ContainsKey(assetBundleName)) LoadAssetBundle(assetBundleName);
+
+            // Get the loaded assetBundle from the map.
+            var assetBundle = assetBundles[assetBundleName];
+
+            foreach (var material in assetBundle.GetAllAssetNames())
+            {
+                QuestLog.Log("[Questing Update | Assets]: " + material);
+            }
+            // Load the asset from the bundle.
+            var asset = assetBundle.LoadAsset<Texture2D>(objectNameToLoad);
+
+            return asset;
+        }
+
         private static void LoadAssetBundle(string assetBundleName)
         {
             // Paths.Combine can be called with any number of segments to combine

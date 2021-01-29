@@ -1,4 +1,5 @@
 ﻿using QuestingUpdate.lib.scripts;
+using QuestingUpdate.lib.storage;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -107,6 +108,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[codename] = guid;
             QuestLog.Log("[Questing Update | Modules]: Module " + codename + " has been loaded");
         }
 
@@ -150,6 +153,8 @@ namespace QuestingUpdate.lib
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[codename] = guid;
             QuestLog.Log("[Questing Update | Modules]: Module " + codename + " has been loaded");
         }
     }

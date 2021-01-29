@@ -12,7 +12,7 @@ namespace QuestingUpdate.lib
         {
             depositsurface = Resources.FindObjectsOfTypeAll<DepositLocationSurface>();
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
-            // CreateDeposit(false, 20, "TinOre", 2, 5, "SulfurOre");
+            CreateDeposit(false, 20, "TinOre", 2, 5, "SulfurOre");
             CreateDeposit(false, 100, "CobaltOre", 2, 5, "TitaniumOre");
             CreateDeposit(true, 100, "CobaltOre", 2, 5, "TitaniumOre");
 

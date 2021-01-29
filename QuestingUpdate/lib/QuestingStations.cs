@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using QuestingUpdate.lib.scripts;
+using QuestingUpdate.lib.storage;
 
 namespace QuestingUpdate.lib {
     class QuestingStations : MonoBehaviour {
@@ -108,6 +109,8 @@ namespace QuestingUpdate.lib {
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
+
+            QuestingDict.questingRegistry[codename] = guid;
         }
     }
 }
