@@ -12,7 +12,7 @@ namespace QuestingUpdate {
     public class QuestingMod : GameMod
     {
         public static bool key = true;
-        public const string version = "0.3.4";
+        public const string version = "0.3.5";
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
