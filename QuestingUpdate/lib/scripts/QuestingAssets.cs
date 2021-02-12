@@ -15,6 +15,14 @@ namespace QuestingUpdate.lib.scripts
         // A map of loaded asset bundles using `assetBundleName` as the key.
         private static readonly Dictionary<string, AssetBundle> assetBundles = new Dictionary<string, AssetBundle>();
 
+        public static void PrintAssets()
+        {
+            foreach (KeyValuePair<string, AssetBundle> dict in assetBundles)
+            {
+                QuestLog.Log("[Questing Update | Assets]: " + dict);
+            }
+        }
+
         public static GameObject GetAsset(string assetBundleName, string objectNameToLoad)
         {
             // See if we already loaded a bundle for `assetBundleName` and if not load it.
@@ -22,6 +30,11 @@ namespace QuestingUpdate.lib.scripts
 
             // Get the loaded assetBundle from the map.
             var assetBundle = assetBundles[assetBundleName];
+
+            foreach (var material in assetBundle.GetAllAssetNames())
+            {
+                QuestLog.Log("[Questing Update | Assets]: " + material);
+            }
 
             // Load the asset from the bundle.
             var asset = assetBundle.LoadAsset<GameObject>(objectNameToLoad);

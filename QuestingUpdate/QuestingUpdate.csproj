@@ -428,6 +428,7 @@
     <Compile Include="lib\addons\GenericMod\GenericRegistry.cs" />
     <Compile Include="lib\addons\scripts\AddonLog.cs" />
     <Compile Include="lib\addons\ThermoNuclear\Thermonuclear.cs" />
+    <Compile Include="lib\gui\PopulateGrid.cs" />
     <Compile Include="lib\gui\TechTree.cs" />
     <Compile Include="lib\QuestingModifier.cs" />
     <Compile Include="lib\QuestingNamer.cs" />
@@ -442,6 +443,7 @@
     <Compile Include="lib\QuestingStations.cs" />
     <Compile Include="lib\QuestingVersioning.cs" />
     <Compile Include="lib\scripts\QuestingReferences.cs" />
+    <Compile Include="lib\scripts\Tex2DExtension.cs" />
     <Compile Include="lib\storage\QuestingDict.cs" />
     <Compile Include="lib\storage\QuestingGUIDs.cs" />
     <Compile Include="lib\storage\scripts\DictLog.cs" />
@@ -475,7 +477,7 @@ copy "$(TargetPath)" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mo
 mkdir "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources"
 robocopy "$(ProjectDir)Resources" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\Resources" /S
 
-SET UnityPath=D:\Unity\2020.2.1f1
+SET UnityPath=D:\Unity\2020.2.3f1
 SET MonoPath=%25UnityPath%25\Editor\Data\MonoBleedingEdge
 "%25MonoPath%25\bin\mono.exe" "%25MonoPath%25\lib\mono\4.5\pdb2mdb.exe" "$(TargetPath)"
 copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"

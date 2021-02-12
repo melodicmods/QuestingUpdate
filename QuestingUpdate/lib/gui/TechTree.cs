@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using QuestingUpdate.lib.scripts;
+using UnityEngine.UIElements;
 
 namespace QuestingUpdate.lib.gui
 {
@@ -9,7 +10,7 @@ namespace QuestingUpdate.lib.gui
     {
         private static Canvas Run()
         {
-            var newTexture = QuestingAssets.GetTexture("questingbundle.textures", "fg4_borders_02_1");
+            var newCanvasStuff = QuestingAssets.GetAsset("questingbundle", "assets/questing/techtree/canvas.prefab");
 
             GameObject newCanvas = new GameObject("Canvas");
             Canvas c = newCanvas.AddComponent<Canvas>();
@@ -18,17 +19,23 @@ namespace QuestingUpdate.lib.gui
             newCanvas.AddComponent<GraphicRaycaster>();
             GameObject panel = new GameObject("Panel");
             panel.AddComponent<CanvasRenderer>();
-            Image i = panel.AddComponent<Image>();
-            Sprite isprite = Sprite2(newTexture);
+            UnityEngine.UI.Image i = panel.AddComponent<UnityEngine.UI.Image>();
 
             RectTransform rt = panel.GetComponent(typeof(RectTransform)) as RectTransform;
-            rt.sizeDelta = new Vector2(512, 512);
+            rt.sizeDelta = new Vector2(1024, 910);
 
             QuestLog.Log("[Questing Update | Tech Tree]: width: " + rt.rect.width + ", height: " + rt.rect.height);
 
-            i.sprite = isprite;
+            i.sprite = newCanvasStuff.GetComponentInChildren<UnityEngine.UI.Image>().sprite;
+            foreach (var obj in newCanvasStuff.GetComponentsInChildren<Transform>())
+            {
+                if(obj.name == "Content")
+                {
+                    PopulateGrid sc = obj.gameObject.AddComponent<PopulateGrid>();
+                    QuestLog.Log("[Questing Update | Tech Tree]: " + obj);
+                }
+            }
             panel.transform.SetParent(newCanvas.transform, false);
-            c.enabled = false;
             return c;
         }
 

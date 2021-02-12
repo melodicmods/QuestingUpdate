@@ -18,6 +18,9 @@ namespace QuestingUpdate.lib
             ModifyUpgrade("UpgradeStarterResearch", "StarterStructuresSchematicRecipe");
             ModifyUpgrade("UpgradeResourceRefining1", "SimpleExplosivesSchematicRecipe");
 
+            // Module Mesh Modifiers
+            ModifyModuleMesh("questingmodules", "assets/questing/cylinderroof1.obj", "assets/questing/cylinderroof1.mat", "Cylinder9962", "Cylinder9962", "Cylinder9962", GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
+
             // Tier 1 Item Updates
             ModifyUpgrade("UpgradeResourceRefining1", "TinIngotRecipe");
             ModifyUpgrade("UpgradeResourceRefining1", "CopperIngotRecipe");
@@ -187,6 +190,76 @@ namespace QuestingUpdate.lib
             }
             cubePrefabCopy.DestroyAuto();
             coalItem.Prefabs[1] = coalTopPrefabCopy;
+        }
+
+        private void ModifyModuleMesh(string assetBundle, string prefabAsset, string matAsset, string meshFilterName, string meshRenderName, string transformMeshName, GUID baseItem)
+        {
+            var cubePrefab = QuestingAssets.GetAsset(assetBundle, prefabAsset);
+            var newMaterial = QuestingAssets.GetMaterial(assetBundle, matAsset);
+            var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == baseItem);
+            if (coalItem == null)
+            {
+                QuestLog.Log("Module not found.");
+                return;
+            }
+
+            var coalTopPrefab = coalItem.Prefabs[0];
+
+            var parent = new GameObject();
+            parent.SetActive(false);
+            DontDestroyOnLoad(parent);
+            parent.transform.position = new Vector3(100.0f, 0.0f, 0.0f);
+
+            var coalTopPrefabCopy = Instantiate(coalTopPrefab, parent.transform);
+            var cubePrefabCopy = Instantiate(cubePrefab, coalTopPrefabCopy.transform);
+
+            // Get the meshFilter from the instanced cube prefab.
+            var cubeMeshFilter = cubePrefabCopy.GetComponentsInChildren<MeshFilter>().First();
+            if (cubeMeshFilter == null)
+            {
+                QuestLog.Log("cubeMeshFilter (Cylinder9648) not found.");
+                return;
+            }
+
+            // For each animator in coalTopPrefabCopy.
+            foreach (var animator in coalTopPrefabCopy.GetComponentsInChildren<Animator>())
+            {
+                // For each meshFilter in animator with name == "Cylinder9648".
+                foreach (var meshFilter in animator.GetComponentsInChildren<MeshFilter>().Where(meshFilter => meshFilter.name == meshFilterName))
+                {
+                    meshFilter.mesh = cubeMeshFilter.mesh;
+                }
+
+                // For each meshRenderer in animator with name == "Cylinder9648".
+                foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == meshRenderName))
+                {
+                    meshRenderer.material = newMaterial;
+                    meshRenderer.material.mainTexture = newMaterial.mainTexture;
+                    foreach (var objthing in meshRenderer.materials)
+                    {
+                        QuestLog.Log("" + objthing);
+                    }
+                }
+
+                foreach (var objectlist in coalTopPrefab.GetComponentsInChildren<Transform>())
+                {
+                    foreach (var transformMesh in objectlist.GetComponentsInChildren<MeshRenderer>().Where(transformMesh => transformMesh.name == transformMeshName))
+                    {
+                        transformMesh.material = newMaterial;
+                    }
+                }
+            }
+            cubePrefabCopy.DestroyAuto();
+            coalItem.Prefabs[0] = coalTopPrefabCopy;
+
+            foreach(var obj in coalItem.Prefabs[0].GetComponentsInChildren<Transform>())
+            {
+                if(obj.name == transformMeshName)
+                {
+                    QuestLog.Log("" + obj);
+                    obj.position = obj.position + new Vector3(-0.5f, 0.0f, 0.0f);
+                }
+            }
         }
 
         private void ModifyUpgrade(string name1, string modifyName)

@@ -7,6 +7,7 @@ using QuestingUpdate.lib.scripts;
 using QuestingUpdate.lib.addons;
 using QuestingUpdate.lib.storage;
 using QuestingUpdate.lib.gui;
+using UnityEngine.Rendering;
 
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
@@ -16,8 +17,10 @@ namespace QuestingUpdate {
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
+        public RenderPipelineAsset pipelineAsset = (RenderPipelineAsset) Resources.Load(System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/resources/renderer/UniversalRP-HighQuality.asset");
         public override void Load()
         {
+            GraphicsSettings.renderPipelineAsset = pipelineAsset;
             var lastWrite = File.GetLastWriteTime(typeof(QuestingMod).Assembly.Location);
             UnityEngine.Debug.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}");
             QuestLog.Log($"[Questing Update | Main]: Questing Update loaded: {version}, build time: {lastWrite.ToShortTimeString()}", true);
