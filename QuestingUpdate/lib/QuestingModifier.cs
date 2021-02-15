@@ -11,6 +11,7 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
+            Test(GUID.Parse("AB14B23AB2E544BFBBEB5EEACB11D944"));
             ModifyCoalModule();
 
             ModifyTitanium();
@@ -19,7 +20,7 @@ namespace QuestingUpdate.lib
             ModifyUpgrade("UpgradeResourceRefining1", "SimpleExplosivesSchematicRecipe");
 
             // Module Mesh Modifiers
-            ModifyModuleMesh("questingmodules", "assets/questing/cylinderroof1.obj", "assets/questing/cylinderroof1.mat", "Cylinder9962", "Cylinder9962", "Cylinder9962", GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
+            ModifyModuleMesh("questingmodules", "assets/questing/cylinderroof1.obj", "assets/questing/39_TG.mat", "Cylinder9962", "Cylinder9962", "Cylinder9962", GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
 
             // Tier 1 Item Updates
             ModifyUpgrade("UpgradeResourceRefining1", "TinIngotRecipe");
@@ -141,6 +142,16 @@ namespace QuestingUpdate.lib
             QuestLog.Log("[Questing Update | Modifier]: Titanium Recipe Modified");
         }
 
+        private void Test(GUID builder)
+        {
+            var itemthing = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == builder);
+            var prefab = itemthing.Prefabs[0];
+            foreach (var obj in prefab.GetComponentsInChildren<Transform>())
+            {
+                QuestLog.Log("[Questing Update | Modifier]: " + obj);
+            }
+        }
+
         private void ModifyCoalModule()
         {
             var cubePrefab = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
@@ -233,7 +244,9 @@ namespace QuestingUpdate.lib
                 // For each meshRenderer in animator with name == "Cylinder9648".
                 foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == meshRenderName))
                 {
+                    QuestLog.Log("" + meshRenderer);
                     meshRenderer.material = newMaterial;
+                    meshRenderer.material.shader = newMaterial.shader;
                     meshRenderer.material.mainTexture = newMaterial.mainTexture;
                     foreach (var objthing in meshRenderer.materials)
                     {
@@ -246,6 +259,8 @@ namespace QuestingUpdate.lib
                     foreach (var transformMesh in objectlist.GetComponentsInChildren<MeshRenderer>().Where(transformMesh => transformMesh.name == transformMeshName))
                     {
                         transformMesh.material = newMaterial;
+                        transformMesh.material.shader = newMaterial.shader;
+                        transformMesh.material.mainTexture = newMaterial.mainTexture;
                     }
                 }
             }
