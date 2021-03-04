@@ -4,6 +4,8 @@ using System.Linq;
 using QuestingUpdate.lib.storage;
 using QuestingUpdate.lib.scripts;
 using UnityEngine;
+using static QuestingUpdate.lib.data.ExportHandler;
+using QuestingUpdate.lib.data;
 
 namespace QuestingUpdate.lib
 {
@@ -11,7 +13,7 @@ namespace QuestingUpdate.lib
     {
         public void InitModifier()
         {
-            Test(GUID.Parse("AB14B23AB2E544BFBBEB5EEACB11D944"));
+            Test(GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
             ModifyCoalModule();
 
             ModifyTitanium();
@@ -146,9 +148,9 @@ namespace QuestingUpdate.lib
         {
             var itemthing = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == builder);
             var prefab = itemthing.Prefabs[0];
-            foreach (var obj in prefab.GetComponentsInChildren<Transform>())
+            foreach (var obj in prefab.GetComponentsInChildren<Object>())
             {
-                QuestLog.Log("[Questing Update | Modifier]: " + obj);
+                //QuestLog.Log("[Questing Update | Modifier]: " + obj);
             }
         }
 
@@ -244,13 +246,12 @@ namespace QuestingUpdate.lib
                 // For each meshRenderer in animator with name == "Cylinder9648".
                 foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == meshRenderName))
                 {
-                    QuestLog.Log("" + meshRenderer);
                     meshRenderer.material = newMaterial;
                     meshRenderer.material.shader = newMaterial.shader;
                     meshRenderer.material.mainTexture = newMaterial.mainTexture;
                     foreach (var objthing in meshRenderer.materials)
                     {
-                        QuestLog.Log("" + objthing);
+                        //QuestLog.Log("" + objthing);
                     }
                 }
 
@@ -271,7 +272,7 @@ namespace QuestingUpdate.lib
             {
                 if(obj.name == transformMeshName)
                 {
-                    QuestLog.Log("" + obj);
+                    //QuestLog.Log("" + obj);
                     obj.position = obj.position + new Vector3(-0.5f, 0.0f, 0.0f);
                 }
             }
@@ -304,7 +305,6 @@ namespace QuestingUpdate.lib
             var item2 = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == name2);
             GameResources.Instance.Recipes.FirstOrDefault(s => s.AssetId == woot).RequiredUpgrades = new ItemDefinition[] { item1, item2 };
             QuestLog.Log("[Questing Update | Modifier]: " + woot + " Required Upgrades Modified");
-
         }
 
         private void ModifyUpgrade(string name1, string name2, GUID woot)

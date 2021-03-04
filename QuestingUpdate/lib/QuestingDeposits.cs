@@ -3,6 +3,9 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using QuestingUpdate.lib.scripts;
+using System.Collections.Generic;
+using static QuestingUpdate.lib.data.ExportHandler;
+using QuestingUpdate.lib.data;
 
 namespace QuestingUpdate.lib
 {
@@ -12,13 +15,13 @@ namespace QuestingUpdate.lib
         {
             depositsurface = Resources.FindObjectsOfTypeAll<DepositLocationSurface>();
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
-            CreateDeposit(false, 20, "TinOre", 2, 5, "SulfurOre");
-            CreateDeposit(false, 100, "CobaltOre", 2, 5, "TitaniumOre");
-            CreateDeposit(true, 100, "CobaltOre", 2, 5, "TitaniumOre");
+
+            foreach (KeyValuePair<Deposit, string> dict in questingDeposits)
+            {
+                CreateDeposit(dict.Key.underground, dict.Key.percent_replace, dict.Key.output_name, dict.Key.yields[0], dict.Key.yields[1], dict.Key.replaced_item);
+            }
 
             QuestLog.Log("[Questing Update | Deposits]: Deposits Loaded...");
-
-            Debug.Log("[Questing Update | Deposits]: Deposits Loaded...");
         }
         public void CreateDeposit(bool Underground, int PercentageToReplace, string outputname, float minyield, float maxyield, string ItemToReplace)
         {
@@ -27,7 +30,7 @@ namespace QuestingUpdate.lib
             {
                 foreach (DepositLocationUnderground underground in depositunderground)
                 {
-                    if (UnityEngine.Random.Range(0, 100) <= PercentageToReplace)
+                    if (Random.Range(0, 100) <= PercentageToReplace)
                     {
                         if ((ItemToReplace != null && underground.Ore == GetItem(ItemToReplace)) || ItemToReplace == null)
                         {
@@ -41,7 +44,7 @@ namespace QuestingUpdate.lib
             {
                 foreach (DepositLocationSurface surface in depositsurface)
                 {
-                    if (UnityEngine.Random.Range(0, 100) <= PercentageToReplace)
+                    if (Random.Range(0, 100) <= PercentageToReplace)
                     {
                         if ((ItemToReplace != null && surface.Ore == GetItem(ItemToReplace)) || ItemToReplace == null)
                         {

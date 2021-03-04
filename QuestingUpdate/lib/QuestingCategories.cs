@@ -2,26 +2,37 @@
 using UnityEngine;
 using QuestingUpdate.lib.scripts;
 using QuestingUpdate.lib.storage;
+using System.Collections.Generic;
+using static QuestingUpdate.lib.data.ExportHandler;
+using QuestingUpdate.lib.data;
 
 namespace QuestingUpdate.lib
 {
     class QuestingCategories : MonoBehaviour
     {
-        public const string ALLOY_FORGE_FACTORY_GUID = "293AC5131E4D4ED5948FA4482CAD10B6";
 
         public void InitCategories()
         {
-            CreateRecipeCategory("ForgeTier1", "DF5145974CB54D7F972367F70CA75099");
-            CreateRecipeCategory("ForgeTier2", "EF4888B484944B4DB20B100FE3ED4760");
-            CreateRecipeCategory("ForgeTier3", "52BACA27F2744A11AC5A8FDDFD393426");
-            CreateFactoryCategory("AlloyForge", ALLOY_FORGE_FACTORY_GUID);
-            CreateModuleCategory("AlloyForge", "EAB2EA1154F34FFF8CC74CA0C23ECACD");
+            foreach (KeyValuePair<Category, GUID> dict in questingCategories)
+            {
+                if(dict.Key.category_type == "recipe")
+                {
+                    CreateRecipeCategory(dict.Key.name, dict.Key.guid);
+                } else if(dict.Key.category_type == "factory")
+                {
+                    CreateFactoryCategory(dict.Key.name, dict.Key.guid);
+                } else if(dict.Key.category_type == "module")
+                {
+                    CreateModuleCategory(dict.Key.name, dict.Key.guid);
+                } else
+                {
+                    return;
+                }
+            }
             QuestingStations stations = new QuestingStations();
             QuestingReferences.GetOrCreateTyping(stations.FindFactoryCategories("AlloyForge"));
 
             QuestLog.Log("[Questing Update | Categories]: Categories Loaded...");
-
-            Debug.Log("[Questing Update | Categories]: Categories Loaded...");
         }
 
         private void CreateFactoryCategory(string name, string categoryId)
@@ -34,7 +45,6 @@ namespace QuestingUpdate.lib
 
             QuestingDict.questingRegistry[name] = guid;
             QuestLog.Log("[Questing Update | Categories]: Factory Category with name " + name + " has been loaded");
-
         }
 
         private void CreateModuleCategory(string name, string categoryId)

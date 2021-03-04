@@ -8,6 +8,9 @@ using QuestingUpdate.lib.addons;
 using QuestingUpdate.lib.storage;
 using QuestingUpdate.lib.gui;
 using UnityEngine.Rendering;
+using QuestingUpdate.lib.data;
+using System.Collections.Generic;
+using static QuestingUpdate.lib.storage.QuestingDict;
 
 namespace QuestingUpdate {
     public class QuestingMod : GameMod
@@ -54,7 +57,8 @@ namespace QuestingUpdate {
                 case "Island":
                     QuestLog.Log("---Questing Init Begin---");
                     new QuestingDict();
-                    QuestLog.Log("---Questing Init End---");
+                    new ImportHandler();
+                    new ExportHandler();
                     QuestLog.Log("---Addon Registration Begin---");
                     new AddonController();
                     QuestLog.Log("---Addon Registration End---");
@@ -87,7 +91,7 @@ namespace QuestingUpdate {
                     new QuestingRecipes().InitRecipes();
                     QuestLog.Log("[Questing Update | Main]: Recipes Done.");
                     QuestLog.Log("---Questing Recipes End---");
-                    
+
                     QuestLog.Log("---Questing Modifier Begin---");
                     new QuestingModifier().InitModifier();
                     QuestLog.Log("[Questing Update | Main]: Modifier Done.");
@@ -95,8 +99,24 @@ namespace QuestingUpdate {
 
                     QuestingDict.ReturnAllData();
                     QuestLog.Log("[Questing Update | Main]: Done with Init.");
+                    QuestLog.Log("---Questing Init End---");
                     break;
             }
+        }
+
+        public static void Desync()
+        {
+            foreach(var obj in RuntimeAssetStorage.GetAssets())
+            {
+                foreach (KeyValuePair<string, GUID> dict in questingRegistry)
+                {
+                    if(obj.Value == dict.Value)
+                    {
+                        //QuestLog.Log("[Questing Update | Main]: " + dict.Key);
+                    }
+                }
+            }
+            QuestLog.Log("[Questing Update | Main]: Game Desynced");
         }
 
         public override void Unload()
@@ -110,10 +130,14 @@ namespace QuestingUpdate {
     {
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.T))
             {
                 TechTree.Enable(QuestingMod.key);
                 QuestingMod.key = !QuestingMod.key;
+            }
+            if (UnityEngine.Input.GetKeyDown(KeyCode.U))
+            {
+                QuestingMod.Desync();
             }
         }
     }

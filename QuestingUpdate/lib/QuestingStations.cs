@@ -6,17 +6,27 @@ using System.Reflection;
 using UnityEngine;
 using QuestingUpdate.lib.scripts;
 using QuestingUpdate.lib.storage;
+using static QuestingUpdate.lib.data.ExportHandler;
+using QuestingUpdate.lib.data;
 
 namespace QuestingUpdate.lib {
     class QuestingStations : MonoBehaviour {
         private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
         public void InitStations() {
-            var forges = new RecipeCategory[] { FindRecipeCategories("ForgeTier1"), FindRecipeCategories("ForgeTier2"), FindRecipeCategories("ForgeTier3") };
-            CreateStation(FindFactoryCategories("AlloyForge"), "AlloyForgeStation", 99, "Alloy Station", "The Alloying Station", "AB14B23AB2E544BFBBEB5EEACB11D944", Sprite2("Resources/Stations/AlloyForgeControlStation.png"), "Alloy", forges);
+            foreach (KeyValuePair<Station, GUID> dict in questingStations)
+            {
+                var categories = new RecipeCategory[dict.Key.categories.Length];
+                var i = 0;
+                foreach (string category in dict.Key.categories)
+                {
+                    categories[i] = FindRecipeCategories(category);
+                    i++;
+                    QuestLog.Log("[Questing Update | Stations]: " + category + " has been added to station " + dict.Key.station_name);
+                }
+                CreateStation(FindFactoryCategories(dict.Key.factory_type), dict.Key.station_name, dict.Key.stack_size, dict.Key.name, dict.Key.description, dict.Key.guid, Sprite2(dict.Key.icon_path), dict.Key.variant, categories);
+            }
 
             QuestLog.Log("[Questing Update | Stations]: Stations Loaded...");
-
-            Debug.Log("[Questing Update | Stations]: Stations Loaded...");
         }
 
         private static void Initialize<T>(ref T str)

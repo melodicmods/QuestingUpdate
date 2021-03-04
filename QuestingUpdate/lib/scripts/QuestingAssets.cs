@@ -31,11 +31,6 @@ namespace QuestingUpdate.lib.scripts
             // Get the loaded assetBundle from the map.
             var assetBundle = assetBundles[assetBundleName];
 
-            foreach (var material in assetBundle.GetAllAssetNames())
-            {
-                QuestLog.Log("[Questing Update | Assets]: " + material);
-            }
-
             // Load the asset from the bundle.
             var asset = assetBundle.LoadAsset<GameObject>(objectNameToLoad);
 
@@ -51,10 +46,6 @@ namespace QuestingUpdate.lib.scripts
             // Get the loaded assetBundle from the map.
             var assetBundle = assetBundles[assetBundleName];
 
-            foreach (var material in assetBundle.GetAllAssetNames())
-            {
-                QuestLog.Log("[Questing Update | Assets]: " + material);
-            }
             // Load the asset from the bundle.
             var asset = assetBundle.LoadAsset<Material>(objectNameToLoad);
 
@@ -70,10 +61,6 @@ namespace QuestingUpdate.lib.scripts
             // Get the loaded assetBundle from the map.
             var assetBundle = assetBundles[assetBundleName];
 
-            foreach (var material in assetBundle.GetAllAssetNames())
-            {
-                QuestLog.Log("[Questing Update | Assets]: " + material);
-            }
             // Load the asset from the bundle.
             var asset = assetBundle.LoadAsset<Texture2D>(objectNameToLoad);
 

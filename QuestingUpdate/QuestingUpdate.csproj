@@ -428,10 +428,14 @@
     <Compile Include="lib\addons\GenericMod\GenericRegistry.cs" />
     <Compile Include="lib\addons\scripts\AddonLog.cs" />
     <Compile Include="lib\addons\ThermoNuclear\Thermonuclear.cs" />
+    <Compile Include="lib\data\ExportHandler.cs" />
+    <Compile Include="lib\data\ImportHandler.cs" />
     <Compile Include="lib\gui\PopulateGrid.cs" />
     <Compile Include="lib\gui\TechTree.cs" />
     <Compile Include="lib\QuestingModifier.cs" />
     <Compile Include="lib\QuestingNamer.cs" />
+    <Compile Include="lib\QuestingQuests.cs" />
+    <Compile Include="lib\scripts\MagicLog.cs" />
     <Compile Include="lib\scripts\QuestLog.cs" />
     <Compile Include="lib\scripts\QuestingAssets.cs" />
     <Compile Include="lib\scripts\QuestingExtensions.cs" />

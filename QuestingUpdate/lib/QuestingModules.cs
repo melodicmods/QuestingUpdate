@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using static QuestingUpdate.lib.data.ExportHandler;
+using QuestingUpdate.lib.data;
+using System.Collections.Generic;
 
 namespace QuestingUpdate.lib
 {
@@ -11,15 +14,18 @@ namespace QuestingUpdate.lib
     {
         public void InitModules() 
         {
-            var tier1Forge = new RecipeCategory[] { Findcategories("ForgeTier1") };
-            var tier2Forge = new RecipeCategory[] { Findcategories("ForgeTier1"), Findcategories("ForgeTier2") };
-            var tier3Forge = new RecipeCategory[] { Findcategories("ForgeTier1"), Findcategories("ForgeTier2"), Findcategories("ForgeTier3") };
-            CreateProductionModule("AlloyForgeTier1", "Tier1", 5, "RefineryModuleT1", "Alloy Forge Tier 1", "The Alloy Forge for Bronze", "4491E93910334C76AD68061AA8E71B5C", "RefineryModuleT1", "AlloyForge", Sprite2("Resources/Modules/AlloyForge1.png"), tier1Forge, true);
-            CreateProductionModule("AlloyForgeTier2", "Tier2", 5, "RefineryModuleT2", "Alloy Forge Tier 2", "The Alloy Forge for Steel", "3090980A28994112A197A342945DD1D0", "RefineryModuleT2", "AlloyForge", Sprite2("Resources/Modules/AlloyForge2.png"), tier2Forge);
-            CreateProductionModule("AlloyForgeTier3", "Tier3", 5, "RefineryModuleT3", "Alloy Forge Tier 3", "The Alloy Forge for Titanium", "1B2D3ED6CDCC460191183B13BA8D5F5F", "RefineryModuleT3", "AlloyForge", Sprite2("Resources/Modules/AlloyForge3.png"), tier3Forge);
-
+            foreach (KeyValuePair<data.Module, GUID> dict in questingModules)
+            {
+                var finalInput = new RecipeCategory[dict.Key.categories.Length];
+                var i = 0;
+                foreach (string category in dict.Key.categories)
+                {
+                    finalInput[i] = Findcategories(category);
+                    i++;
+                }
+                CreateProductionModule(dict.Key.module_name, dict.Key.variant, dict.Key.stack_size, dict.Key.base_item, dict.Key.name, dict.Key.description, dict.Key.guid, dict.Key.category_name, dict.Key.factory_type, Sprite2(dict.Key.icon_path), finalInput, dict.Key.first);
+            }
             QuestLog.Log("[Questing Update | Modules]: Modules Loaded...");
-            Debug.Log("[Questing Update | Modules]: Modules Loaded...");
         }
         private RecipeCategory tempcategory;
         public RecipeCategory Findcategories(string categoryname)
@@ -84,6 +90,7 @@ namespace QuestingUpdate.lib
             var gridmodule = newmodule.GetComponent<GridModule>();
             gridmodule.VariantName = variantname;
             gridmodule.Item = item;
+            newmodule.name = codename;
             item.Prefabs = new GameObject[] { newmodule };
             var modulecategory = RuntimeAssetCacheLookup.Get<ModuleCategory>().First(s => s.name == factorytypename);
             modulecategory.Modules = modulecategory.Modules.Concat(new ItemDefinition[] { item }).ToArray();
