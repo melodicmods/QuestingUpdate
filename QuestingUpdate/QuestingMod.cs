@@ -12,7 +12,8 @@ using QuestingUpdate.lib.data;
 using System.Collections.Generic;
 using static QuestingUpdate.lib.storage.QuestingDict;
 
-namespace QuestingUpdate {
+namespace QuestingUpdate
+{
     public class QuestingMod : GameMod
     {
         public static bool key = true;
@@ -20,7 +21,7 @@ namespace QuestingUpdate {
         private string update = "";
         private string updateName = "";
         public static readonly string path = System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/QuestingUpdate.log";
-        public RenderPipelineAsset pipelineAsset = (RenderPipelineAsset) Resources.Load(System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/resources/renderer/UniversalRP-HighQuality.asset");
+        public RenderPipelineAsset pipelineAsset = (RenderPipelineAsset)Resources.Load(System.Environment.GetEnvironmentVariable("USERPROFILE") + "/appdata/locallow/volcanoid/volcanoids/mods/resources/renderer/UniversalRP-HighQuality.asset");
         public override void Load()
         {
             GraphicsSettings.renderPipelineAsset = pipelineAsset;
@@ -32,27 +33,29 @@ namespace QuestingUpdate {
             versioning.InitVersions();
             update = versioning.UpdateVersioner();
 
-            if(versioning.needUpdate == false)
+            if (versioning.needUpdate == false)
             {
                 QuestingNamer namer = new QuestingNamer();
                 updateName = namer.Namer();
-            } else
+            }
+            else
             {
                 updateName = "Questing Update";
             }
-            
+
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        {
             scene.GetRootGameObjects()[0].AddComponent<MagicStuff>();
             switch (scene.name)
             {
                 case "MainMenu":
                     GameObject.Find("EarlyAccess").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Questing Update " + version;
                     GameObject.Find("SteamBranch").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = updateName + " " + update;
-                    GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text     = "Version: 1.25.72 (ClosedTesting)";
+                    GameObject.Find("Version").gameObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Version: 1.25.72 (ClosedTesting)";
                     break;
                 case "Island":
                     QuestLog.Log("---Questing Init Begin---");
@@ -86,7 +89,7 @@ namespace QuestingUpdate {
                     new QuestingStations().InitStations();
                     QuestLog.Log("[Questing Update | Main]: Stations Done.");
                     QuestLog.Log("---Questing Stations End---");
-                    
+
                     QuestLog.Log("---Questing Recipes Begin---");
                     new QuestingRecipes().InitRecipes();
                     QuestLog.Log("[Questing Update | Main]: Recipes Done.");
@@ -100,23 +103,34 @@ namespace QuestingUpdate {
                     QuestingDict.ReturnAllData();
                     QuestLog.Log("[Questing Update | Main]: Done with Init.");
                     QuestLog.Log("---Questing Init End---");
+
+                    Runtime();
                     break;
             }
         }
 
         public static void Desync()
         {
-            foreach(var obj in RuntimeAssetStorage.GetAssets())
+            foreach (var obj in RuntimeAssetStorage.GetAssets())
             {
                 foreach (KeyValuePair<string, GUID> dict in questingRegistry)
                 {
-                    if(obj.Value == dict.Value)
+                    if (obj.Value == dict.Value)
                     {
                         //QuestLog.Log("[Questing Update | Main]: " + dict.Key);
                     }
                 }
             }
             QuestLog.Log("[Questing Update | Main]: Game Desynced");
+        }
+
+        public static void Runtime()
+        {
+            foreach (var obj in ExportHandler.questingSchematics)
+            {
+                QuestLog.Log(obj.Key.name);
+            }
+            QuestLog.Log("[Questing Update | Main]: Runtime Activated");
         }
 
         public override void Unload()

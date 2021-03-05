@@ -8,6 +8,7 @@ namespace QuestingUpdate.lib.data
     {
         public ImportHandler()
         {
+            QuestLog.Log("[Import Handler]: Import Started");
             Import();
             QuestLog.Log("[Import Handler]: Import Complete");
         }
@@ -20,6 +21,7 @@ namespace QuestingUpdate.lib.data
         }
     }
 
+
     public class Rootobject
     {
         public Item[] items { get; set; }
@@ -29,6 +31,7 @@ namespace QuestingUpdate.lib.data
         public Deposit[] deposits { get; set; }
         public Category[] categories { get; set; }
         public Modifier[] modifiers { get; set; }
+        public Schematic[] schematics { get; set; }
     }
 
     public class Item
@@ -111,5 +114,16 @@ namespace QuestingUpdate.lib.data
         public string target { get; set; }
         public string[] modifiers { get; set; }
     }
+
+    public class Schematic
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string image { get; set; }
+        public int tier { get; set; }
+        public string tooltip { get; set; }
+        public int?[] requirements { get; set; }
+    }
+
 
 }
