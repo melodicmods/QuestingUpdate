@@ -2396,11 +2396,131 @@
   "schematics": [
     {
       "id": 0,
-      "name": "",
-      "image": "",
-      "tier": "",
-      "tooltip": "",
+      "name": "Production Tier 1",
+      "image": "Resources/Schematics/Head/ProductionT1.png",
+      "tier": 1,
+      "tooltip": "The Production T1 Schematics",
       "requirements": []
+    },
+    {
+      "id": 1,
+      "name": "Research Tier 1",
+      "image": "Resources/Schematics/Head/ResearchT1.png",
+      "tier": 1,
+      "tooltip": "The Research T1 Schematics",
+      "requirements": [0]
+    },
+    {
+      "id": 2,
+      "name": "Refinery Tier 1",
+      "image": "Resources/Schematics/Head/RefineryT1.png",
+      "tier": 1,
+      "tooltip": "The Refinery T1 Schematics",
+      "requirements": [1]
+    },
+    {
+      "id": 3,
+      "name": "Starter Structures",
+      "image": "Resources/Schematics/Head/StructureT1.png",
+      "tier": 1,
+      "tooltip": "The Starter Structures Schematics",
+      "requirements": [1]
+    },
+    {
+      "id": 4,
+      "name": "Copperworking",
+      "image": "Resources/Schematics/T1/Copperworking.png",
+      "tier": 1,
+      "tooltip": "The Copperworking Schematics",
+      "requirements": [2]
+    },
+    {
+      "id": 5,
+      "name": "Resource Refining 1",
+      "image": "Resources/Schematics/T1/ResourceRefining.png",
+      "tier": 1,
+      "tooltip": "The Resource Refining 1 Schematics",
+      "requirements": [2]
+    },
+    {
+      "id": 6,
+      "name": "Basic Alloying",
+      "image": "Resources/Schematics/T1/BasicAlloying.png",
+      "tier": 1,
+      "tooltip": "The Basic Alloying Schematics",
+      "requirements": [4,5]
+    },
+    {
+      "id": 7,
+      "name": "Simple Explosives",
+      "image": "Resources/Schematics/Head/Explosives1.png",
+      "tier": 1,
+      "tooltip": "The Simple Explosives Schematics",
+      "requirements": [5]
+    },
+    {
+      "id": 8,
+      "name": "Armor Tier 1",
+      "image": "Resources/Schematics/T1/CopperArmor.png",
+      "tier": 1,
+      "tooltip": "The Copper Armor Schematics",
+      "requirements": [4]
+    },
+    {
+      "id": 9,
+      "name": "Alloy Forge T1",
+      "image": "Resources/Schematics/T1/AlloyForge1.png",
+      "tier": 1,
+      "tooltip": "The Alloy Forge T1 Schematics",
+      "requirements": [6]
+    },
+    {
+      "id": 10,
+      "name": "Simple Weapons",
+      "image": "Resources/Schematics/T1/SimpleWeapons.png",
+      "tier": 1,
+      "tooltip": "The Simple Weapons Schematics",
+      "requirements": [7,4]
+    },
+    {
+      "id": 11,
+      "name": "Bronzeworking",
+      "image": "Resources/Schematics/T1/Bronzeworking.png",
+      "tier": 1,
+      "tooltip": "The Bronzeworking Schematics",
+      "requirements": [9]
+    },
+    {
+      "id": 12,
+      "name": "Turrets Tier 1",
+      "image": "Resources/Schematics/T1/TurretsTier1.png",
+      "tier": 1,
+      "tooltip": "The Turrets Tier 1 Schematic",
+      "requirements": [10,11]
+    },
+    {
+      "id": 13,
+      "name": "Advanced Tier 1 Turrets",
+      "image": "Resources/Schematics/T1/AdvancedTurrets1.png",
+      "tier": 1,
+      "tooltip": "The Advanced Turrets 1 Schematic",
+      "requirements": [12]
+    },
+    {
+      "id": 14,
+      "name": "Armor Tier 2",
+      "image": "Resources/Schematics/T1/BronzeArmor.png",
+      "tier": 1,
+      "tooltip": "The Bronze Armor Schematics",
+      "requirements": [11,4]
+    },
+    {
+      "id": 15,
+      "name": "Drillship Parts 1",
+      "image": "Resources/Schematics/T1/DrillshipParts1.png",
+      "tier": 1,
+      "tooltip": "The Drillship Parts 1 Schematic",
+      "requirements": [11]
     }
   ]
 }
