@@ -69,7 +69,8 @@ namespace QuestingUpdate.lib
             string name = "A Royal Pain in my Ass";
             string desc = "A Royal Pain in my Ass";
             //QuestLog.Log("[Questing Update | Quests]: " + typeof(Quest).GetField("Description", BindingFlags.NonPublic | BindingFlags.Instance));
-            Quest baseQuest = new PlayerQuest();
+            GameObject baseObject = new GameObject();
+            PlayerQuest baseQuest = baseObject.AddComponent<PlayerQuest>();
             baseQuest.name = "Q73_ARoyalPainInMyAss";
             QuestDescription description = ScriptableObject.CreateInstance<QuestDescription>();
 
@@ -86,7 +87,9 @@ namespace QuestingUpdate.lib
             typeof(Quest).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(baseQuest, description);
             typeof(Quest).GetField("m_isEvent", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(baseQuest, false);
             alteredQuests = oldQuests;
-            alteredQuests.Concat(new Quest[] { baseQuest });
+            List<Quest> quests = alteredQuests.ToList();
+            quests.Add(baseQuest);
+            alteredQuests = quests.ToArray();
             return alteredQuests;
             //throw new NotImplementedException();
         }
