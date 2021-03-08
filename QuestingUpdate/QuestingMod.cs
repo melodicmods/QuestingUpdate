@@ -11,6 +11,8 @@ using UnityEngine.Rendering;
 using QuestingUpdate.lib.data;
 using System.Collections.Generic;
 using static QuestingUpdate.lib.storage.QuestingDict;
+using System;
+using System.Reflection;
 
 namespace QuestingUpdate
 {
@@ -100,11 +102,11 @@ namespace QuestingUpdate
                     QuestLog.Log("[Questing Update | Main]: Modifier Done.");
                     QuestLog.Log("---Questing Modifier End---");
 
+                    new QuestingQuests().InitQuests();
+
                     QuestingDict.ReturnAllData();
                     QuestLog.Log("[Questing Update | Main]: Done with Init.");
                     QuestLog.Log("---Questing Init End---");
-
-                    Runtime();
                     break;
             }
         }
@@ -124,14 +126,14 @@ namespace QuestingUpdate
             QuestLog.Log("[Questing Update | Main]: Game Desynced");
         }
 
-        public static void Runtime()
-        {
-            foreach (var obj in ExportHandler.questingSchematics)
-            {
-                QuestLog.Log(obj.Key.name);
-            }
-            QuestLog.Log("[Questing Update | Main]: Runtime Activated");
-        }
+        //public static void Runtime()
+        //{
+        //    foreach (var obj in ExportHandler.questingSchematics)
+        //    {
+        //        QuestLog.Log(obj.Key.name);
+        //    }
+        //    QuestLog.Log("[Questing Update | Main]: Runtime Activated");
+        //}
 
         public override void Unload()
         {

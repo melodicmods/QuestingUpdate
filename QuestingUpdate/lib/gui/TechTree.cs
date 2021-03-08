@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 using QuestingUpdate.lib.scripts;
 using UnityEngine.UIElements;
+using QuestingUpdate.lib.data;
+using static QuestingUpdate.lib.data.ExportHandler;
+using System.Collections.Generic;
 
 namespace QuestingUpdate.lib.gui
 {
@@ -26,15 +29,13 @@ namespace QuestingUpdate.lib.gui
 
             QuestLog.Log("[Questing Update | Tech Tree]: width: " + rt.rect.width + ", height: " + rt.rect.height);
 
-            i.sprite = newCanvasStuff.GetComponentInChildren<UnityEngine.UI.Image>().sprite;
-            foreach (var obj in newCanvasStuff.GetComponentsInChildren<Transform>())
+            foreach (KeyValuePair<Schematic, int> obj in questingSchematics)
             {
-                if(obj.name == "Content")
-                {
-                    PopulateGrid sc = obj.gameObject.AddComponent<PopulateGrid>();
-                    QuestLog.Log("[Questing Update | Tech Tree]: " + obj);
-                }
+
+                QuestLog.Log("[Questing Update | Tech Tree]: " + obj.Key.name);
             }
+
+            i.sprite = newCanvasStuff.GetComponentInChildren<UnityEngine.UI.Image>().sprite;
             panel.transform.SetParent(newCanvas.transform, false);
             return c;
         }

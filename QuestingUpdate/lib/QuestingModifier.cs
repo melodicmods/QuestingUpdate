@@ -22,7 +22,7 @@ namespace QuestingUpdate.lib
             ModifyUpgrade("UpgradeResourceRefining1", "SimpleExplosivesSchematicRecipe");
 
             // Module Mesh Modifiers
-            ModifyModuleMesh("questingmodules", "assets/questing/cylinderroof1.obj", "assets/questing/39_TG.mat", "Cylinder9962", "Cylinder9962", "Cylinder9962", GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
+            ModifyModuleMesh("questingmodules", "assets/questing/modules/exporter.obj", "assets/questing/textures/cylindertop1.mat", "Cylinder9962", "Cylinder9962", "Cylinder9962", GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
 
             // Tier 1 Item Updates
             ModifyUpgrade("UpgradeResourceRefining1", "TinIngotRecipe");
@@ -159,7 +159,8 @@ namespace QuestingUpdate.lib
             var cubePrefab = QuestingAssets.GetAsset("event.candle", "assets/chaos/candlefab.prefab");
             var newMaterial = QuestingAssets.GetMaterial("event.candle", "assets/chaos/candle.mat");
             var coalItem = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == QuestingGUIDs.CoalPowerModuleT1);
-            if (coalItem == null) {
+            if (coalItem == null)
+            {
                 QuestLog.Log("CoalPowerModuleT1 not found.");
                 return;
             }
@@ -171,29 +172,33 @@ namespace QuestingUpdate.lib
             DontDestroyOnLoad(parent);
 
             var coalTopPrefabCopy = Instantiate(coalTopPrefab, parent.transform);
-            var cubePrefabCopy    = Instantiate(cubePrefab, coalTopPrefabCopy.transform);
+            var cubePrefabCopy = Instantiate(cubePrefab, coalTopPrefabCopy.transform);
 
             // Get the meshFilter from the instanced cube prefab.
             var cubeMeshFilter = cubePrefabCopy.GetComponentsInChildren<MeshFilter>().First();
-            if (cubeMeshFilter == null) {
+            if (cubeMeshFilter == null)
+            {
                 QuestLog.Log("cubeMeshFilter (Cylinder9648) not found.");
                 return;
             }
 
             // For each animator in coalTopPrefabCopy.
-            foreach (var animator in coalTopPrefabCopy.GetComponentsInChildren<Animator>()) {
+            foreach (var animator in coalTopPrefabCopy.GetComponentsInChildren<Animator>())
+            {
                 // For each meshFilter in animator with name == "Cylinder9648".
-                foreach (var meshFilter in animator.GetComponentsInChildren<MeshFilter>().Where(meshFilter => meshFilter.name == "Cylinder9648")) {
+                foreach (var meshFilter in animator.GetComponentsInChildren<MeshFilter>().Where(meshFilter => meshFilter.name == "Cylinder9648"))
+                {
                     meshFilter.mesh = cubeMeshFilter.mesh;
                 }
 
                 // For each meshRenderer in animator with name == "Cylinder9648".
-                foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == "Cylinder9648")) {
+                foreach (var meshRenderer in animator.GetComponentsInChildren<MeshRenderer>().Where(meshRenderer => meshRenderer.name == "Cylinder9648"))
+                {
                     meshRenderer.material.mainTexture = newMaterial.mainTexture;
                     meshRenderer.material.globalIlluminationFlags = newMaterial.globalIlluminationFlags;
                 }
 
-                foreach(var objectlist in coalTopPrefab.GetComponentsInChildren<Transform>())
+                foreach (var objectlist in coalTopPrefab.GetComponentsInChildren<Transform>())
                 {
                     foreach (var transformMesh in objectlist.GetComponentsInChildren<MeshRenderer>().Where(transformMesh => transformMesh.name == "Cylinder9648"))
                     {
@@ -268,9 +273,9 @@ namespace QuestingUpdate.lib
             cubePrefabCopy.DestroyAuto();
             coalItem.Prefabs[0] = coalTopPrefabCopy;
 
-            foreach(var obj in coalItem.Prefabs[0].GetComponentsInChildren<Transform>())
+            foreach (var obj in coalItem.Prefabs[0].GetComponentsInChildren<Transform>())
             {
-                if(obj.name == transformMeshName)
+                if (obj.name == transformMeshName)
                 {
                     //QuestLog.Log("" + obj);
                     obj.position = obj.position + new Vector3(-0.5f, 0.0f, 0.0f);
