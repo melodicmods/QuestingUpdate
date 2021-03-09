@@ -542,13 +542,19 @@
           "input_amount": 2
         }
       ],
-      "output": [ "CobaltIngot", 1 ],
+      "output": [
+        {
+          "output_name": "CobaltIngot",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "TitaniumIngotRecipe",
       "itemID": "66A6E0D5D3EA4F37A7E8C8B8494EBEAB",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": "ForgeTier3"
     },
-
     {
       "recipe_name": "TinIngotRecipe",
       "input_amount": 1,
@@ -558,13 +564,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinIngot", 1 ],
+      "output": [
+        {
+          "output_name": "TinIngot",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperIngotRecipe",
       "itemID": "813C576F2689476C930CE875A6920541",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "BronzeIngotRecipe",
       "input_amount": 1,
@@ -578,13 +590,19 @@
           "input_amount": 2
         }
       ],
-      "output": [ "BronzeIngot", 1 ],
+      "output": [
+        {
+          "output_name": "BronzeIngot",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperIngotRecipe",
       "itemID": "5834A7C544EA44B7B2F499846F65A5F7",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": "ForgeTier1"
     },
-
     {
       "recipe_name": "SteelIngotRecipe",
       "input_amount": 1,
@@ -598,13 +616,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "SteelIngot", 1 ],
+      "output": [
+        {
+          "output_name": "SteelIngot",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "IronIngotRecipe",
       "itemID": "31285829C32547AFAA7566C70AC01F7B",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": "ForgeTier2"
     },
-
     {
       "recipe_name": "TinOreWorktableRecipe",
       "input_amount": 1,
@@ -618,13 +642,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinOre", 1 ],
+      "output": [
+        {
+          "output_name": "TinOre",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperLadderWorktableRecipe",
       "itemID": "D00D8B60000F49F9ACE357F6475D5845",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinOreRecipe",
       "input_amount": 1,
@@ -638,13 +668,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinOre", 1 ],
+      "output": [
+        {
+          "output_name": "TinOre",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperLadderRecipe",
       "itemID": "F91D87B941924FC4AF9D3DFDA6F0DA30",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "BronzeBoltsRecipe",
       "input_amount": 1,
@@ -654,13 +690,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "BronzeBolts", 1 ],
+      "output": [
+        {
+          "output_name": "BronzeBolts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperBoltsRecipe",
       "itemID": "29DC3D5941A040BABF089C8837220D56",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "CobaltBoltsRecipe",
       "input_amount": 1,
@@ -670,13 +712,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "CobaltBolts", 1 ],
+      "output": [
+        {
+          "output_name": "CobaltBolts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "TitaniumBoltsRecipe",
       "itemID": "BF883E730A0E4571A498BD520CC41A03",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "SteelBoltsRecipe",
       "input_amount": 1,
@@ -686,13 +734,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "SteelBolts", 1 ],
+      "output": [
+        {
+          "output_name": "SteelBolts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "IronBoltsRecipe",
       "itemID": "92339DD53B59431F8AD4AF33919286E0",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinBoltsRecipe",
       "input_amount": 1,
@@ -702,13 +756,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinBolts", 1 ],
+      "output": [
+        {
+          "output_name": "TinBolts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperBoltsRecipe",
       "itemID": "B57DC13501594BBCB8770598CC9E1493",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinBoltsWorktableRecipe",
       "input_amount": 1,
@@ -718,13 +778,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinBolts", 1 ],
+      "output": [
+        {
+          "output_name": "TinBolts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperBoltsWorktableRecipe",
       "itemID": "429FDCDF78454A9E83C6E7B529F5DE2D",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "BronzePlatesRecipe",
       "input_amount": 1,
@@ -734,13 +800,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "BronzePlates", 1 ],
+      "output": [
+        {
+          "output_name": "BronzePlates",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperPlatesRecipe",
       "itemID": "D418515C6B2E42649D5979E1BD2AF624",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "CobaltPlatesRecipe",
       "input_amount": 1,
@@ -750,13 +822,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "CobaltPlates", 1 ],
+      "output": [
+        {
+          "output_name": "CobaltPlates",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "TitaniumPlatesRecipe",
       "itemID": "233F48A2ABB140729F2A6FAB1FBE8942",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "SteelPlatesRecipe",
       "input_amount": 1,
@@ -766,13 +844,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "SteelPlates", 1 ],
+      "output": [
+        {
+          "output_name": "SteelPlates",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "IronPlatesRecipe",
       "itemID": "F85498173406424D97A23C86575D56EE",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinPlatesRecipe",
       "input_amount": 1,
@@ -782,13 +866,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinPlates", 1 ],
+      "output": [
+        {
+          "output_name": "TinPlates",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperPlatesRecipe",
       "itemID": "07C7F4B4E6834A8F9BB3D1E2026B46FD",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinPlatesWorktableRecipe",
       "input_amount": 1,
@@ -798,13 +888,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinPlates", 1 ],
+      "output": [
+        {
+          "output_name": "TinPlates",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperPlatesWorktableRecipe",
       "itemID": "8C544BCE2A2C44CDA9A073278F9A3EF2",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "BronzeTubesRecipe",
       "input_amount": 1,
@@ -814,13 +910,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "BronzeTubes", 1 ],
+      "output": [
+        {
+          "output_name": "BronzeTubes",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperTubesRecipe",
       "itemID": "177273172C324BC98A3E280BE760F7CD",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "CobaltTubesRecipe",
       "input_amount": 1,
@@ -830,13 +932,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "CobaltTubes", 1 ],
+      "output": [
+        {
+          "output_name": "CobaltTubes",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "TitaniumTubesRecipe",
       "itemID": "D92B11B3B83C4FAC81E26D5B2A762284",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "SteelTubesRecipe",
       "input_amount": 1,
@@ -846,13 +954,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "SteelTubes", 1 ],
+      "output": [
+        {
+          "output_name": "SteelTubes",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "IronTubesRecipe",
       "itemID": "D10ED3794F4C445BB392B7D28EC912A2",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinTubesRecipe",
       "input_amount": 1,
@@ -862,13 +976,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinTubes", 1 ],
+      "output": [
+        {
+          "output_name": "TinTubes",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperTubesRecipe",
       "itemID": "8F2793C875104B889C29EF1005271171",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "TinTubesWorktableRecipe",
       "input_amount": 1,
@@ -878,13 +998,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "TinTubes", 1 ],
+      "output": [
+        {
+          "output_name": "TinTubes",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "CopperTubesWorktableRecipe",
       "itemID": "1C5868D46B4A41EC9F19869633B8D9D6",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "AlloyStationRecipe",
       "input_amount": 1,
@@ -898,13 +1024,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "AlloyForgeStation", 1 ],
+      "output": [
+        {
+          "output_name": "AlloyForgeStation",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "ProductionControlStationRecipe",
       "itemID": "2177E7806F3842FF9D929941930DA96F",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "AlloyStationWorktableRecipe",
       "input_amount": 1,
@@ -918,13 +1050,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "AlloyForgeStation", 1 ],
+      "output": [
+        {
+          "output_name": "AlloyForgeStation",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "ProductionControlStationWorktableRecipe",
       "itemID": "3E0CB457B5AC44928A4476652F33B18A",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeResourceRefining1Recipe",
       "input_amount": 1,
@@ -934,13 +1072,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "UpgradeResourceRefining1", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeResourceRefining1",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "4B9CF15AF3C04BCD8964DF6C3C426A77",
-      "required_items": [ "UpgradeStarterRefinery" ],
+      "required_items": [
+        "UpgradeStarterRefinery"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeCopperworkingRecipe",
       "input_amount": 1,
@@ -954,13 +1098,19 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeCopperworking", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeCopperworking",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "F6D20287D16444149E22ECCB43F217AF",
-      "required_items": [ "UpgradeStarterRefinery" ],
+      "required_items": [
+        "UpgradeStarterRefinery"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeCopperArmorRecipe",
       "input_amount": 1,
@@ -978,13 +1128,19 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeCopperArmor", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeCopperArmor",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "4FD0DCE1595F45A8A13BAC166D42255A",
-      "required_items": [ "UpgradeCopperworking" ],
+      "required_items": [
+        "UpgradeCopperworking"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeSimpleWeaponsRecipe",
       "input_amount": 1,
@@ -1002,13 +1158,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeSimpleWeapons", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeSimpleWeapons",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "808A3382BB6F4D97B526FF57CEC85C93",
-      "required_items": [ "UpgradeCopperworking", "SimpleExplosivesSchematic" ],
+      "required_items": [
+        "UpgradeCopperworking",
+        "SimpleExplosivesSchematic"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeBasicAlloyingRecipe",
       "input_amount": 1,
@@ -1026,13 +1189,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeBasicAlloying", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeBasicAlloying",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "AC93E7D8912F4A1E98AF130612852441",
-      "required_items": [ "UpgradeCopperworking", "UpgradeResourceRefining1" ],
+      "required_items": [
+        "UpgradeCopperworking",
+        "UpgradeResourceRefining1"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAlloyForge1Recipe",
       "input_amount": 1,
@@ -1046,13 +1216,19 @@
           "input_amount": 15
         }
       ],
-      "output": [ "UpgradeAlloyForge1", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAlloyForge1",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "B2C92D2FD58942DB84758DB5174DC6AB",
-      "required_items": [ "UpgradeBasicAlloying" ],
+      "required_items": [
+        "UpgradeBasicAlloying"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeBronzeworkingRecipe",
       "input_amount": 1,
@@ -1066,13 +1242,19 @@
           "input_amount": 10
         }
       ],
-      "output": [ "UpgradeBronzeworking", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeBronzeworking",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "71EF043D09FF4DC4AB60946A74D43061",
-      "required_items": [ "UpgradeAlloyForge1" ],
+      "required_items": [
+        "UpgradeAlloyForge1"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeTurretsTier1Recipe",
       "input_amount": 1,
@@ -1086,13 +1268,20 @@
           "input_amount": 2
         }
       ],
-      "output": [ "UpgradeTurretsTier1", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeTurretsTier1",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "3FF61953BE6D4728B1FBFB5EE211FC9D",
-      "required_items": [ "UpgradeBronzeworking", "UpgradeSimpleWeapons" ],
+      "required_items": [
+        "UpgradeBronzeworking",
+        "UpgradeSimpleWeapons"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeBronzeArmorRecipe",
       "input_amount": 1,
@@ -1106,13 +1295,20 @@
           "input_amount": 10
         }
       ],
-      "output": [ "UpgradeBronzeArmor", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeBronzeArmor",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "3E64FBD9E921493F95F39F7807BD3954",
-      "required_items": [ "UpgradeBronzeworking", "UpgradeCopperArmor" ],
+      "required_items": [
+        "UpgradeBronzeworking",
+        "UpgradeCopperArmor"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeDrillshipParts1Recipe",
       "input_amount": 1,
@@ -1126,13 +1322,19 @@
           "input_amount": 20
         }
       ],
-      "output": [ "UpgradeDrillshipParts1", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeDrillshipParts1",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "2BF4096EB29D44669847368D1CB34AA8",
-      "required_items": [ "UpgradeBronzeworking" ],
+      "required_items": [
+        "UpgradeBronzeworking"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedTurrets1Recipe",
       "input_amount": 1,
@@ -1150,13 +1352,19 @@
           "input_amount": 20
         }
       ],
-      "output": [ "UpgradeAdvancedTurrets1", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedTurrets1",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "9865CE4C53DC4D52A8A0DC349859C510",
-      "required_items": [ "UpgradeTurretsTier1" ],
+      "required_items": [
+        "UpgradeTurretsTier1"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeIronRefiningRecipe",
       "input_amount": 1,
@@ -1170,13 +1378,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "UpgradeIronRefining", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeIronRefining",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "1E4FF66AEF594127940F6B1CC2BFBC5B",
-      "required_items": [ "1b3d424506d823f4d859a78655997cfb" ],
+      "required_items": [
+        "1b3d424506d823f4d859a78655997cfb"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeIronworkingRecipe",
       "input_amount": 1,
@@ -1190,13 +1404,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "UpgradeIronworking", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeIronworking",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "189D623C94974D9D99E4BABA3A3C3C04",
-      "required_items": [ "UpgradeIronRefining" ],
+      "required_items": [
+        "UpgradeIronRefining"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedIronPartsRecipe",
       "input_amount": 1,
@@ -1210,13 +1430,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "UpgradeAdvancedIronParts", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedIronParts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "CC5FDB6325D84483A5D7D0B94CA1176A",
-      "required_items": [ "UpgradeIronworking" ],
+      "required_items": [
+        "UpgradeIronworking"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeIronArmorRecipe",
       "input_amount": 1,
@@ -1234,13 +1460,20 @@
           "input_amount": 2
         }
       ],
-      "output": [ "UpgradeIronArmor", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeIronArmor",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "FCC3D9E22DDE483096EE61B52544351C",
-      "required_items": [ "UpgradeIronworking", "UpgradeBronzeArmor" ],
+      "required_items": [
+        "UpgradeIronworking",
+        "UpgradeBronzeArmor"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeResourceRefining2Recipe",
       "input_amount": 1,
@@ -1258,13 +1491,19 @@
           "input_amount": 2
         }
       ],
-      "output": [ "UpgradeResourceRefining2", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeResourceRefining2",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "71FF16A7CC8B4F9EBB4E438FE3A52DB5",
-      "required_items": [ "1b3d424506d823f4d859a78655997cfb" ],
+      "required_items": [
+        "1b3d424506d823f4d859a78655997cfb"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedAlloyingRecipe",
       "input_amount": 1,
@@ -1282,13 +1521,20 @@
           "input_amount": 2
         }
       ],
-      "output": [ "UpgradeAdvancedAlloying", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedAlloying",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "E54B5252D1AC4CBAB1CC8FE3A4162445",
-      "required_items": [ "UpgradeResourceRefining2", "UpgradeIronworking" ],
+      "required_items": [
+        "UpgradeResourceRefining2",
+        "UpgradeIronworking"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAlloyForge2Recipe",
       "input_amount": 1,
@@ -1306,13 +1552,19 @@
           "input_amount": 2
         }
       ],
-      "output": [ "UpgradeAlloyForge2", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAlloyForge2",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "25F63E963AFF4D33B52874A4F29E0383",
-      "required_items": [ "UpgradeAdvancedAlloying" ],
+      "required_items": [
+        "UpgradeAdvancedAlloying"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeSteelworkingRecipe",
       "input_amount": 1,
@@ -1326,13 +1578,19 @@
           "input_amount": 3
         }
       ],
-      "output": [ "UpgradeSteelworking", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeSteelworking",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "D70B44803CEA47418C166E69DBD9DA98",
-      "required_items": [ "UpgradeAlloyForge2" ],
+      "required_items": [
+        "UpgradeAlloyForge2"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeSteelArmorRecipe",
       "input_amount": 1,
@@ -1350,13 +1608,20 @@
           "input_amount": 3
         }
       ],
-      "output": [ "UpgradeSteelArmor", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeSteelArmor",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "AAA6EEB4996F4A93A746BED6BAC73469",
-      "required_items": [ "UpgradeSteelworking", "UpgradeIronArmor" ],
+      "required_items": [
+        "UpgradeSteelworking",
+        "UpgradeIronArmor"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeImprovedWeaponsRecipe",
       "input_amount": 1,
@@ -1374,7 +1639,12 @@
           "input_amount": 3
         }
       ],
-      "output": [ "UpgradeImprovedWeapons", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeImprovedWeapons",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "39855DEAA2994BDB9533560C234013F7",
       "required_items": [
@@ -1384,7 +1654,6 @@
       ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeTurretsTier2Recipe",
       "input_amount": 1,
@@ -1402,13 +1671,20 @@
           "input_amount": 3
         }
       ],
-      "output": [ "UpgradeTurretsTier2", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeTurretsTier2",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "16CC22FA14A54A708B9D1495F956BCA5",
-      "required_items": [ "UpgradeImprovedWeapons", "UpgradeAdvancedTurrets1" ],
+      "required_items": [
+        "UpgradeImprovedWeapons",
+        "UpgradeAdvancedTurrets1"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedTurrets2Recipe",
       "input_amount": 1,
@@ -1426,13 +1702,19 @@
           "input_amount": 3
         }
       ],
-      "output": [ "UpgradeAdvancedTurrets2", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedTurrets2",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "13868650384046CF875FF50BA83F2117",
-      "required_items": [ "UpgradeTurretsTier2" ],
+      "required_items": [
+        "UpgradeTurretsTier2"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeDrillshipParts2Recipe",
       "input_amount": 1,
@@ -1450,13 +1732,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeDrillshipParts2", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeDrillshipParts2",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "1DCCCE0FF2E440988A2D381E2E51D6D1",
-      "required_items": [ "UpgradeSteelworking", "UpgradeAdvancedIronParts" ],
+      "required_items": [
+        "UpgradeSteelworking",
+        "UpgradeAdvancedIronParts"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeExpertAlloyingRecipe",
       "input_amount": 1,
@@ -1470,13 +1759,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeExpertAlloying", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeExpertAlloying",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "6C8FA823ED9C4D6D9E02044C4BF22516",
-      "required_items": [ "UpgradeCobaltworking", "UpgradeResourceRefining3" ],
+      "required_items": [
+        "UpgradeCobaltworking",
+        "UpgradeResourceRefining3"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeResourceRefining3Recipe",
       "input_amount": 1,
@@ -1490,13 +1786,19 @@
           "input_amount": 4
         }
       ],
-      "output": [ "UpgradeResourceRefining3", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeResourceRefining3",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "EF4D2CFFC3C44FCF951190E86C9105E5",
-      "required_items": [ "2bd7b88db440ddf40b2032fc3843579b" ],
+      "required_items": [
+        "2bd7b88db440ddf40b2032fc3843579b"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeCobaltRefiningRecipe",
       "input_amount": 1,
@@ -1510,13 +1812,19 @@
           "input_amount": 4
         }
       ],
-      "output": [ "UpgradeCobaltRefining", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeCobaltRefining",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "DF7FEF8C7A08437A9F03F9DD172FE87C",
-      "required_items": [ "2bd7b88db440ddf40b2032fc3843579b" ],
+      "required_items": [
+        "2bd7b88db440ddf40b2032fc3843579b"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeCobaltworkingRecipe",
       "input_amount": 1,
@@ -1530,13 +1838,19 @@
           "input_amount": 4
         }
       ],
-      "output": [ "UpgradeCobaltworking", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeCobaltworking",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "32D4E1FFAB624402983DC58317C4F408",
-      "required_items": [ "UpgradeCobaltRefining" ],
+      "required_items": [
+        "UpgradeCobaltRefining"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedCobaltPartsRecipe",
       "input_amount": 1,
@@ -1550,13 +1864,19 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeAdvancedCobaltParts", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedCobaltParts",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "D2C9D442F83D4498B251691DFB09B0F1",
-      "required_items": [ "UpgradeCobaltworking" ],
+      "required_items": [
+        "UpgradeCobaltworking"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAlloyingTier3Recipe",
       "input_amount": 1,
@@ -1570,13 +1890,19 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeAlloyingTier3", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAlloyingTier3",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "E75309EBF5F8493496166A83D59BEA5D",
-      "required_items": [ "UpgradeExpertAlloying" ],
+      "required_items": [
+        "UpgradeExpertAlloying"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeTitanworkingRecipe",
       "input_amount": 1,
@@ -1590,13 +1916,19 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeTitanworking", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeTitanworking",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "DDC05BA7041F4B1EBEBAF7603931DB32",
-      "required_items": [ "UpgradeAlloyingTier3" ],
+      "required_items": [
+        "UpgradeAlloyingTier3"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeCobaltArmorRecipe",
       "input_amount": 1,
@@ -1614,13 +1946,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeCobaltArmor", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeCobaltArmor",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "6CEBEA28FF7E43609FAC1A7198FAC86E",
-      "required_items": [ "UpgradeAdvancedCobaltParts", "UpgradeSteelArmor" ],
+      "required_items": [
+        "UpgradeAdvancedCobaltParts",
+        "UpgradeSteelArmor"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeTitanArmorRecipe",
       "input_amount": 1,
@@ -1638,13 +1977,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeTitanArmor", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeTitanArmor",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "D0EBEA1A2E4A490AAAEE9E53ACD15B22",
-      "required_items": [ "UpgradeTitanworking", "UpgradeCobaltArmor" ],
+      "required_items": [
+        "UpgradeTitanworking",
+        "UpgradeCobaltArmor"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedWeaponsRecipe",
       "input_amount": 1,
@@ -1662,7 +2008,12 @@
           "input_amount": 10
         }
       ],
-      "output": [ "UpgradeAdvancedWeapons", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedWeapons",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "4012E17308B444A89F6C29232FD76116",
       "required_items": [
@@ -1672,7 +2023,6 @@
       ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeTurretsTier3Recipe",
       "input_amount": 1,
@@ -1690,13 +2040,20 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeTurretsTier3", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeTurretsTier3",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "F52CDA0029644EACB72C532FFD4B1D20",
-      "required_items": [ "UpgradeAdvancedTurrets2", "UpgradeAdvancedWeapons" ],
+      "required_items": [
+        "UpgradeAdvancedTurrets2",
+        "UpgradeAdvancedWeapons"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeAdvancedTurrets3Recipe",
       "input_amount": 1,
@@ -1714,13 +2071,19 @@
           "input_amount": 5
         }
       ],
-      "output": [ "UpgradeAdvancedTurrets3", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeAdvancedTurrets3",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "454F57A8C23F48F4B67995B3539FF222",
-      "required_items": [ "UpgradeTurretsTier3" ],
+      "required_items": [
+        "UpgradeTurretsTier3"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeDrillshipParts3Recipe",
       "input_amount": 1,
@@ -1738,13 +2101,19 @@
           "input_amount": 7
         }
       ],
-      "output": [ "UpgradeDrillshipParts3", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeDrillshipParts3",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "DDD84EAE2C374BA891A06DC18B09C1BB",
-      "required_items": [ "UpgradeTitanworking" ],
+      "required_items": [
+        "UpgradeTitanworking"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeDrill4Recipe",
       "input_amount": 1,
@@ -1762,13 +2131,19 @@
           "input_amount": 10
         }
       ],
-      "output": [ "UpgradeDrill4", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeDrill4",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "7BCFEA88A7DA4925930FDAFF27734AFF",
-      "required_items": [ "UpgradeDrillshipParts3" ],
+      "required_items": [
+        "UpgradeDrillshipParts3"
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "UpgradeHeatResistanceRecipe",
       "input_amount": 1,
@@ -1786,7 +2161,12 @@
           "input_amount": 10
         }
       ],
-      "output": [ "UpgradeHeatResistance", 1 ],
+      "output": [
+        {
+          "output_name": "UpgradeHeatResistance",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "UpgradeStarterRefineryRecipe",
       "itemID": "0B7B46FE83644DD489E2239AD5287179",
       "required_items": [
@@ -1796,7 +2176,6 @@
       ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "AlloyForgeTier1Recipe",
       "input_amount": 1,
@@ -1818,13 +2197,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "AlloyForgeTier1", 1 ],
+      "output": [
+        {
+          "output_name": "AlloyForgeTier1",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "RefineryModuleSide1Recipe",
       "itemID": "1A6B5BFD59D5418A9ADD618B85F812E2",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "AlloyForgeTier2Recipe",
       "input_amount": 1,
@@ -1846,13 +2231,19 @@
           "input_amount": 1
         }
       ],
-      "output": [ "AlloyForgeTier2", 1 ],
+      "output": [
+        {
+          "output_name": "AlloyForgeTier2",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "RefineryModuleSide2Recipe",
       "itemID": "7DAAE7F9C18448E082D8719E10CBDE52",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     },
-
     {
       "recipe_name": "AlloyForgeTier3Recipe",
       "input_amount": 1,
@@ -1874,10 +2265,17 @@
           "input_amount": 1
         }
       ],
-      "output": [ "AlloyForgeTier3", 1 ],
+      "output": [
+        {
+          "output_name": "AlloyForgeTier3",
+          "output_amount": 1
+        }
+      ],
       "base_recipe": "RefineryModuleSide3Recipe",
       "itemID": "48969D10B2344354967CCB4039EB0CBC",
-      "required_items": [ "" ],
+      "required_items": [
+        ""
+      ],
       "recipe_category": ""
     }
   ],
@@ -1893,7 +2291,9 @@
       "category_name": "RefineryModuleT1",
       "factory_type": "AlloyForge",
       "icon_path": "Resources/Modules/AlloyForgeT1.png",
-      "categories": [ "ForgeTier1" ],
+      "categories": [
+        "ForgeTier1"
+      ],
       "first": true
     },
     {
@@ -1907,7 +2307,10 @@
       "category_name": "RefineryModuleT2",
       "factory_type": "AlloyForge",
       "icon_path": "Resources/Modules/AlloyForgeT2.png",
-      "categories": [ "ForgeTier1", "ForgeTier2" ],
+      "categories": [
+        "ForgeTier1",
+        "ForgeTier2"
+      ],
       "first": false
     },
     {
@@ -1921,7 +2324,11 @@
       "category_name": "RefineryModuleT3",
       "factory_type": "AlloyForge",
       "icon_path": "Resources/Modules/AlloyForgeT3.png",
-      "categories": [ "ForgeTier1", "ForgeTier2", "ForgeTier3" ],
+      "categories": [
+        "ForgeTier1",
+        "ForgeTier2",
+        "ForgeTier3"
+      ],
       "first": false
     }
   ],
@@ -1935,7 +2342,11 @@
       "guid": "AB14B23AB2E544BFBBEB5EEACB11D944",
       "icon_path": "Resources/Stations/AlloyForgeControlStation.png",
       "variant": "Alloy",
-      "categories": [ "ForgeTier1", "ForgeTier2", "ForgeTier3" ]
+      "categories": [
+        "ForgeTier1",
+        "ForgeTier2",
+        "ForgeTier3"
+      ]
     }
   ],
   "deposits": [
@@ -1943,21 +2354,30 @@
       "underground": false,
       "percent_replace": 20,
       "output_name": "TinOre",
-      "yields": [ 2, 5 ],
+      "yields": [
+        2,
+        5
+      ],
       "replaced_item": "SulfurOre"
     },
     {
       "underground": false,
       "percent_replace": 100,
       "output_name": "CobaltOre",
-      "yields": [ 2, 5 ],
+      "yields": [
+        2,
+        5
+      ],
       "replaced_item": "TitaniumOre"
     },
     {
       "underground": true,
       "percent_replace": 100,
       "output_name": "CobaltOre",
-      "yields": [ 2, 5 ],
+      "yields": [
+        2,
+        5
+      ],
       "replaced_item": "TitaniumOre"
     }
   ],
@@ -1992,152 +2412,212 @@
     {
       "modification_type": "upgrade",
       "target": "UpgradeStarterRefineryRecipe",
-      "modifiers": [ "UpgradeStarterResearch" ]
+      "modifiers": [
+        "UpgradeStarterResearch"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "StarterStructuresSchematicRecipe",
-      "modifiers": [ "UpgradeStarterResearch" ]
+      "modifiers": [
+        "UpgradeStarterResearch"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "SimpleExplosivesSchematicRecipe",
-      "modifiers": [ "UpgradeResourceRefining1" ]
+      "modifiers": [
+        "UpgradeResourceRefining1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "TinIngotRecipe",
-      "modifiers": [ "UpgradeResourceRefining1" ]
+      "modifiers": [
+        "UpgradeResourceRefining1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "CopperIngotRecipe",
-      "modifiers": [ "UpgradeResourceRefining1" ]
+      "modifiers": [
+        "UpgradeResourceRefining1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "TinBoltsRecipe",
-      "modifiers": [ "UpgradeCopperworking" ]
+      "modifiers": [
+        "UpgradeCopperworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "TinPlatesRecipe",
-      "modifiers": [ "UpgradeCopperworking" ]
+      "modifiers": [
+        "UpgradeCopperworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "TinTubesRecipe",
-      "modifiers": [ "UpgradeCopperworking" ]
+      "modifiers": [
+        "UpgradeCopperworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "CopperBoltsRecipe",
-      "modifiers": [ "UpgradeCopperworking" ]
+      "modifiers": [
+        "UpgradeCopperworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "CopperPlatesRecipe",
-      "modifiers": [ "UpgradeCopperworking" ]
+      "modifiers": [
+        "UpgradeCopperworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "CopperTubesRecipe",
-      "modifiers": [ "UpgradeCopperworking" ]
+      "modifiers": [
+        "UpgradeCopperworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "99b993886834ad749b89e48aecff9b8e",
-      "modifiers": [ "UpgradeCopperArmor" ]
+      "modifiers": [
+        "UpgradeCopperArmor"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "e79b6aee5334e5a4dad56a1dd7f7dfd0",
-      "modifiers": [ "UpgradeSimpleWeapons" ]
+      "modifiers": [
+        "UpgradeSimpleWeapons"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "b0057c05e82556a46be6775b0330bda4",
-      "modifiers": [ "UpgradeSimpleWeapons" ]
+      "modifiers": [
+        "UpgradeSimpleWeapons"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "a1ef1f7beb593f34f9b2113808c2b38a",
-      "modifiers": [ "UpgradeTurretsTier1" ]
+      "modifiers": [
+        "UpgradeTurretsTier1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "AlloyT1Recipe",
-      "modifiers": [ "UpgradeBasicAlloying" ]
+      "modifiers": [
+        "UpgradeBasicAlloying"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "BronzeIngotRecipe",
-      "modifiers": [ "UpgradeBasicAlloying" ]
+      "modifiers": [
+        "UpgradeBasicAlloying"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "BronzeTubesRecipe",
-      "modifiers": [ "UpgradeBronzeworking" ]
+      "modifiers": [
+        "UpgradeBronzeworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "BronzePlatesRecipe",
-      "modifiers": [ "UpgradeBronzeworking" ]
+      "modifiers": [
+        "UpgradeBronzeworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "BronzeBoltsRecipe",
-      "modifiers": [ "UpgradeBronzeworking" ]
+      "modifiers": [
+        "UpgradeBronzeworking"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "DrillUpgrade2Recipe",
-      "modifiers": [ "UpgradeDrillshipParts1" ]
+      "modifiers": [
+        "UpgradeDrillshipParts1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "EngineUpgrade2Recipe",
-      "modifiers": [ "UpgradeDrillshipParts1" ]
+      "modifiers": [
+        "UpgradeDrillshipParts1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "HullUpgrade2Recipe",
-      "modifiers": [ "UpgradeDrillshipParts1" ]
+      "modifiers": [
+        "UpgradeDrillshipParts1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "TracksUpgrade2Recipe",
-      "modifiers": [ "UpgradeDrillshipParts1" ]
+      "modifiers": [
+        "UpgradeDrillshipParts1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "ShipCoreUpgrade2Recipe",
-      "modifiers": [ "UpgradeDrillshipParts1" ]
+      "modifiers": [
+        "UpgradeDrillshipParts1"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "AlloyT2Recipe",
-      "modifiers": [ "UpgradeAdvancedAlloying" ]
+      "modifiers": [
+        "UpgradeAdvancedAlloying"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "1ca9bc85219369b418e42b710a1c8234",
-      "modifiers": [ "b7b1ef06bf1e484383863687dcad6fd8" ]
+      "modifiers": [
+        "b7b1ef06bf1e484383863687dcad6fd8"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "2c8b4992d0c6e4d4282b7bd1c359af7d",
-      "modifiers": [ "1b3d424506d823f4d859a78655997cfb" ]
+      "modifiers": [
+        "1b3d424506d823f4d859a78655997cfb"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "aaef3e44f197bfc448ac94685621442e",
-      "modifiers": [ "d095455c4b4555749bc3387b0204d35e" ]
+      "modifiers": [
+        "d095455c4b4555749bc3387b0204d35e"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "83713956e6339b043a0f92854e803cb3",
-      "modifiers": [ "d095455c4b4555749bc3387b0204d35e" ]
+      "modifiers": [
+        "d095455c4b4555749bc3387b0204d35e"
+      ]
     },
     {
       "modification_type": "upgrade",
@@ -2150,247 +2630,345 @@
     {
       "modification_type": "upgrade",
       "target": "AlloyT3Recipe",
-      "modifiers": [ "UpgradePerfectAlloying" ]
+      "modifiers": [
+        "UpgradePerfectAlloying"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "TitaniumIngotRecipe",
-      "modifiers": [ "UpgradePerfectAlloying" ]
+      "modifiers": [
+        "UpgradePerfectAlloying"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "CobaltIngotRecipe",
-      "modifiers": [ "UpgradeResourceRefining3" ]
+      "modifiers": [
+        "UpgradeResourceRefining3"
+      ]
     },
     {
       "modification_type": "upgrade",
       "target": "SteelIngotRecipe",
-      "modifiers": [ "UpgradeAdvancedAlloying" ]
+      "modifiers": [
+        "UpgradeAdvancedAlloying"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeResourceRefining1Recipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeStarterRefineryRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "SimpleExplosivesSchematicRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "StarterStructuresSchematicRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeCopperworkingRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeCopperArmorRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeSimpleWeaponsRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeBasicAlloyingRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAlloyForge1Recipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeBronzeworkingRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeTurretsTier1Recipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeBronzeArmorRecipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeDrillshipParts1Recipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedTurrets1Recipe",
-      "modifiers": [ "ResearchTier1" ]
+      "modifiers": [
+        "ResearchTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "AlloyT1Recipe",
-      "modifiers": [ "ForgeTier1" ]
+      "modifiers": [
+        "ForgeTier1"
+      ]
     },
     {
       "modification_type": "table",
       "target": "AlloyT2Recipe",
-      "modifiers": [ "ForgeTier2" ]
+      "modifiers": [
+        "ForgeTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "AlloyT3Recipe",
-      "modifiers": [ "ForgeTier3" ]
+      "modifiers": [
+        "ForgeTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeIronRefiningRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeIronworkingRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedIronPartsRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeIronArmorRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeResourceRefining2Recipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedAlloyingRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAlloyForge2Recipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeSteelworkingRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeSteelArmorRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeImprovedWeaponsRecipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeTurretsTier2Recipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedTurrets2Recipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeDrillshipParts2Recipe",
-      "modifiers": [ "ResearchTier2" ]
+      "modifiers": [
+        "ResearchTier2"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeExpertAlloyingRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeResourceRefining3Recipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeCobaltRefiningRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeCobaltworkingRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedCobaltPartsRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAlloyingTier3Recipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeTitanworkingRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeCobaltArmorRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeTitanArmorRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedWeaponsRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeTurretsTier3Recipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeAdvancedTurrets3Recipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeDrillshipParts3Recipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeDrill4Recipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     },
     {
       "modification_type": "table",
       "target": "UpgradeHeatResistanceRecipe",
-      "modifiers": [ "ResearchTier3" ]
+      "modifiers": [
+        "ResearchTier3"
+      ]
     }
   ],
   "schematics": [
@@ -2408,7 +2986,9 @@
       "image": "Resources/Schematics/Head/ResearchT1.png",
       "tier": 1,
       "tooltip": "The Research T1 Schematics",
-      "requirements": [0]
+      "requirements": [
+        0
+      ]
     },
     {
       "id": 2,
@@ -2416,7 +2996,9 @@
       "image": "Resources/Schematics/Head/RefineryT1.png",
       "tier": 1,
       "tooltip": "The Refinery T1 Schematics",
-      "requirements": [1]
+      "requirements": [
+        1
+      ]
     },
     {
       "id": 3,
@@ -2424,7 +3006,9 @@
       "image": "Resources/Schematics/Head/StructureT1.png",
       "tier": 1,
       "tooltip": "The Starter Structures Schematics",
-      "requirements": [1]
+      "requirements": [
+        1
+      ]
     },
     {
       "id": 4,
@@ -2432,7 +3016,9 @@
       "image": "Resources/Schematics/T1/Copperworking.png",
       "tier": 1,
       "tooltip": "The Copperworking Schematics",
-      "requirements": [2]
+      "requirements": [
+        2
+      ]
     },
     {
       "id": 5,
@@ -2440,7 +3026,9 @@
       "image": "Resources/Schematics/T1/ResourceRefining.png",
       "tier": 1,
       "tooltip": "The Resource Refining 1 Schematics",
-      "requirements": [2]
+      "requirements": [
+        2
+      ]
     },
     {
       "id": 6,
@@ -2448,7 +3036,10 @@
       "image": "Resources/Schematics/T1/BasicAlloying.png",
       "tier": 1,
       "tooltip": "The Basic Alloying Schematics",
-      "requirements": [4,5]
+      "requirements": [
+        4,
+        5
+      ]
     },
     {
       "id": 7,
@@ -2456,7 +3047,9 @@
       "image": "Resources/Schematics/Head/Explosives1.png",
       "tier": 1,
       "tooltip": "The Simple Explosives Schematics",
-      "requirements": [5]
+      "requirements": [
+        5
+      ]
     },
     {
       "id": 8,
@@ -2464,7 +3057,9 @@
       "image": "Resources/Schematics/T1/CopperArmor.png",
       "tier": 1,
       "tooltip": "The Copper Armor Schematics",
-      "requirements": [4]
+      "requirements": [
+        4
+      ]
     },
     {
       "id": 9,
@@ -2472,7 +3067,9 @@
       "image": "Resources/Schematics/T1/AlloyForge1.png",
       "tier": 1,
       "tooltip": "The Alloy Forge T1 Schematics",
-      "requirements": [6]
+      "requirements": [
+        6
+      ]
     },
     {
       "id": 10,
@@ -2480,7 +3077,10 @@
       "image": "Resources/Schematics/T1/SimpleWeapons.png",
       "tier": 1,
       "tooltip": "The Simple Weapons Schematics",
-      "requirements": [7,4]
+      "requirements": [
+        7,
+        4
+      ]
     },
     {
       "id": 11,
@@ -2488,7 +3088,9 @@
       "image": "Resources/Schematics/T1/Bronzeworking.png",
       "tier": 1,
       "tooltip": "The Bronzeworking Schematics",
-      "requirements": [9]
+      "requirements": [
+        9
+      ]
     },
     {
       "id": 12,
@@ -2496,7 +3098,10 @@
       "image": "Resources/Schematics/T1/TurretsTier1.png",
       "tier": 1,
       "tooltip": "The Turrets Tier 1 Schematic",
-      "requirements": [10,11]
+      "requirements": [
+        10,
+        11
+      ]
     },
     {
       "id": 13,
@@ -2504,7 +3109,9 @@
       "image": "Resources/Schematics/T1/AdvancedTurrets1.png",
       "tier": 1,
       "tooltip": "The Advanced Turrets 1 Schematic",
-      "requirements": [12]
+      "requirements": [
+        12
+      ]
     },
     {
       "id": 14,
@@ -2512,7 +3119,10 @@
       "image": "Resources/Schematics/T1/BronzeArmor.png",
       "tier": 1,
       "tooltip": "The Bronze Armor Schematics",
-      "requirements": [11,4]
+      "requirements": [
+        11,
+        4
+      ]
     },
     {
       "id": 15,
@@ -2520,7 +3130,9 @@
       "image": "Resources/Schematics/T1/DrillshipParts1.png",
       "tier": 1,
       "tooltip": "The Drillship Parts 1 Schematic",
-      "requirements": [11]
+      "requirements": [
+        11
+      ]
     }
   ]
 }

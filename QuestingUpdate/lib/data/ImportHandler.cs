@@ -22,6 +22,7 @@ namespace QuestingUpdate.lib.data
     }
 
 
+
     public class Rootobject
     {
         public Item[] items { get; set; }
@@ -50,7 +51,7 @@ namespace QuestingUpdate.lib.data
         public string recipe_name { get; set; }
         public int input_amount { get; set; }
         public Input[] inputs { get; set; }
-        public object[] output { get; set; }
+        public Output[] output { get; set; }
         public string base_recipe { get; set; }
         public string itemID { get; set; }
         public string[] required_items { get; set; }
@@ -61,6 +62,12 @@ namespace QuestingUpdate.lib.data
     {
         public string input_name { get; set; }
         public int input_amount { get; set; }
+    }
+
+    public class Output
+    {
+        public string output_name { get; set; }
+        public int output_amount { get; set; }
     }
 
     public class Module
@@ -124,6 +131,7 @@ namespace QuestingUpdate.lib.data
         public string tooltip { get; set; }
         public int?[] requirements { get; set; }
     }
+
 
 
 }

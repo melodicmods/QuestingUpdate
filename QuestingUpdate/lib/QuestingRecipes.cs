@@ -42,9 +42,9 @@ namespace QuestingUpdate.lib
             return tempcategory;
         }
 
-        private void CreateRecipe(string recipeName, data.Input[] inputs, object[] outputs, string baseRecipe, string itemId, string[] requiredItems, string recipeCategory)
+        private void CreateRecipe(string recipeName, data.Input[] inputs, Output[] outputs, string baseRecipe, string itemId, string[] requiredItems, string recipeCategory)
         {
-            var outputItem = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputs[0].ToString());
+            var outputItem = GameResources.Instance.Items.FirstOrDefault(s => s.name == outputs[0].output_name);
             var finalInput = new InventoryItemData[inputs.Length];
             var i = 0;
             foreach (data.Input input in inputs)
@@ -57,7 +57,7 @@ namespace QuestingUpdate.lib
             var recipe = ScriptableObject.CreateInstance<Recipe>();
             recipe.name = recipeName;
             recipe.Inputs = finalInput;
-            recipe.Output = new InventoryItemData { Item = outputItem, Amount = Convert.ToInt32(outputs[1]) };
+            recipe.Output = new InventoryItemData { Item = outputItem, Amount = outputs[0].output_amount };
             if (requiredItems[0] != "")
             {
                 var requiredFinal = new ItemDefinition[inputs.Length];
@@ -69,15 +69,17 @@ namespace QuestingUpdate.lib
                     iReq++;
                 }
                 recipe.RequiredUpgrades = requiredFinal;
-            } else
+            }
+            else
             {
                 var baseRecipeTag = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipe);
                 recipe.RequiredUpgrades = baseRecipeTag.RequiredUpgrades;
             }
-            if(recipeCategory != "")
+            if (recipeCategory != "")
             {
                 recipe.Categories = new RecipeCategory[] { FindCategories(recipeCategory) };
-            } else
+            }
+            else
             {
                 var baseRecipeTag = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == baseRecipe);
                 recipe.Categories = baseRecipeTag.Categories.ToArray();
