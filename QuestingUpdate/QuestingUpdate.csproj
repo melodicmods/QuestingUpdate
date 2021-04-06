@@ -428,12 +428,18 @@
     <Compile Include="lib\addons\GenericMod\GenericRegistry.cs" />
     <Compile Include="lib\addons\scripts\AddonLog.cs" />
     <Compile Include="lib\addons\ThermoNuclear\Thermonuclear.cs" />
+    <Compile Include="lib\classes\EnumListing.cs" />
     <Compile Include="lib\data\ExportHandler.cs" />
+    <Compile Include="lib\gui\MainGUI.cs" />
+    <Compile Include="lib\manager\GlobalManager.cs" />
     <Compile Include="lib\data\ImportHandler.cs" />
     <Compile Include="lib\gui\TechTree.cs" />
+    <Compile Include="lib\manager\GlobalStorage.cs" />
+    <Compile Include="lib\manager\scripts\ManagerLog.cs" />
     <Compile Include="lib\QuestingModifier.cs" />
     <Compile Include="lib\QuestingNamer.cs" />
     <Compile Include="lib\QuestingQuests.cs" />
+    <Compile Include="lib\QuestingWeapons.cs" />
     <Compile Include="lib\scripts\MagicLog.cs" />
     <Compile Include="lib\scripts\QuestLog.cs" />
     <Compile Include="lib\scripts\QuestingAssets.cs" />
@@ -485,12 +491,12 @@ SET MonoPath=%25UnityPath%25\Editor\Data\MonoBleedingEdge
 "%25MonoPath%25\bin\mono.exe" "%25MonoPath%25\lib\mono\4.5\pdb2mdb.exe" "$(TargetPath)"
 copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
 
-cd "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods"
-7z a QuestingUpdateDev.zip *.dll Resources/
-copy QuestingUpdateDev.zip "D:\Coding\keydownloader\downloads\dev" /y
-D:
-cd "D:\Coding\keydownloader\downloads\dev"
-git commit -am "Update Downloads"
-git push</PostBuildEvent>
+:: cd "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods"
+:: 7z a QuestingUpdateDev.zip *.dll Resources/
+:: copy QuestingUpdateDev.zip "D:\Coding\keydownloader\downloads\dev" /y
+:: D:
+:: cd "D:\Coding\keydownloader\downloads\dev"
+:: git commit -am "Update Downloads"
+:: git push</PostBuildEvent>
   </PropertyGroup>
 </Project>

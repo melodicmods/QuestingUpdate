@@ -9,10 +9,13 @@ using QuestingUpdate.lib.storage;
 using static QuestingUpdate.lib.data.ExportHandler;
 using QuestingUpdate.lib.data;
 
-namespace QuestingUpdate.lib {
-    class QuestingStations : MonoBehaviour {
+namespace QuestingUpdate.lib
+{
+    class QuestingStations : MonoBehaviour
+    {
         private static readonly GUID productionStationGUID = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
-        public void InitStations() {
+        public void InitStations()
+        {
             foreach (KeyValuePair<Station, GUID> dict in questingStations)
             {
                 var categories = new RecipeCategory[dict.Key.categories.Length];
@@ -30,11 +33,13 @@ namespace QuestingUpdate.lib {
         }
 
         private static void Initialize<T>(ref T str)
-            where T : struct, ISerializationCallbackReceiver {
+            where T : struct, ISerializationCallbackReceiver
+        {
             str.OnAfterDeserialize();
         }
 
-        public FactoryType FindFactoryCategories(string categoryName) {
+        public FactoryType FindFactoryCategories(string categoryName)
+        {
             return GameResources.Instance.FactoryTypes.FirstOrDefault(type => type?.name == categoryName);
         }
 

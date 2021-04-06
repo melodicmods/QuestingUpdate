@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace QuestingUpdate.lib.scripts
@@ -20,6 +21,22 @@ namespace QuestingUpdate.lib.scripts
             }
             fieldInfo.SetValue(obj, newValue);
             return true;
+        }
+
+        private static readonly FieldInfo LOCALIZED_UI_TEXT_M_TEXT = typeof(LocalizedUiText).GetField("m_text", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly FieldInfo LOCALIZED_TEXT_M_TEXT = typeof(LocalizedText).GetField("m_id", BindingFlags.NonPublic | BindingFlags.Instance);
+        public static void SetText(this LocalizedUiText localizedUiText, string newText)
+        {
+            var mText = (TMP_Text)LOCALIZED_UI_TEXT_M_TEXT.GetValue(localizedUiText);
+            if (mText == null)
+            {
+                Debug.LogWarning($"mText null for {localizedUiText}");
+            }
+            else
+            {
+                LOCALIZED_TEXT_M_TEXT.SetValue(localizedUiText, ".");
+                mText.text = newText;
+            }
         }
     }
 }

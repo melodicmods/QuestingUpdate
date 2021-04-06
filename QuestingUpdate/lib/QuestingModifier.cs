@@ -6,6 +6,9 @@ using QuestingUpdate.lib.scripts;
 using UnityEngine;
 using static QuestingUpdate.lib.data.ExportHandler;
 using QuestingUpdate.lib.data;
+using System.Reflection;
+using Text = TMPro.TMP_Text;
+using QuestingUpdate.lib.classes;
 
 namespace QuestingUpdate.lib
 {
@@ -14,7 +17,9 @@ namespace QuestingUpdate.lib
         public void InitModifier()
         {
             Test(GUID.Parse("4491E93910334C76AD68061AA8E71B5C"));
+            ModifyMaterials(GUID.Parse("AB14B23AB2E544BFBBEB5EEACB11D944"), "questingbundle", "assets/questing/textures/alloystation.mat", "Meshes", 0);
             ModifyCoalModule();
+            ModifyText();
 
             ModifyTitanium();
             ModifyUpgrade("UpgradeStarterResearch", "UpgradeStarterRefineryRecipe");
@@ -143,14 +148,41 @@ namespace QuestingUpdate.lib
             GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "TitaniumIngotRecipe").Categories = new RecipeCategory[] { FindCategories("ForgeTier3") };
             QuestLog.Log("[Questing Update | Modifier]: Titanium Recipe Modified");
         }
-
         private void Test(GUID builder)
         {
             var itemthing = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == builder);
             var prefab = itemthing.Prefabs[0];
-            foreach (var obj in prefab.GetComponentsInChildren<Object>())
+            foreach (var obj in prefab.GetComponentsInChildren<MeshRenderer>())
             {
-                //QuestLog.Log("[Questing Update | Modifier]: " + obj);
+                QuestLog.Log("" + obj);
+            }
+        }
+
+        private void ModifyMaterials(GUID builder, string assetBundle, string asset, string meshName, int prefabIndex)
+        {
+            var newMaterial = QuestingAssets.GetMaterial(assetBundle, asset);
+            var itemthing = GameResources.Instance.Items.FirstOrDefault(s => s.AssetId == builder);
+            var prefab = itemthing.Prefabs[prefabIndex];
+            foreach (var obj in prefab.GetComponentsInChildren<MeshRenderer>())
+            {
+                if (obj.name == meshName)
+                {
+                    obj.material = newMaterial;
+                }
+            }
+        }
+
+        private static readonly GUID ALLOY_STATION = GUID.Parse("AB14B23AB2E544BFBBEB5EEACB11D944");
+        private void ModifyText()
+        {
+            var prodStationDef = GameResources.Instance.Items.FirstOrDefault(def => def.AssetId == ALLOY_STATION);
+            if (prodStationDef != null)
+            {
+                var prefab = prodStationDef.Prefabs[0];
+
+                var uiTextComponents = prefab.GetComponentsInChildren<LocalizedUiText>();
+                var topBar = uiTextComponents[(int)EnumListing.StationUiTextIndices.TOP_BAR];
+                topBar.SetText("Alloy Station");
             }
         }
 

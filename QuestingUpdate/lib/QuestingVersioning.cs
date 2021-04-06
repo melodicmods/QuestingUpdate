@@ -45,7 +45,6 @@ namespace QuestingUpdate.lib
                 {
                     var version = "";
                     version = File.ReadAllText(Path.Combine(@ResourcePath, "Version.txt"));
-                    QuestLog.Log("[Questing Update | Versioning]: " + version);
                     if (version != resourceVersion)
                     {
                         Directory.Delete(@ResourcePath, true);
