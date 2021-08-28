@@ -97,11 +97,12 @@ namespace QuestingUpdate.lib.addons.GenericMod
 
         private bool Registry()
         {
-            if(File.Exists(AddonController.path + "/VolcanoidsMod.dll"))
+            if(File.Exists(AddonController.path + "/GenericMod/VolcanoidsMod.dll"))
             {
                 return true;
+            } else {
+                return false;
             }
-            return false;
         }
     }
 }
